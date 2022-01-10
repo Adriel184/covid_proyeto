@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-01-2022 a las 13:34:19
--- Versión del servidor: 10.4.20-MariaDB
--- Versión de PHP: 8.0.9
+-- Tiempo de generación: 10-01-2022 a las 13:47:10
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -69,8 +69,14 @@ CREATE TABLE `cita` (
 --
 -- Estructura de tabla para la tabla `info-covid`
 --
--- Error leyendo la estructura de la tabla covid-ddbb.info-covid: #1932 - Table 'covid-ddbb.info-covid' doesn't exist in engine
--- Error leyendo datos de la tabla covid-ddbb.info-covid: #1064 - Algo está equivocado en su sintax cerca 'FROM `covid-ddbb`.`info-covid`' en la linea 1
+
+CREATE TABLE `info-covid` (
+  `TIS` int(8) NOT NULL,
+  `PCR` tinyint(1) DEFAULT NULL,
+  `dosis` int(1) DEFAULT NULL,
+  `tipoDosis` varchar(25) DEFAULT NULL,
+  `fecha` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -110,6 +116,12 @@ ALTER TABLE `cita`
   ADD KEY `TIS_2` (`TIS`,`idCentro`);
 
 --
+-- Indices de la tabla `info-covid`
+--
+ALTER TABLE `info-covid`
+  ADD KEY `TIS` (`TIS`);
+
+--
 -- Indices de la tabla `pacientes`
 --
 ALTER TABLE `pacientes`
@@ -141,6 +153,12 @@ ALTER TABLE `centro-vacunacion`
 ALTER TABLE `cita`
   ADD CONSTRAINT `cita_ibfk_1` FOREIGN KEY (`idCentro`) REFERENCES `centro-vacunacion` (`idCentro`),
   ADD CONSTRAINT `cita_ibfk_2` FOREIGN KEY (`TIS`) REFERENCES `pacientes` (`TIS`);
+
+--
+-- Filtros para la tabla `info-covid`
+--
+ALTER TABLE `info-covid`
+  ADD CONSTRAINT `info-covid_ibfk_1` FOREIGN KEY (`TIS`) REFERENCES `pacientes` (`TIS`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
