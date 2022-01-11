@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-01-2022 a las 13:47:10
+-- Tiempo de generación: 11-01-2022 a las 11:12:44
 -- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 8.0.10
+-- Versión de PHP: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,7 +33,10 @@ CREATE TABLE `admin` (
   `id` int(9) NOT NULL,
   `usuario` varchar(50) NOT NULL,
   `contra` varchar(50) NOT NULL,
-  `tipo` enum('General','Pacientes') NOT NULL
+  `nombre` varchar(50) NOT NULL,
+  `apellido` varchar(50) NOT NULL,
+  `tipo` enum('General','Pacientes') NOT NULL,
+  `idCentro` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -43,12 +46,21 @@ CREATE TABLE `admin` (
 --
 
 CREATE TABLE `centro-vacunacion` (
-  `idCentro` int(9) NOT NULL,
+  `id` int(9) NOT NULL,
   `nombre` varchar(50) NOT NULL,
-  `ubicacion` varchar(75) NOT NULL,
-  `capacidad` int(4) NOT NULL,
-  `stock` int(5) NOT NULL,
-  `horario` date NOT NULL
+  `poblacion` varchar(75) NOT NULL,
+  `CP` int(4) NOT NULL,
+  `provincia` varchar(50) NOT NULL,
+  `direccion` varchar(50) NOT NULL,
+  `horaApertura` time NOT NULL,
+  `horaCierre` time NOT NULL,
+  `lunes` tinyint(4) NOT NULL,
+  `martes` tinyint(4) NOT NULL,
+  `miercoles` tinyint(4) NOT NULL,
+  `jueves` tinyint(4) NOT NULL,
+  `viernes` tinyint(4) NOT NULL,
+  `sabado` tinyint(4) NOT NULL,
+  `domingo` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -58,10 +70,11 @@ CREATE TABLE `centro-vacunacion` (
 --
 
 CREATE TABLE `cita` (
+  `id` int(9) NOT NULL,
   `TIS` int(8) NOT NULL,
-  `fecha` date NOT NULL,
-  `nomDosis` varchar(25) NOT NULL,
-  `idCentro` int(9) NOT NULL
+  `idCentro` int(9) NOT NULL,
+  `fecha` datetime NOT NULL,
+  `nomDosis` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -71,8 +84,8 @@ CREATE TABLE `cita` (
 --
 
 CREATE TABLE `info-covid` (
+  `id` int(9) NOT NULL,
   `TIS` int(8) NOT NULL,
-  `PCR` tinyint(1) DEFAULT NULL,
   `dosis` int(1) DEFAULT NULL,
   `tipoDosis` varchar(25) DEFAULT NULL,
   `fecha` date DEFAULT NULL
@@ -88,7 +101,9 @@ CREATE TABLE `pacientes` (
   `TIS` int(8) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `apellidos` varchar(75) NOT NULL,
-  `fecha de nacimiento` date NOT NULL
+  `fechaNac` date NOT NULL,
+  `fechaPCR` date NOT NULL,
+  `idCentro` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -99,18 +114,20 @@ CREATE TABLE `pacientes` (
 -- Indices de la tabla `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idCentro` (`idCentro`);
 
 --
 -- Indices de la tabla `centro-vacunacion`
 --
 ALTER TABLE `centro-vacunacion`
-  ADD PRIMARY KEY (`idCentro`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `cita`
 --
 ALTER TABLE `cita`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `TIS` (`TIS`),
   ADD KEY `idCentro` (`idCentro`),
   ADD KEY `TIS_2` (`TIS`,`idCentro`);
@@ -119,13 +136,15 @@ ALTER TABLE `cita`
 -- Indices de la tabla `info-covid`
 --
 ALTER TABLE `info-covid`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `TIS` (`TIS`);
 
 --
 -- Indices de la tabla `pacientes`
 --
 ALTER TABLE `pacientes`
-  ADD PRIMARY KEY (`TIS`);
+  ADD PRIMARY KEY (`TIS`),
+  ADD KEY `idCentro` (`idCentro`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -141,17 +160,35 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT de la tabla `centro-vacunacion`
 --
 ALTER TABLE `centro-vacunacion`
-  MODIFY `idCentro` int(9) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `cita`
+--
+ALTER TABLE `cita`
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `info-covid`
+--
+ALTER TABLE `info-covid`
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
+-- Filtros para la tabla `admin`
+--
+ALTER TABLE `admin`
+  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`idCentro`) REFERENCES `centro-vacunacion` (`id`);
+
+--
 -- Filtros para la tabla `cita`
 --
 ALTER TABLE `cita`
-  ADD CONSTRAINT `cita_ibfk_1` FOREIGN KEY (`idCentro`) REFERENCES `centro-vacunacion` (`idCentro`),
+  ADD CONSTRAINT `cita_ibfk_1` FOREIGN KEY (`idCentro`) REFERENCES `centro-vacunacion` (`id`),
   ADD CONSTRAINT `cita_ibfk_2` FOREIGN KEY (`TIS`) REFERENCES `pacientes` (`TIS`);
 
 --
@@ -159,6 +196,12 @@ ALTER TABLE `cita`
 --
 ALTER TABLE `info-covid`
   ADD CONSTRAINT `info-covid_ibfk_1` FOREIGN KEY (`TIS`) REFERENCES `pacientes` (`TIS`);
+
+--
+-- Filtros para la tabla `pacientes`
+--
+ALTER TABLE `pacientes`
+  ADD CONSTRAINT `pacientes_ibfk_1` FOREIGN KEY (`idCentro`) REFERENCES `centro-vacunacion` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
