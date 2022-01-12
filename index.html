@@ -4,13 +4,79 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link rel="stylesheet" href="/resources/css/styleInicio.css">
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
     <!-- favicon para todas las paginas copiar y pegar tal cual (si veis que no se ve quitar la barra y los dos puntos del principio) -->
     <link rel="shortcut icon" href="resources/img/cruz roja.png" type="image/x-icon">
-
+    <link rel="stylesheet" href="/resources/css/styleHyF.css">
     <title>Pide una cita previa para tu vacunación</title>
 </head>
 <body>
-    
+    <body>
+        <!--navbar pegado de momento, tiene que ser dinamico-->
+        <nav class="navbar navbar-expand navbar-dark bg-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">MEDICOS CON FRONTERA<img src="/resources/img/cruz roja.png" alt="la imagen no ha cargado" class="mx-1 mb-1" width="35px"></a>
+              <h3 class="textoCabecera">Pide cita previa para vacunarte</h3>
+              <button class="btn btn-success" id="loginbtn">login</button>
+            </div>
+        </nav>
+
+        <!-- contenido de la pagina de inicio como tal -->
+        <div class="informacion container fluid">
+            <h2>Texto de ejemplo</h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa nostrum tenetur, veniam nobis esse beatae enim tempora, modi assumenda suscipit a aliquid accusantium? Cupiditate quibusdam repellendus harum quos necessitatibus neque.</p>
+        </div>
+
+        <div class="textoAyuda">
+            <h1>IDENTIFICACIÓN DE USUARIOS</h1>
+            <p>Para reservar, consultar o anular citas pendientes, debes de introducir tu TIS, primer apellido y fecha de nacimiento, tal y como se muestra en la imagen.</p>
+        </div>
+
+       <!-- Inicio de sesion de paciente -->
+        <div class="container-sm">
+        <div class="containerForm">
+           <div class="imagen">
+            <img class="imagenTis" src="/resources/img/imagenTis.jpg">
+           </div>
+       
+        <form>
+            <div class="mb-3">
+              <label for="exampleInputText1" class="form-label">TIS:</label>
+              <input type="text" class="form-control" id="exampleInputText1">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputText2" class="form-label">Apellido:</label>
+              <input type="text" class="form-control" id="exampleInputText2">
+            </div>
+            <div class="mb-3"> 
+              <label class="form-label" for="exampleDate1">Fecha de Nacimiento:</label><br>
+              <input type="date" class="exampleDate1" id="exampleDate1">
+            </div>
+            <div id="bottomText" class="form-text">
+                *Todos los campos son obligatorios.
+            </div><br>
+            <button type="button" class="btn btn-outline-success">Confirmar</button>
+          </form>
+        </div>
+    </div>
+
+    <!-- Footer pegado de momento, tiene que ser dinamico -->
+    <footer class="bg-dark bottom-0 start-0">
+        <div class="container-fluid row pt-3">
+            <div class="col-6 text-white ">
+                Nuestros numeros no estan disponibles las 24 horas del dia,<br> en caso de no ser respondido por favor deja tus dudas en nuestro mail,<br> lo responderemos lo antes posible:<br>
+                <span class="text-info">USUARIO.GENERICOBUZONOSAREAN@osakidetza.eus</span><br>
+                Tambien puedes ver si tu pregunta esta en nuestra lista de <a href="https://www.osakidetza.euskadi.eus/cita-previa-preguntas-frecuentes/ab84-sercon/es/" class="text-info">preguntas frecuentes</a>
+            </div>
+            <div class="col-6 text-white text-end">
+                <ul><h5>En caso de necesitar ayuda:</h5></ul>
+                <ul><p>Problemas con las citas: <span class="text-info">900 32 36 61</span></p></ul>
+                <ul><p>Nº de contacto con Osakidetza: <span class="text-info">900 20 30 50</span></p></ul>
+            </div>
+        </div>
+        <p class="text-white text-center mt-3">© 2021 · Eusko Jaurlaritza - Gobierno Vasco</p>
+    </footer>
+   
 </body>
 </html>
