@@ -1,0 +1,5 @@
+---
+deployment:
+      tasks:
+        - rm -rf /home/batzerbi/public_html/*
+        - cp -Rf /home/batzerbi/repositories/proyectoCovid/* /home/batzerbi/public_html/.
