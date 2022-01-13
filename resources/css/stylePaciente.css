@@ -1,0 +1,17 @@
+.centrar {
+    text-align: center;
+}
+
+div.container button {
+    padding: 1em;
+    margin-left: 20px;
+}
+
+div.container.centrar {
+    margin-top: 5%;
+}
+
+.informacion {
+    border-bottom: 2px solid green;
+    
+}

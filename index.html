@@ -15,14 +15,8 @@
 </head>
 <body>
     <body>
-        <!--navbar pegado de momento, tiene que ser dinamico-->
-        <nav class="navbar navbar-expand navbar-dark bg-dark">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">MEDICOS CON FRONTERA<img src="/resources/img/cruz roja.png" alt="la imagen no ha cargado" class="mx-1 mb-1" width="35px"></a>
-              <h3 class="textoCabecera">Pide cita previa para vacunarte</h3>
-              <button class="btn btn-success" id="loginbtn">login</button>
-            </div>
-        </nav>
+        <!--navbar dinamico-->
+        <div id="dynamicHeader"></div>
 
         <!-- contenido de la pagina de inicio como tal -->
         <div class="informacion container fluid">
@@ -63,22 +57,14 @@
         </div>
     </div>
 
-    <!-- Footer pegado de momento, tiene que ser dinamico -->
-    <footer class="bg-dark bottom-0 start-0">
-        <div class="container-fluid row pt-3">
-            <div class="col-6 text-white ">
-                Nuestros numeros no estan disponibles las 24 horas del dia,<br> en caso de no ser respondido por favor deja tus dudas en nuestro mail,<br> lo responderemos lo antes posible:<br>
-                <span class="text-info">USUARIO.GENERICOBUZONOSAREAN@osakidetza.eus</span><br>
-                Tambien puedes ver si tu pregunta esta en nuestra lista de <a href="https://www.osakidetza.euskadi.eus/cita-previa-preguntas-frecuentes/ab84-sercon/es/" class="text-info">preguntas frecuentes</a>
-            </div>
-            <div class="col-6 text-white text-end">
-                <ul><h5>En caso de necesitar ayuda:</h5></ul>
-                <ul><p>Problemas con las citas: <span class="text-info">900 32 36 61</span></p></ul>
-                <ul><p>Nº de contacto con Osakidetza: <span class="text-info">900 20 30 50</span></p></ul>
-            </div>
-        </div>
-        <p class="text-white text-center mt-3">© 2021 · Eusko Jaurlaritza - Gobierno Vasco</p>
-    </footer>
-   
+    <!-- Footer dinamico -->
+    <div id="dynamicFooter"></div>
+
+    <!-- Librerias -->
+    <script src="resources/js/bootstrap.min.js"></script>
+    <script src="resources/js/jquery-3.6.0.js"></script>
+
+    <!-- JS nuestros -->
+    <script src="resources/js/dinamico.js"></script>
 </body>
 </html>
