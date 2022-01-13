@@ -5,7 +5,7 @@ class cita {
     private $fecha;
     private $dosis;
     private $tis;
-    private $id_vacuna;
+    private $id_centro;
 
     /**
      * Get the value of id
@@ -88,21 +88,21 @@ class cita {
     }
 
     /**
-     * Get the value of id_vacuna
+     * Get the value of id_centro
      */ 
-    public function getId_vacuna()
+    public function getId_centro()
     {
-        return $this->id_vacuna;
+        return $this->id_centro;
     }
 
     /**
-     * Set the value of id_vacuna
+     * Set the value of id_centro
      *
      * @return  self
      */ 
-    public function setId_vacuna($id_vacuna)
+    public function setId_centro($id_centro)
     {
-        $this->id_vacuna = $id_vacuna;
+        $this->id_centro = $id_centro;
 
         return $this;
     }

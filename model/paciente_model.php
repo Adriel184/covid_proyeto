@@ -82,35 +82,31 @@ class paciente_model extends paciente {
 
     }
 
-    public function findUser(){
+    public function getPacientes(){
+
         $this->OpenConnect();
-        $username = $this->username;
-
-        $sql = "SELECT * FROM usuarios WHERE username='$username'";
+        $sql = "SELECT * FROM pacientes";
         $result = $this->link->query($sql);
-
-        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            return $row["Exists"] = true;
-        }else{
-            return $row["Exists"] = false;
-        }
         
+        $pacientes=array();
+        
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+        {         
+            //FILL LIST with all families
+            $paciente=new paciente_model();
+            $paciente->tis=$row['tis'];
+            $paciente->nombre=$row['nombre'];
+            $paciente->apellidos=$row['apellidos'];
+            $paciente->fecha_nac=$row['fecha_nac'];
+            $paciente->fecha_pcr_pstv=$row['fecha_pcr_pstv'];
+
+            //$arrmov = (array) $movimiento;
+            
+            array_push($pacientes, $paciente);   
+        }
+        mysqli_free_result($result);
         $this->CloseConnect();
-
-    }
-
-    public function register(){
-
-        $this->OpenConnect();
-        $usuario = $this -> username;
-        $password = $this -> password;
-
-        $sql = "INSERT INTO `usuarios`(`username`, `password`) VALUES ('$usuario','$password')";
-
-        $result = $this->link->query($sql);
-
-        $this->CloseConnect();
-        return $result;
+        return $pacientes;
 
     }
 
