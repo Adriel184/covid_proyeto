@@ -1,0 +1,42 @@
+.informacion {
+    border-bottom: 2px solid green;
+    padding: 5px;
+}
+
+.imagenTis {
+    width: 15em;
+    height: auto;
+}
+
+.imagen {
+    margin-right: 5em;
+    margin-top: 5em;
+}
+
+.textoAyuda {
+    padding: 10px;
+}
+
+.containerForm {
+    display: inline-flex;
+    width: fit-content;
+    padding: 10px;
+}
+.container-sm {
+    text-align: center;
+}
+
+.textoAyuda {
+    text-align: center;
+}
+.textoAyuda h1 {
+    color: green;
+}
+
+.container-sm .containerForm form {
+    text-align: left;
+}
+
+footer {
+   margin-bottom: -10em;
+}
