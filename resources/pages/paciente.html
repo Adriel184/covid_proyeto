@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administra tus citas</title>
-    <link rel="shortcut icon" href="../img/cruz roja.png" type="image/x-icon">
+
+    <link rel="shortcut icon" href="../img/cruz_roja.png" type="image/x-icon">
+    
     <!-- Librerias de css -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
 
@@ -29,6 +31,18 @@
         <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#consultarCita">Consultar citas</button>
     </div>
 
+    <!-- Prueba menu desplegable en navbar -->
+    <!-- <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Dropdown button
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div> -->
+
     <!-- Modal -->
     <div class="modal fade" id="pedirCita" tabindex="-1" aria-labelledby="pedirCitaLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -39,38 +53,29 @@
             </div>
             <div class="modal-body">
                 <form>
+                  <div class="mb-3">
+                    <label for="nombreYApePaciente" class="form-label">Nombre y Apellidos:</label>
+                    <p>nombre y apellidos</p>
+                </div>
                     <div class="mb-3">
                         <label for="tis" class="form-label">TIS:</label>
                         <p>tis</p>
                     </div>
                     <div class="mb-3">
                       <label for="localidad" class="form-label">Localidad:</label>
-                      <select id="localidad" name="localidad">
-                        <option value="bilbao">Bilbao</option>
-                        <option value="gipuzkoa">Gipuzkoa</option>
-                        <option value="navarra">Navarra</option>
-                      </select>
+                      <p>localidad</p>
                     </div>
                     <div class="mb-3"> 
                         <label for="localidad" class="form-label">Centro:</label>
-                        <select id="localidad" name="localidad">
-                          <option value="bilbao">Centro1</option>
-                          <option value="gipuzkoa">Centro2</option>
-                          <option value="navarra">Centro3</option>
-                        </select>
+                        <p>centro</p>
                     </div>
-
                     <div class="mb-3"> 
-                        <label for="localidad" class="form-label">Dosis:</label>
-                        <select id="localidad" name="localidad">
-                          <option value="bilbao">Pfizer</option>
-                          <option value="gipuzkoa">Moderna</option>
-                          <option value="navarra">Sputnik V</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="myfile">Adjunta una imagen de tu ultima PCR:</label>
-                        <input type="file" id="myfile" name="myfile">
+                      <label for="tipoDosis" class="form-label">Tipo Dosis:</label>
+                      <p>tipo dosis</p>
+                  </div>
+                    <div class="mb-3"> 
+                        <label for="dosis" class="form-label">Nº Dosis:</label>
+                        <p>nº dosis</p>
                     </div>
                     <div class="mb-3"> 
                         <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
@@ -97,60 +102,113 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
-              <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
-                  Título del botón <span class="caret"></span>
-                </button>
-              
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">Acción #1</a></li>
-                </ul>
-              </div>
+              <button type="button" class="collapsible">Cita 1</button>
+              <div class="cita">
+                <form>
+                  <div class="mb-3">
+                    <!-- <label for="nombreYApePaciente" class="form-label">Nombre y Apellidos:</label> -->
+                    <p>nombre y apellidos</p>
+                </div>
+                    <div class="mb-3">
+                        <!-- <label for="tis" class="form-label">TIS:</label> -->
+                        <p>tis</p>
+                    </div>
+                    <div class="mb-3">
+                      <!-- <label for="localidad" class="form-label">Localidad:</label> -->
+                      <p>localidad</p>
+                    </div>
+                    <div class="mb-3"> 
+                        <!-- <label for="localidad" class="form-label">Centro:</label> -->
+                        <p>centro</p>
+                    </div>
+                    <div class="mb-3"> 
+                      <!-- <label for="tipoDosis" class="form-label">Tipo Dosis:</label> -->
+                      <p>tipo dosis</p>
+                  </div>
+                    <div class="mb-3"> 
+                        <!-- <label for="dosis" class="form-label">Nº Dosis:</label> -->
+                        <p>nº dosis</p>
+                    </div>
+                    <div class="mb-3"> 
+                        <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
+                        <input type="datetime-local" class="fechaHora" id="fechaCita">
+                    </div> <br>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Anular Cita</button>
+                  </form>
+              </div> 
 
+              <button type="button" class="collapsible">Cita 2</button>
+              <div class="cita">
+                <form>
+                  <div class="mb-3">
+                    <!-- <label for="nombreYApePaciente" class="form-label">Nombre y Apellidos:</label> -->
+                    <p>nombre y apellidos</p>
+                </div>
+                    <div class="mb-3">
+                        <!-- <label for="tis" class="form-label">TIS:</label> -->
+                        <p>tis</p>
+                    </div>
+                    <div class="mb-3">
+                      <!-- <label for="localidad" class="form-label">Localidad:</label> -->
+                      <p>localidad</p>
+                    </div>
+                    <div class="mb-3"> 
+                        <!-- <label for="localidad" class="form-label">Centro:</label> -->
+                        <p>centro</p>
+                    </div>
+                    <div class="mb-3"> 
+                      <!-- <label for="tipoDosis" class="form-label">Tipo Dosis:</label> -->
+                      <p>tipo dosis</p>
+                  </div>
+                    <div class="mb-3"> 
+                        <!-- <label for="dosis" class="form-label">Nº Dosis:</label> -->
+                        <p>nº dosis</p>
+                    </div>
+                    <div class="mb-3"> 
+                        <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
+                        <input type="datetime-local" class="fechaHora" id="fechaCita">
+                    </div> <br>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Anular Cita</button>  
+                  </form>
+              </div> 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <!-- <div class="dropdown-menu">
-                    <form class="px-4 py-3">
-                      <div class="form-group">
-                        <label for="exampleDropdownFormEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleDropdownFormPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
-                      </div>
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                        <label class="form-check-label" for="dropdownCheck">
-                          Remember me
-                        </label>
-                      </div>
-                      <button type="submit" class="btn btn-primary">Sign in</button>
-                    </form>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">New around here? Sign up</a>
-                    <a class="dropdown-item" href="#">Forgot password?</a>
-                  </div> -->
+              <button type="button" class="collapsible">Cita 3</button>
+              <div class="cita">
+                <form>
+                  <div class="mb-3">
+                    <!-- <label for="nombreYApePaciente" class="form-label">Nombre y Apellidos:</label> -->
+                    <p>nombre y apellidos</p>
+                </div>
+                    <div class="mb-3">
+                        <!-- <label for="tis" class="form-label">TIS:</label> -->
+                        <p>tis</p>
+                    </div>
+                    <div class="mb-3">
+                      <!-- <label for="localidad" class="form-label">Localidad:</label> -->
+                      <p>localidad</p>
+                    </div>
+                    <div class="mb-3"> 
+                        <!-- <label for="localidad" class="form-label">Centro:</label> -->
+                        <p>centro</p>
+                    </div>
+                    <div class="mb-3"> 
+                      <!-- <label for="tipoDosis" class="form-label">Tipo Dosis:</label> -->
+                      <p>tipo dosis</p>
+                  </div>
+                    <div class="mb-3"> 
+                        <!-- <label for="dosis" class="form-label">Nº Dosis:</label> -->
+                        <p>nº dosis</p>
+                    </div>
+                    <div class="mb-3"> 
+                        <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
+                        <input type="datetime-local" class="fechaHora" id="fechaCita">
+                    </div> <br>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Anular Cita</button>
+                  </form>
+              </div> 
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-success">Confirmar</button>
             </div>
         </div>
         </div>
@@ -165,5 +223,7 @@
 
     <!-- JS nuestros -->
     <script src="../js/dinamico.js"></script>
+    <script src="../js/citas.js"></script>
+
 </body>
 </html>
