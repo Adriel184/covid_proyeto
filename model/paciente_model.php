@@ -33,54 +33,43 @@ class paciente_model extends paciente {
 
         $this->OpenConnect();
 
-        $sql = "  SELECT * FROM pacientes WHERE 'tis'=$this->tis AND 'fecha_nac'=$this->fech_nac AND 'apellido'=$this->apellidos";
+        $sql = "SELECT * FROM paciente WHERE tis=$this->tis AND fecha_nac='$this->fecha_nac' AND apellido='$this->apellido'";
         $result = $this->link->query($sql);
-        $loged = false;          
+        $logged = false;
         
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        
-        
-            $this->tis=$row['tis'];
-            $this->nombre=$row['nombre'];
-            $this->apellidos=$row['apellidos'];
-            $this->fecha_nac=$row['fecha_nac'];
-            $this->fecha_pcr_pstv=$row['fecha_pcr_pstv'];
-
-            $loged = true;
-
+            $logged = true;
         }
 
         mysqli_free_result($result);
         $this->CloseConnect();
-        return $loged;
+        if ($logged) {
+            $this->getPaciente();
+        }
+        return $logged;
     }
+
 
     public function getPaciente(){
 
         $this->OpenConnect();
 
-        $sql = "CALL spPaciente('$this->tis')";
-        $result = $this->link->query($sql);
-        $loged = false;          
+        $sql = "SELECT * FROM paciente WHERE tis=$this->tis";
+        $result = $this->link->query($sql);        
         
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        
-        
             $this->tis=$row['tis'];
             $this->nombre=$row['nombre'];
-            $this->apellidos=$row['apellidos'];
+            $this->apellido=$row['apellido'];
             $this->fecha_nac=$row['fecha_nac'];
-            $this->fecha_pcr_pstv=$row['fecha_pcr_pstv'];
-
-            $loged = true;
-
+            $this->fecha_pcr_pstv=$row['fecha_pcr'];
         }
 
         mysqli_free_result($result);
         $this->CloseConnect();
-        return $loged;
 
     }
+
 
     public function getPacientes(){
 

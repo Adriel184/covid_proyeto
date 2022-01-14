@@ -4,6 +4,6 @@ class connect_data
     public $host='localhost';
     public $userbbdd='root';
     public $passbbdd='';
-    public $ddbbname='proyectoCovid';
+    public $ddbbname='covid_ddbb';
 }
 

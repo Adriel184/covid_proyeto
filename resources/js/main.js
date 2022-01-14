@@ -1,4 +1,4 @@
-$('#inicio').submit(() => {
+$('#loginPaciente').click(() => {
     console.log("Se ha hecho submit")
     loadPaciente();
 });
@@ -10,7 +10,7 @@ function loadPaciente() {
     var surname = $('#surname').val();
     var birth = $('#birth').val();
       
-    var url = "../../controller/controllerPaciente.php";
+    var url = "controller/controllerPaciente.php";
     var data = { 'tis':tis, 'apellido':surname, 'fecha_nac':birth};
 
     fetch(url, {
