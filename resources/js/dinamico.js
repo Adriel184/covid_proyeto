@@ -8,13 +8,13 @@ async function loadHeaderFooter(){
 
         switch (ruta) {
             case '':
-                $('#dynamicFooter').load('../resources/pages/footer.html');
-                $('#dynamicHeader').load('../resources/pages/header.html');
+                $('#dynamicFooter').load('resources/pages/footer.html');
+                $('#dynamicHeader').load('resources/pages/header.html');
             break;
 
             case 'index':
-                $('#dynamicFooter').load('../resources/pages/footer.html');
-                $('#dynamicHeader').load('../resources/pages/header.html');
+                $('#dynamicFooter').load('resources/pages/footer.html');
+                $('#dynamicHeader').load('resources/pages/header.html');
             break;
         
             case 'paciente':
