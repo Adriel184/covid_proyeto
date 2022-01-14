@@ -29,11 +29,11 @@ class paciente_model extends paciente {
 
     /********* FUNCIONES **********/
 
-    public function login() {
+    public function loginPaciente() {
 
         $this->OpenConnect();
 
-        $sql = "CALL spLoginPaciente('$this->tis', '$this->fech_nac')";
+        $sql = "  SELECT * FROM pacientes WHERE 'tis'=$this->tis AND 'fecha_nac'=$this->fech_nac AND 'apellido'=$this->apellidos";
         $result = $this->link->query($sql);
         $loged = false;          
         

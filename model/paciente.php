@@ -3,7 +3,7 @@
 class paciente {
     private $tis;
     private $nombre;
-    private $apellidos;
+    private $apellido;
     private $fecha_nac;
     private $fecha_pcr_pstv;
 
@@ -48,21 +48,21 @@ class paciente {
     }
 
     /**
-     * Get the value of apellidos
+     * Get the value of apellido
      */ 
-    public function getApellidos()
+    public function getApellido()
     {
-        return $this->apellidos;
+        return $this->apellido;
     }
 
     /**
-     * Set the value of apellidos
+     * Set the value of apellido
      *
      * @return  self
      */ 
-    public function setApellidos($apellidos)
+    public function setApellido($apellido)
     {
-        $this->apellidos = $apellidos;
+        $this->apellido = $apellido;
 
         return $this;
     }
