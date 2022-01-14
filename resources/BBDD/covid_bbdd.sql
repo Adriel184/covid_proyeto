@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-01-2022 a las 10:11:40
+-- Tiempo de generación: 14-01-2022 a las 08:58:29
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.1.1
 
@@ -87,6 +87,7 @@ INSERT INTO `centro_vacunacion` (`id`, `nombre`, `poblacion`, `cp`, `provincia`,
 --
 
 CREATE TABLE `cita` (
+  `id` int(9) NOT NULL,
   `tis` int(8) NOT NULL,
   `id_centro` int(9) NOT NULL,
   `fecha` datetime NOT NULL
@@ -96,8 +97,8 @@ CREATE TABLE `cita` (
 -- Volcado de datos para la tabla `cita`
 --
 
-INSERT INTO `cita` (`tis`, `id_centro`, `fecha`) VALUES
-(23456789, 1, '2021-06-28 10:00:00');
+INSERT INTO `cita` (`id`, `tis`, `id_centro`, `fecha`) VALUES
+(0, 23456789, 1, '2021-06-28 10:00:00');
 
 -- --------------------------------------------------------
 
@@ -125,41 +126,22 @@ INSERT INTO `paciente` (`tis`, `nombre`, `apellidos`, `fecha_nac`, `fecha_pcr`, 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `registra`
+-- Estructura de tabla para la tabla `recibe`
 --
 
-CREATE TABLE `registra` (
-  `id_reg` int(9) NOT NULL,
-  `id_vacuna` int(9) NOT NULL,
-  `fecha` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `registra`
---
-
-INSERT INTO `registra` (`id_reg`, `id_vacuna`, `fecha`) VALUES
-(2, 1, '2021-07-28');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `reg_vacunacion`
---
-
-CREATE TABLE `reg_vacunacion` (
-  `id` int(9) NOT NULL,
+CREATE TABLE `recibe` (
   `tis` int(8) NOT NULL,
-  `dosis` int(1) DEFAULT NULL
+  `id_vacuna` int(9) NOT NULL,
+  `fecha` date NOT NULL,
+  `dosis` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `reg_vacunacion`
+-- Volcado de datos para la tabla `recibe`
 --
 
-INSERT INTO `reg_vacunacion` (`id`, `tis`, `dosis`) VALUES
-(1, 12345678, NULL),
-(2, 23456789, NULL);
+INSERT INTO `recibe` (`tis`, `id_vacuna`, `fecha`, `dosis`) VALUES
+(23456789, 1, '2021-07-28', 1);
 
 -- --------------------------------------------------------
 
@@ -204,7 +186,8 @@ ALTER TABLE `centro_vacunacion`
 -- Indices de la tabla `cita`
 --
 ALTER TABLE `cita`
-  ADD PRIMARY KEY (`tis`,`id_centro`,`fecha`),
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tis` (`tis`,`id_centro`),
   ADD KEY `id_centro` (`id_centro`);
 
 --
@@ -215,18 +198,11 @@ ALTER TABLE `paciente`
   ADD KEY `id_centro` (`id_centro`);
 
 --
--- Indices de la tabla `registra`
+-- Indices de la tabla `recibe`
 --
-ALTER TABLE `registra`
-  ADD PRIMARY KEY (`id_reg`,`id_vacuna`,`fecha`),
+ALTER TABLE `recibe`
+  ADD PRIMARY KEY (`tis`,`id_vacuna`,`dosis`),
   ADD KEY `id_vacuna` (`id_vacuna`);
-
---
--- Indices de la tabla `reg_vacunacion`
---
-ALTER TABLE `reg_vacunacion`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `tis` (`tis`);
 
 --
 -- Indices de la tabla `vacuna`
@@ -251,12 +227,6 @@ ALTER TABLE `centro_vacunacion`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `reg_vacunacion`
---
-ALTER TABLE `reg_vacunacion`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT de la tabla `vacuna`
 --
 ALTER TABLE `vacuna`
@@ -276,8 +246,8 @@ ALTER TABLE `admin`
 -- Filtros para la tabla `cita`
 --
 ALTER TABLE `cita`
-  ADD CONSTRAINT `cita_ibfk_1` FOREIGN KEY (`tis`) REFERENCES `paciente` (`tis`),
-  ADD CONSTRAINT `cita_ibfk_2` FOREIGN KEY (`id_centro`) REFERENCES `centro_vacunacion` (`id`);
+  ADD CONSTRAINT `cita_ibfk_1` FOREIGN KEY (`id_centro`) REFERENCES `centro_vacunacion` (`id`),
+  ADD CONSTRAINT `cita_ibfk_2` FOREIGN KEY (`tis`) REFERENCES `paciente` (`tis`);
 
 --
 -- Filtros para la tabla `paciente`
@@ -286,17 +256,11 @@ ALTER TABLE `paciente`
   ADD CONSTRAINT `paciente_ibfk_1` FOREIGN KEY (`id_centro`) REFERENCES `centro_vacunacion` (`id`);
 
 --
--- Filtros para la tabla `registra`
+-- Filtros para la tabla `recibe`
 --
-ALTER TABLE `registra`
-  ADD CONSTRAINT `registra_ibfk_1` FOREIGN KEY (`id_reg`) REFERENCES `reg_vacunacion` (`id`),
-  ADD CONSTRAINT `registra_ibfk_2` FOREIGN KEY (`id_vacuna`) REFERENCES `vacuna` (`id`);
-
---
--- Filtros para la tabla `reg_vacunacion`
---
-ALTER TABLE `reg_vacunacion`
-  ADD CONSTRAINT `reg_vacunacion_ibfk_1` FOREIGN KEY (`tis`) REFERENCES `paciente` (`tis`);
+ALTER TABLE `recibe`
+  ADD CONSTRAINT `recibe_ibfk_1` FOREIGN KEY (`id_vacuna`) REFERENCES `vacuna` (`id`),
+  ADD CONSTRAINT `recibe_ibfk_2` FOREIGN KEY (`tis`) REFERENCES `paciente` (`tis`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
