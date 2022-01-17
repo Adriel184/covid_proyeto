@@ -1,13 +1,13 @@
 <?php
 
 class admin {
-    private $id;
-    private $usuario;
-    private $nombre;
-    private $apellidos;
-    private $contrasena;
-    private $tipo;
-    private $id_centro;
+    protected $id;
+    protected $usuario;
+    protected $nombre;
+    protected $apellidos;
+    protected $contrasena;
+    protected $tipo;
+    protected $id_centro;
 
     /**
      * Get the value of id

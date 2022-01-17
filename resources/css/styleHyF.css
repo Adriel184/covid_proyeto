@@ -1,14 +1,44 @@
 #loginbtn{
     padding-left: 1%;
     padding-right: 1%;
+    
+}
+
+.container-fluid.textoCabecera {
+    text-align: center;
+    
 }
 
 .textoCabecera{
-    margin-left: -250px;
-    color: white;
+    color: white;    
 }
 
-footer{
-    width: 100%;
-    
+#soloRes{
+    width: 0%;
+    height: 0%;
+    visibility: hidden;
+}
+
+span{
+    word-wrap: break-word;
+}
+
+/*TODO *RESPONSIVE* */
+
+@media (max-width: 1130px){
+    .textoCabecera{
+        display: none;
+    }
+}
+
+@media (max-width: 400px){
+    #casa{
+        display: none;
+    }
+
+    #soloRes{
+        width: auto;
+        height: auto;
+        visibility: visible;
+    }
 }
