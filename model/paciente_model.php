@@ -33,20 +33,22 @@ class paciente_model extends paciente {
 
         $this->OpenConnect();
 
+        $response=array();
+
         $sql = "SELECT * FROM paciente WHERE tis=$this->tis AND fecha_nac='$this->fecha_nac' AND apellido='$this->apellido'";
         $result = $this->link->query($sql);
-        $logged = false;
+        $response["logged"] = false;
         
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $logged = true;
+            $response["logged"] = true;
         }
 
         mysqli_free_result($result);
         $this->CloseConnect();
-        if ($logged) {
-            $this->getPaciente();
+        if ($response["logged"]) {
+            $response["paciente"] = $this->getPaciente();
         }
-        return $logged;
+        return $response;
     }
 
 
@@ -58,15 +60,18 @@ class paciente_model extends paciente {
         $result = $this->link->query($sql);        
         
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $this->tis=$row['tis'];
-            $this->nombre=$row['nombre'];
-            $this->apellido=$row['apellido'];
-            $this->fecha_nac=$row['fecha_nac'];
-            $this->fecha_pcr_pstv=$row['fecha_pcr'];
+            $paciente = new paciente_model();
+            $paciente->tis=$row['tis'];
+            $paciente->nombre=$row['nombre'];
+            $paciente->apellido=$row['apellido'];
+            $paciente->fecha_nac=$row['fecha_nac'];
+            $paciente->fecha_pcr_pstv=$row['fecha_pcr'];
         }
 
         mysqli_free_result($result);
         $this->CloseConnect();
+
+        return $paciente;
 
     }
 
