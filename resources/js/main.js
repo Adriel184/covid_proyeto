@@ -1,17 +1,37 @@
-$('#inicio').submit(() => { 
+$('#loginPaciente').click(() => {
+    console.log("Se ha hecho submit")
+    loadPaciente();
+});
+
+
+function loadPaciente() {
+
     var tis = $('#tis').val();
     var surname = $('#surname').val();
     var birth = $('#birth').val();
-console.log('eres bobo');
 
+    console.log(tis);
+    console.log(surname);
+    console.log(birth);
+      
+    var url = "controller/controllerPaciente.php";
+    var data = { 'tis':tis, 'apellido':surname, 'fecha_nac':birth};
 
-    return false;
-});
+    fetch(url, {
+    method: 'POST', // or 'POST'
+    body: JSON.stringify(data), // data can be `string` or {object}!
+    headers:{'Content-Type': 'application/json'}  //input data
+    
+    })
+    .then(res => res.json()).then(result => {
+    
+        console.log(result.logged);
+        if (result.logged) {
+            console.log(result.paciente)
+        }
 
-$('#iniciarAdmin').click(() => {
-    // console.log($('#usuario').val());
-    // console.log($('#conta').val());
-    alert('estas dentro');
-    console.log(1);
-    return false;
-})
+    })
+    .catch(error => console.error('Error status:', error));	
+  
+    
+}
