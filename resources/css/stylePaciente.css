@@ -41,6 +41,14 @@ div.container.centrar {
     transition: max-height 0.2s ease-out;
   }
 
+  .centro {
+    padding: 0 18px;
+  
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+
   .collapsible:after {
     content: '\25BE'; 
     font-size: 20px;
