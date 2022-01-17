@@ -16,7 +16,7 @@ div.container.centrar {
     
 }
 
-/* Boton desplegable para visualizar las citas */
+/* Boton desplegable*/
 .collapsible {
     background-color: #eee;
     color: #444;
@@ -42,7 +42,7 @@ div.container.centrar {
   }
 
   .collapsible:after {
-    content: '\25BE'; /* Unicode character for "plus" sign (+) */
+    content: '\25BE'; 
     font-size: 20px;
     color: black;
     float: right;
@@ -51,5 +51,5 @@ div.container.centrar {
 
   
 .active:after {
-    content: "\25B4"; /* Unicode character for "minus" sign (-) */
+    content: "\25B4"; 
   }

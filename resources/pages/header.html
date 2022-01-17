@@ -3,7 +3,7 @@
         <div class="container-fluid">
           <a id="casa" class="navbar-brand" href="#">MEDICOS CON FRONTERA<img id="imgLogo" src="../resources/img/cruz_roja.png" alt="la imagen no ha cargado" class="mx-1 mb-1" width="35px"></a>
           <a id="soloRes" href="#"><img id="imgLogoRes" src="../rescources/img/cruz_roja.png" alt="No ha cargado la imagen" class="mx-1 mb-1" width="35px"></a>
-          <h3 class="textoCabecera">Pide cita previa para vacunarte</h3>
+          <h3 id="textoCabecera" class="textoCabecera m-auto">Pide cita previa para vacunarte</h3>
           <button class="btn btn-success" id="loginbtn" data-bs-toggle="modal" data-bs-target="#modalForm">login</button>
 
           
@@ -13,7 +13,10 @@
                   nombre usuario
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                  <!-- Paciente -->
                   <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#historial">Historial de Vacunación</a></li>
+                  <!-- Administrador General-->
+                  <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#general">Administrar Centros</a></li>
                   <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
                 </ul>
               </li>
@@ -56,6 +59,7 @@
                 document.getElementById('imgLogo').src = 'resources/img/cruz_roja.png';
                 document.getElementById('soloRes').href = '#';
                 document.getElementById('imgLogoRes').src = 'resources/img/cruz_roja.png';
+                document.getElementById('dropdown').style.display = 'none';
             break;
 
             case 'index':
@@ -63,7 +67,7 @@
                 document.getElementById('imgLogo').src = 'resources/img/cruz_roja.png';
                 document.getElementById('soloRes').href = '#';
                 document.getElementById('imgLogoRes').src = 'resources/img/cruz_roja.png';
-               
+                document.getElementById('dropdown').style.display = 'none';
             break;
         
             default:
@@ -73,6 +77,7 @@
                 document.getElementById('imgLogoRes').src = '../img/cruz_roja.png';
                 document.getElementById('loginbtn').style.visibility = 'hidden';
                 document.getElementById('link').src = '../js/main.js'
+                document.getElementById('textoCabecera').style.display = 'none';
             break;
         }
 
