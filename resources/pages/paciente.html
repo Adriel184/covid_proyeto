@@ -28,9 +28,12 @@
   <div class="container centrar">
       <p>Puedes pedir una cita o consultar y editar tus citas pendientes. Tambien puedes anular una cita.</p>
       <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#pedirCita">Pedir cita</button>
+      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#consultarCita">Consultar citas</button> 
+      <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#historial">Historial de Vacunación</button>
       <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modificarCentros">Modificar Centros</button>
       <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#añadirCentros">Añadir Centro</button>
-      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#consultarCita">Consultar citas</button>
+     
+      
   </div>
 
   <!-- Modals -->
@@ -206,7 +209,14 @@
             <div class="modal-body">
               <button type="button" class="collapsible">Centros Bizkaia</button>
               <div class="cita">
-                <button type="button" class="collapsible">centro bizkaia 1</button>
+                <button type="button" class="collapsible-no-back">centro bizkaia 1</button>
+                <div class="centro">
+                  <form>
+                    
+                  </form>
+                </div>
+
+                <button type="button" class="collapsible-no-back">centro bizkaia 2</button>
                 <div class="centro">
                   <form>
                     
@@ -215,7 +225,7 @@
               </div>
                 <button type="button" class="collapsible">Centros Gipuzkoa</button>
               <div class="cita">
-                <button type="button" class="collapsible">centro gipuzkoa 1</button>
+                <button type="button" class="collapsible-no-back">centro gipuzkoa 1</button>
                 <div class="cita">
                   <form>
                     <div class="mb-3">
@@ -250,20 +260,35 @@
                       <div class="mb-3"> 
                         <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
                         <input type="datetime-local" class="fechaHora form-control" id="fechaCita">
-                      </div> 
-                    </div>                      
-                  </form>
-               
-              </div>
+                      </div>                                          
+                    </form>
+                  </div> 
 
-              <button type="button" class="collapsible">Centros Navarra</button>
-              <div class="cita">
-                <button type="button" class="collapsible">centro bizkaia 1</button>
+                  <button type="button" class="collapsible-no-back">centro gipuzkoa 2</button>
                 <div class="centro">
                   <form>
                     
                   </form>
                 </div>
+
+                </div>
+
+              <button type="button" class="collapsible">Centros Navarra</button>
+              <div class="cita">
+                <button type="button" class="collapsible-no-back">centro navarra 1</button>
+                <div class="centro">
+                  <form>
+                    
+                  </form>
+                </div>
+
+                <button type="button" class="collapsible-no-back">centro navarra 2</button>
+                <div class="centro">
+                  <form>
+                    
+                  </form>
+                </div>
+
               </div>
             </div>
           <div class="modal-footer">

@@ -1,11 +1,4 @@
-$('#loginPaciente').click(() => {
-    console.log("Se ha hecho submit")
-    loadPaciente();
-});
-
-
-function loadPaciente() {
-
+$('#loginPaciente').click(function loadPaciente() {
     var tis = $('#tis').val();
     var surname = $('#surname').val();
     var birth = $('#birth').val();
@@ -29,9 +22,6 @@ function loadPaciente() {
         if (result.logged) {
             console.log(result.paciente)
         }
+    }).catch(error => console.error('Error status:', error));
+});
 
-    })
-    .catch(error => console.error('Error status:', error));	
-  
-    
-}

@@ -28,9 +28,24 @@ div.container.centrar {
     outline: none;
     font-size: 15px;
   }
+  .collapsible-no-back {
+    background-color: transparent;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
 
   .active, .collapsible:hover {
     background-color: #ccc;
+  }
+
+  .collapsible-no-back:hover {
+    background-color: rgb(250, 250, 250);
   }
 
   .cita {
@@ -43,13 +58,20 @@ div.container.centrar {
 
   .centro {
     padding: 0 18px;
-  
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
   }
 
   .collapsible:after {
+    content: '\25BE'; 
+    font-size: 20px;
+    color: black;
+    float: right;
+    margin-left: 5px;
+  }
+
+  .collapsible-no-back:after {
     content: '\25BE'; 
     font-size: 20px;
     color: black;

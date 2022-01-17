@@ -1,8 +1,8 @@
 <?php
 
-    session_start();
-    session_unset();
-    session_destroy();
+    // session_start();
+    // session_unset();
+    // session_destroy();
 
     include_once '../model/paciente_model.php';
     $data=json_decode(file_get_contents("php://input"),true);
