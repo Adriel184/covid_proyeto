@@ -1,18 +1,55 @@
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
+
     <nav class="navbar navbar-expand navbar-dark bg-dark">
         <div class="container-fluid">
           <a id="casa" class="navbar-brand" href="#">MEDICOS CON FRONTERA<img id="imgLogo" src="resources/img/cruz_roja.png" alt="la imagen no ha cargado" class="mx-1 mb-1" width="35px"></a>
-          <h3 class="textoCabecera">Pide cita previa para vacunarte</h3>
-          <button class="btn btn-success" id="loginbtn">login</button>
+          <a id="soloRes" href="#"><img id="imgLogoRes" src="rescources/img/cruz_roja.png" alt="No ha cargado la imagen" class="mx-1 mb-1" width="35px"></a>
+          <h3 id="textoCabecera" class="textoCabecera m-auto">Pide cita previa para vacunarte</h3>
+          <button class="btn btn-success" id="loginbtn" data-bs-toggle="modal" data-bs-target="#modalForm">login</button>
+
+          
+            <ul class="navbar-nav" id="dropdown">
+              <li class="nav-item dropdown dropstart">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  nombre usuario
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                  <!-- Paciente -->
+                  <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#historial">Historial de Vacunación</a></li>
+                  <!-- Administrador General-->
+                  <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#general">Administrar Centros</a></li>
+                  <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+                </ul>
+              </li>
+            </ul>
+          
         </div>
     </nav>
     
+    <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Inicie sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <b>Solo si usted es un administrador puede iniciar sesion con las credenciales correspondientes.</b><br><br>
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Usuario:</label>
+                            <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Contraseña:</label>
+                            <input type="password" class="form-control" id="contra" name="contra" placeholder="Contraseña" />
+                        </div>
+                        <button id="iniciarAdmin" type="submit" class="btn btn-success float-end">Iniciar sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         var ruta = location.href.split('/').pop().split('.')[0];
 
@@ -20,19 +57,30 @@
             case '':
                 document.getElementById('casa').href = '#';
                 document.getElementById('imgLogo').src = 'resources/img/cruz_roja.png';
+                document.getElementById('soloRes').href = '#';
+                document.getElementById('imgLogoRes').src = 'resources/img/cruz_roja.png';
+                document.getElementById('dropdown').style.display = 'none';
             break;
 
             case 'index':
                 document.getElementById('casa').href = '#';
                 document.getElementById('imgLogo').src = 'resources/img/cruz_roja.png';
+                document.getElementById('soloRes').href = '#';
+                document.getElementById('imgLogoRes').src = 'resources/img/cruz_roja.png';
+                document.getElementById('dropdown').style.display = 'none';
             break;
         
             default:
                 document.getElementById('casa').href = '../../index.html';
-                document.getElementById('imgLogo').src = '../img/cruz roja.png';
+                document.getElementById('imgLogo').src = '../img/cruz_roja.png';
+                document.getElementById('soloRes').href = '../../index.html';
+                document.getElementById('imgLogoRes').src = '../img/cruz_roja.png';
+                document.getElementById('loginbtn').style.visibility = 'hidden';
+                document.getElementById('link').src = '../js/main.js'
+                document.getElementById('textoCabecera').style.display = 'none';
             break;
         }
 
     </script>
-</body>
-</html>
+
+    <script id="link" src="resources/js/main.js"></script>

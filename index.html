@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,52 +13,51 @@
     <link rel="stylesheet" href="resources/css/styleHyF.css">
     <title>Pide una cita previa para tu vacunación</title>
 </head>
-<body>
-    <body>
-        <!--navbar dinamico-->
-        <div id="dynamicHeader"></div>
+<body class="d-flex flex-column h-100">
+  <!--navbar dinamico-->
+  <div id="dynamicHeader"></div>
 
-        <!-- contenido de la pagina de inicio como tal -->
-        <div class="informacion container fluid">
-            <h2>Texto de ejemplo</h2>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa nostrum tenetur, veniam nobis esse beatae enim tempora, modi assumenda suscipit a aliquid accusantium? Cupiditate quibusdam repellendus harum quos necessitatibus neque.</p>
-        </div>
+    <!-- contenido de la pagina de inicio como tal -->
+    <div class="informacion container fluid">
+      <h2>Texto de ejemplo</h2>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa nostrum tenetur, veniam nobis esse beatae enim tempora, modi assumenda suscipit a aliquid accusantium? Cupiditate quibusdam repellendus harum quos necessitatibus neque.</p>
+    </div>
 
-        <div class="textoAyuda">
-            <h1>IDENTIFICACIÓN DE USUARIOS</h1>
-            <p>Para reservar, consultar o anular citas pendientes, debes de introducir tu TIS, primer apellido y fecha de nacimiento, tal y como se muestra en la imagen.</p>
-        </div>
+    <div class="textoAyuda">
+      <h1>IDENTIFICACIÓN DE USUARIOS</h1>
+      <p>Para reservar, consultar o anular citas pendientes, debes de introducir tu TIS, primer apellido y fecha de nacimiento, tal y como se muestra en la imagen.</p>
+    </div>
 
-       <!-- Inicio de sesion de paciente -->
-        <div class="container-sm">
-        <div class="containerForm">
-           <div class="imagen">
-            <img class="imagenTis" src="resources/img/imagenTis.jpg">
-           </div>
-       
-        <form id="inicio">
-            <div class="mb-3">
-              <label for="exampleInputText1" class="form-label">TIS:</label>
-              <input type="text" class="form-control" id="tis" >
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputText2" class="form-label">Apellido:</label>
-              <input type="text" class="form-control" id="surname" >
-            </div>
-            <div class="mb-3"> 
-              <label class="form-label" for="exampleDate1">Fecha de Nacimiento:</label><br>
-              <input type="date" class="exampleDate1" id="birth" >
-            </div>
-            <div id="bottomText" class="form-text">
-                *Todos los campos son obligatorios.
-            </div><br>
-            <button type="button" id="loginPaciente" class="">Confirmar</button>
-          </form>
+    <!-- Inicio de sesion de paciente -->
+    <div class="container-sm">
+      <div class="containerForm">
+        <div class="imagen">
+          <img class="imagenTis" src="resources/img/imagenTis.jpg">
         </div>
+      
+        <form id="inicio" >
+          <div class="mb-3">
+            <label for="exampleInputText1" class="form-label">TIS:</label>
+            <input type="text" class="form-control" id="tis" >
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputText2" class="form-label">Apellido:</label>
+            <input type="text" class="form-control" id="surname" >
+          </div>
+          <div class="mb-3"> 
+            <label class="form-label" for="exampleDate1">Fecha de Nacimiento:</label><br>
+            <input type="date" class="form-control" id="birth">
+          </div>
+          <div id="bottomText" class="form-text">
+              *Todos los campos son obligatorios.
+          </div><br>
+          <button type="submit" class="btn btn-outline-success">Confirmar</button>
+        </form>
+      </div>
     </div>
 
     <!-- Footer dinamico -->
-    <div id="dynamicFooter"></div>
+    <footer id="dynamicFooter" class="mt-auto bg-dark"></footer>
 
     <!-- Librerias -->
     <script src="resources/js/bootstrap.min.js"></script>
