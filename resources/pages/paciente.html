@@ -43,7 +43,8 @@
       </ul>
     </div> -->
 
-    <!-- Modal -->
+    <!-- Modals -->
+    <!-- Pedir cita -->
     <div class="modal fade" id="pedirCita" tabindex="-1" aria-labelledby="pedirCitaLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
@@ -94,6 +95,7 @@
         </div>
     </div>
 
+    <!-- Consultar citas -->
     <div class="modal fade" id="consultarCita" tabindex="-1" aria-labelledby="consultarCitaLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
@@ -213,6 +215,93 @@
         </div>
         </div>
     </div>
+
+    <!-- Historial Vacunación -->
+    <div class="modal fade" id="historial" tabindex="-1" aria-labelledby="historialLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="historialLabel">Historial de vacunación</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="nombreYApePaciente" class="form-label">Nombre y Apellidos:</label>
+                  <p>nombre y apellidos</p>
+                </div>
+                  <div class="mb-3">
+                      <label for="tis" class="form-label">TIS:</label>
+                      <p>tis</p>
+                  </div>
+                  <div class="mb-3">
+                    <label for="localidad" class="form-label">Localidad:</label>
+                    <p>localidad</p>
+                  </div>
+                  <div class="mb-3"> 
+                      <label for="localidad" class="form-label">Centro:</label>
+                      <p>centro</p>
+                  </div>
+
+                  <button type="button" class="collapsible">1ª Dosis</button>
+                  <div class="cita">
+                  <form>
+                    <div class="mb-3"> 
+                        <label for="localidad" class="form-label">Centro:</label>
+                        <p>centro</p>
+                    </div>
+                    <div class="mb-3"> 
+                      <label for="tipoDosis" class="form-label">Tipo Dosis:</label>
+                      <p>tipo dosis</p>
+                    </div>
+                    <div class="mb-3"> 
+                        <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
+                        <p>fecha y hora</p>
+                    </div> <br>
+                  </form>
+                </div>
+                <button type="button" class="collapsible">2ª Dosis</button>
+                <div class="cita">
+                <form>
+                  <div class="mb-3"> 
+                      <label for="localidad" class="form-label">Centro:</label>
+                      <p>centro</p>
+                  </div>
+                  <div class="mb-3"> 
+                    <label for="tipoDosis" class="form-label">Tipo Dosis:</label>
+                    <p>tipo dosis</p>
+                  </div>
+                  <div class="mb-3"> 
+                      <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
+                      <p>fecha y hora</p>
+                  </div> <br>
+                </form>
+              </div> 
+              <button type="button" class="collapsible">3ª Dosis</button>
+              <div class="cita">
+              <form>
+                <div class="mb-3"> 
+                    <label for="localidad" class="form-label">Centro:</label>
+                    <p>centro</p>
+                </div>
+                <div class="mb-3"> 
+                  <label for="tipoDosis" class="form-label">Tipo Dosis:</label>
+                  <p>tipo dosis</p>
+                </div>
+                <div class="mb-3"> 
+                    <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
+                    <p>fecha y hora</p>
+                </div> <br>
+              </form>
+            </div>  
+              </form>
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+      </div>
+      </div>
+  </div>
     <!-- footer dinamico -->
     <div id="dynamicFooter" class=""></div>
     
