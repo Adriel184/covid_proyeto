@@ -1,11 +1,11 @@
 <?php
 
 class paciente {
-    private $tis;
-    private $nombre;
-    private $apellido;
-    private $fecha_nac;
-    private $fecha_pcr_pstv;
+    protected $tis;
+    protected $nombre;
+    protected $apellido;
+    protected $fecha_nac;
+    protected $fecha_pcr_pstv;
 
     /**
      * Get the value of tis

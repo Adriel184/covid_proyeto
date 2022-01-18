@@ -14,15 +14,15 @@
     $apellido=$data['apellido'];
 
     $paciente=new paciente_model();
-    $paciente->tis=$tis;
-    $paciente->fecha_nac=$fecha_nac;
-    $paciente->apellido=$apellido;
+    $paciente->setTis($tis);
+    $paciente->setFecha_nac($fecha_nac);
+    $paciente->setApellido($apellido);
 
     $response= $paciente->loginPaciente();
 
     if ($response['logged']) {
         session_start();
-        $_SESSION['tis']=$paciente->tis;
+        $_SESSION['tis']=$paciente->getTis();
     }
 
     echo json_encode($response);
