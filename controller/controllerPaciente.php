@@ -2,21 +2,17 @@
 
     include_once '../model/paciente_model.php';
     $data=json_decode(file_get_contents("php://input"),true);
+    session_start();
 
-    $accion="login";
+    $accion=$data['accion'];
 
     if ($accion=="login") {
-
-
-        session_start();
-        session_unset();
-        session_destroy();
     
         $response=array();
     
-        $tis="12345678";
-        $fecha_nac="2001-12-10";
-        $apellido="crespo";
+        $tis=$data['tis'];
+        $fecha_nac=$data['fecha_nac'];
+        $apellido=$data['apellido'];
     
         $paciente=new paciente_model();
         $paciente->setTis($tis);
@@ -26,7 +22,6 @@
         $response= $paciente->loginPaciente();
     
         if ($response['logged']) {
-            session_start();
             $_SESSION['tis']=$paciente->getTis();
         }
     
@@ -35,10 +30,10 @@
         unset($response);
         
     }elseif ($accion=="load") {
-    
+        
         $response=array();
     
-        $tis="12345678";
+        $tis= $_SESSION['tis'];
     
         $paciente=new paciente_model();
         $paciente->setTis($tis);

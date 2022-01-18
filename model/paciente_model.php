@@ -55,32 +55,29 @@ class paciente_model extends paciente {
         return $response;
     }
 
-
     public function getPaciente(){
 
         $this->OpenConnect();
 
         $tis=$this->getTis();
-        $paciente=null;
 
         $sql = "SELECT * FROM paciente WHERE tis=$tis";
         $result = $this->link->query($sql);        
         
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $ObjPaciente = new paciente_model();
-            $ObjPaciente->setTis($row['tis']);
-            $ObjPaciente->setNombre($row['nombre']);
-            $ObjPaciente->setApellido($row['apellido']);
-            $ObjPaciente->setFecha_nac($row['fecha_nac']);
-            $ObjPaciente->setFecha_pcr_pstv($row['fecha_pcr']);
-
-            $paciente=$ObjPaciente;
+            $paciente = new paciente_model();
+            $paciente->tis=$row['tis'];
+            $paciente->nombre=$row['nombre'];
+            $paciente->apellido=$row['apellido'];
+            $paciente->fecha_nac=$row['fecha_nac'];
+            $paciente->fecha_pcr_pstv=$row['fecha_pcr'];
         }
 
         mysqli_free_result($result);
         $this->CloseConnect();
-        
-        return $paciente;
+
+        return get_object_vars($paciente);
+
     }
 
 

@@ -28,7 +28,7 @@ function loginPaciente() {
     
         console.log(result.logged);
         if (result.logged) {
-            
+            window.location.href="resources/pages/paciente.html";
             console.log(result.paciente)
         }
 
