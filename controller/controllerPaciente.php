@@ -4,20 +4,7 @@
     $data=json_decode(file_get_contents("php://input"),true);
     session_start();
 
-<<<<<<< HEAD
     $accion=$data['accion'];
-=======
-    $response=array();
-
-    $tis="12345678";
-    $fecha_nac="2001-12-10";
-    $apellido="crespo";
-
-    $paciente=new paciente_model();
-    $paciente->setTis($tis);
-    $paciente->setFecha_nac($fecha_nac);
-    $paciente->setApellido($apellido);
->>>>>>> main
 
     if ($accion=="login") {
     
