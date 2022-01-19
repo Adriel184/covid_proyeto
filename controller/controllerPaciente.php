@@ -44,11 +44,5 @@
         
         unset($response);
 
-<<<<<<< HEAD
-=======
-    if ($response['logged']) {
-        session_start();
-        $_SESSION['tis']=$paciente->getTis();
->>>>>>> main
     }
 
