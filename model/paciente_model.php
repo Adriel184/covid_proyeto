@@ -35,7 +35,11 @@ class paciente_model extends paciente {
 
         $response=array();
 
-        $sql = "SELECT * FROM paciente WHERE tis=$this->tis AND fecha_nac='$this->fecha_nac' AND apellido='$this->apellido'";
+        $tis=$this->getTis();
+        $fecha_nac=$this->getFecha_nac();
+        $apellido=$this->getApellido();
+
+        $sql = "SELECT * FROM paciente WHERE tis=$tis AND fecha_nac='$fecha_nac' AND apellido='$apellido'";
         $result = $this->link->query($sql);
         $response["logged"] = false;
         
@@ -51,12 +55,13 @@ class paciente_model extends paciente {
         return $response;
     }
 
-
     public function getPaciente(){
 
         $this->OpenConnect();
 
-        $sql = "SELECT * FROM paciente WHERE tis=$this->tis";
+        $tis=$this->getTis();
+
+        $sql = "SELECT * FROM paciente WHERE tis=$tis";
         $result = $this->link->query($sql);        
         
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -71,7 +76,7 @@ class paciente_model extends paciente {
         mysqli_free_result($result);
         $this->CloseConnect();
 
-        return $paciente;
+        return get_object_vars($paciente);
 
     }
 

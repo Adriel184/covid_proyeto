@@ -1,4 +1,7 @@
 $('#loginPaciente').click(function loadPaciente() {
+
+
+    var accion="login"
     var tis = $('#tis').val();
     var surname = $('#surname').val();
     var birth = $('#birth').val();
@@ -8,7 +11,7 @@ $('#loginPaciente').click(function loadPaciente() {
     console.log(birth);
       
     var url = "controller/controllerPaciente.php";
-    var data = { 'tis':tis, 'apellido':surname, 'fecha_nac':birth};
+    var data = { 'tis':tis, 'apellido':surname, 'fecha_nac':birth, "accion":accion};
 
     fetch(url, {
     method: 'POST', // or 'POST'
@@ -20,6 +23,7 @@ $('#loginPaciente').click(function loadPaciente() {
     
         console.log(result.logged);
         if (result.logged) {
+            window.location.href="resources/pages/paciente.html";
             console.log(result.paciente)
         }
     }).catch(error => console.error('Error status:', error));
