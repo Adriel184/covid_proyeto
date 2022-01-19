@@ -70,15 +70,6 @@ div.container.centrar {
     float: right;
     margin-left: 5px;
   }
-
-  .collapsible-no-back:after {
-    content: '\25BE'; 
-    font-size: 20px;
-    color: black;
-    float: right;
-    margin-left: 5px;
-  }
-
   
 .active:after {
     content: "\25B4"; 

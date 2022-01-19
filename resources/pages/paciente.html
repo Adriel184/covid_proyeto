@@ -30,10 +30,9 @@
       <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#pedirCita">Pedir cita</button>
       <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#consultarCita">Consultar citas</button> 
       <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#historial">Historial de Vacunación</button>
-      <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modificarCentros">Modificar Centros</button>
-      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#añadirCentros">Añadir Centro</button>
-     
-      
+      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modificarCentros">Modificar Centros</button>
+      <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#añadirCentros">Añadir Centro</button>
+      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#verPacientes">Consultar Pacientes</button>
   </div>
 
   <!-- Modals -->
@@ -134,7 +133,7 @@
                     <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
                     <input type="datetime-local" class="fechaHora" id="fechaCita">
                 </div> <br>
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Anular Cita</button>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#anularCita">Anular Cita</button>
               </form>
             </div>
           </div>
@@ -209,92 +208,163 @@
             <div class="modal-body">
               <button type="button" class="collapsible">Centros Bizkaia</button>
               <div class="cita">
-                <button type="button" class="collapsible-no-back">centro bizkaia 1</button>
+                <!-- <button type="button" class="collapsible-no-back">centro bizkaia 1</button> -->
+                <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro bizkaia 1</button>
                 <div class="centro">
-                  <form>
-                    
-                  </form>
+                  
                 </div>
 
-                <button type="button" class="collapsible-no-back">centro bizkaia 2</button>
+                <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro bizkaia 2</button>
                 <div class="centro">
-                  <form>
-                    
-                  </form>
+                  
                 </div>
               </div>
                 <button type="button" class="collapsible">Centros Gipuzkoa</button>
               <div class="cita">
-                <button type="button" class="collapsible-no-back">centro gipuzkoa 1</button>
-                <div class="cita">
-                  <form>
-                    <div class="mb-3">
-                      <label for="nombreYApePaciente" class="form-label">Nombre y Apellidos:</label>
-                      <input class="form-control" type="text" placeholder="Nombre y apellidos" disabled>
-                  </div>
-                      <div class="mb-3">
-                        <label for="tis" class="form-label">TIS:</label>
-                        <input class="form-control" type="text" placeholder="TIS" disabled>
-                      </div>
-    
-                      <div class="mb-3">
-                        <label for="localidad" class="form-label">Localidad:</label>
-                        <input class="form-control" type="text" placeholder="Localidad">
-                      </div>
-    
-                      <div class="mb-3"> 
-                        <label for="localidad" class="form-label">Centro:</label>
-                        <input class="form-control" type="text" placeholder="Centro">
-                      </div>
-                      
-                      <div class="mb-3"> 
-                        <label for="tipoDosis" class="form-label">Tipo Dosis:</label>
-                        <input class="form-control" type="text" placeholder="Tipo de dosis" disabled>
-                      </div>
-                      
-                      <div class="mb-3"> 
-                        <label for="dosis" class="form-label">Nº Dosis:</label>
-                        <input class="form-control" type="text" placeholder="Nº de dosis" disabled>
-                      </div>
-    
-                      <div class="mb-3"> 
-                        <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
-                        <input type="datetime-local" class="fechaHora form-control" id="fechaCita">
-                      </div>                                          
-                    </form>
-                  </div> 
-
-                  <button type="button" class="collapsible-no-back">centro gipuzkoa 2</button>
+                <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro gipuzkoa 1</button>
                 <div class="centro">
-                  <form>
-                    
-                  </form>
+                 
+                </div> 
+
+                  <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro gipuzkoa 2</button>
+                <div class="centro">
+                  
                 </div>
 
                 </div>
 
               <button type="button" class="collapsible">Centros Navarra</button>
               <div class="cita">
-                <button type="button" class="collapsible-no-back">centro navarra 1</button>
+                <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro navarra 1</button>
                 <div class="centro">
-                  <form>
-                    
-                  </form>
+                 
                 </div>
 
-                <button type="button" class="collapsible-no-back">centro navarra 2</button>
+                <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro navarra 2</button>
                 <div class="centro">
-                  <form>
-                    
-                  </form>
+                  
                 </div>
 
               </div>
             </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-success">Confirmar</button>
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Confirmar</button>
           </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Data Centro -->
+  <div class="modal fade" id="dataCentro" tabindex="-1" aria-labelledby="dataCentroLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        
+        <div class="modal-header">
+          <h5 class="modal-title" id="dataCentroLabel">Datos de nombrecentro</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        
+        <div class="modal-body">
+          <form name="datos">
+            <div class="mb-3">
+              <label for="nombreCentro" class="form-label">Nombre:</label>
+              <input name="enable" class="form-control" type="text" placeholder="Nombre del Centro" disabled>
+            </div>
+        
+              <div class="mb-3">
+                <label for="localidad" class="form-label">Localidad:</label>
+                <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
+                  <option value="1">Bizkaia</option>
+                  <option value="2">Gipuzkoa</option>
+                  <option value="3">Navarra</option>
+                </select>
+              </div>
+        
+              <div class="mb-3"> 
+                <label for="direccion" class="form-label">Dirección:</label>
+                <input name="enable" class="form-control" type="text" placeholder="Dirección" disabled>
+              </div>
+              
+              <div class="mb-3"> 
+                <label for="codigoPostal" class="form-label">Código Postal:</label>
+                <input name="enable" class="form-control" type="text" placeholder="Código Postal" disabled>
+              </div>
+              
+              <div class="mb-3"> 
+                <label for="horaApertura" class="form-label">Hora de Apertura:</label>
+                <input name="enable" class="form-control" type="time" disabled>
+              </div>
+        
+              <div class="mb-3"> 
+                <label class="form-label" for="fechaHora">Hora de Cierre:</label><br>
+                <input name="enable" type="time" class="form-control" disabled>
+              </div>
+        
+              <div class="mb-3">
+                <label for="lunes" class="form-label">Lunes:</label>
+                <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
+                  <option value="1">Abierto</option>
+                  <option value="2">Cerrado</option>
+                </select>
+              </div>
+        
+              <div class="mb-3">
+                <label for="martes" class="form-label">Martes:</label>
+                <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
+                  <option value="1">Abierto</option>
+                  <option value="2">Cerrado</option>
+                </select>
+              </div>
+        
+              <div class="mb-3">
+                <label for="miercoles" class="form-label">Miércoles:</label>
+                <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
+                  <option value="1">Abierto</option>
+                  <option value="2">Cerrado</option>
+                </select>
+              </div>
+                
+              <div class="mb-3">
+                <label for="jueves" class="form-label">Jueves:</label>
+                <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
+                  <option value="1">Abierto</option>
+                  <option value="2">Cerrado</option>
+                </select>
+              </div>
+        
+              <div class="mb-3">
+                <label for="viernes" class="form-label">Viernes:</label>
+                <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
+                  <option value="1">Abierto</option>
+                  <option value="2">Cerrado</option>
+                </select>
+              </div>
+        
+              <div class="mb-3">
+                <label for="sabado" class="form-label">Sabado:</label>
+                <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
+                  <option value="1">Abierto</option>
+                  <option value="2">Cerrado</option>
+                </select>
+              </div>
+        
+              <div class="mb-3">
+                <label for="domingo" class="form-label">Domingo:</label>
+                <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
+                  <option value="1">Abierto</option>
+                  <option value="2">Cerrado</option>
+                </select>
+              </div>
+          </form>  
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" onclick="enableModify()">Modificar</button>
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#borrarCentro">Eliminar Centro</button>
+          <button type="button" class="btn btn-success" onclick="disableModify()">Confirmar</button>
+        </div>
+
       </div>
     </div>
   </div>
@@ -407,7 +477,221 @@
       </div>
     </div>
   </div>
-  
+
+<!-- Administrador Pacientes - Ver Pacientes -->
+<div class="modal fade" id="verPacientes" tabindex="-1" aria-labelledby="verPacientesLabel" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+      <h5 class="modal-title" id="verPacientesLabel">Ver Pacientes</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+          <option>Localidad</option>
+          <option value="1">Bizkaia</option>
+          <option value="2">Gipuzkoa</option>
+          <option value="3">Navarra</option>
+        </select>
+        <select class="form-select form-select-ms -mb-3" aria-label=".form-select-lg">
+          <option selected></option>
+          <option value="1">centro 1</option>
+          <option value="2">centro 2</option>
+        </select> <br/>
+        <button type="button" class="collapsible">tis / nombre apellidos paciente</button>
+        <div class="cita">
+          <form>
+            <div class="mb-3">
+              <label for="nombreYApePaciente" class="form-label">Nombre y Apellidos:</label>
+              <input class="form-control" type="text" placeholder="Nombre y apellidos" disabled>
+          </div>
+              <div class="mb-3">
+                <label for="tis" class="form-label">TIS:</label>
+                <input class="form-control" type="text" placeholder="TIS" disabled>
+              </div>
+          
+              <div class="mb-3">
+                <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento:</label>
+                <input class="form-control" type="date" placeholder="fechaNacimiento" disabled>
+              </div>
+          
+              <div class="mb-3"> 
+                <label for="dosis1" class="form-label">1ª dosis:</label>
+                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg">
+                  <option value="1" selected>No</option>
+                  <option value="2">Si</option>
+                </select>
+              </div>
+
+              <div class="mb-3"> 
+                <label for="tipoDosis" class="form-label">Tipo Dosis:</label>
+                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg">
+                  <option value="" selected></option>
+                  <option value="1">Pfizer</option>
+                  <option value="2">Moderna</option>
+                  <option value="3">AstraZeneca</option>
+                </select>
+              </div>
+
+              <div class="mb-3"> 
+                <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
+                <input type="datetime-local" class="fechaHora form-control" id="fechaCita">
+              </div>
+
+              <div class="mb-3"> 
+                <label for="dosis1" class="form-label">2ª dosis:</label>
+                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg">
+                  <option value="1" selected>No</option>
+                  <option value="2">Si</option>
+                  <option value="3">No es necesaria</option>
+                </select>
+              </div>
+
+              <div class="mb-3"> 
+                <label for="tipoDosis" class="form-label">Tipo Dosis:</label>
+                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg">
+                  <option value="" selected></option>
+                  <option value="1">Pfizer</option>
+                  <option value="2">Moderna</option>
+                  <option value="3">AstraZeneca</option>
+                </select>
+              </div>
+
+              <div class="mb-3"> 
+                <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
+                <input type="datetime-local" class="fechaHora form-control" id="fechaCita">
+              </div>
+
+              <div class="mb-3"> 
+                <label for="dosis1" class="form-label">3ª dosis:</label>
+                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg">
+                  <option value="1" selected>No</option>
+                  <option value="2">Si</option>
+                  <option value="3">No es necesaria</option>
+                </select>
+              </div>
+              
+              <div class="mb-3"> 
+                <label for="tipoDosis" class="form-label">Tipo Dosis:</label>
+                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg">
+                  <option value="" selected></option>
+                  <option value="1">Pfizer</option>
+                  <option value="2">Moderna</option>
+                  <option value="3">AstraZeneca</option>
+                </select>
+              </div>
+          
+              <div class="mb-3"> 
+                <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
+                <input type="datetime-local" class="fechaHora form-control" id="fechaCita">
+              </div>
+            </form>
+        
+        </div>
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      <button type="button" class="btn btn-success">Confirmar</button>
+      </div>
+  </div>
+  </div>
+</div>
+
+
+
+<!-- Modals para borrar secciones -->
+
+<!-- Anular citas -->
+<div class="modal fade" id="anularCita" tabindex="-1" aria-labelledby="anularCitaLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title" id="anularCitaLabel">Anulando Cita</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      
+      <div class="modal-body">
+        <form> 
+          <label for="texto" class="form-label">¿Estás segur@ de que quieres anular esta cita?</label>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-success">Si</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Eliminar Centro -->
+<div class="modal fade" id="borrarCentro" tabindex="-1" aria-labelledby="borrarCentroLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title" id="borrarCentroLabel">Anulando Cita</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      
+      <div class="modal-body">
+        <form> 
+          <label for="texto" class="form-label">¿Estás segur@ de que quieres borrar este centro?</label>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-success">Si</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <form>
+  <div class="mb-3">
+    <label for="nombreYApePaciente" class="form-label">Nombre y Apellidos:</label>
+    <input class="form-control" type="text" placeholder="Nombre y apellidos" disabled>
+</div>
+    <div class="mb-3">
+      <label for="tis" class="form-label">TIS:</label>
+      <input class="form-control" type="text" placeholder="TIS" disabled>
+    </div>
+
+    <div class="mb-3">
+      <label for="localidad" class="form-label">Localidad:</label>
+      <input class="form-control" type="text" placeholder="Localidad">
+    </div>
+
+    <div class="mb-3"> 
+      <label for="localidad" class="form-label">Centro:</label>
+      <input class="form-control" type="text" placeholder="Centro">
+    </div>
+    
+    <div class="mb-3"> 
+      <label for="tipoDosis" class="form-label">Tipo Dosis:</label>
+      <input class="form-control" type="text" placeholder="Tipo de dosis" disabled>
+    </div>
+    
+    <div class="mb-3"> 
+      <label for="dosis" class="form-label">Nº Dosis:</label>
+      <input class="form-control" type="text" placeholder="Nº de dosis" disabled>
+    </div>
+
+    <div class="mb-3"> 
+      <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
+      <input type="datetime-local" class="fechaHora form-control" id="fechaCita">
+    </div>
+      
+    <div id="bottomText" class="form-text text-dange">
+      *Todos los campos son obligatorios.
+    </div><br>
+  </form> -->
 
 
     <!-- footer dinamico -->
@@ -420,7 +704,7 @@
 
     <!-- JS nuestros -->
     <script src="../js/dinamico.js"></script>
-    <script src="../js/citas.js"></script>
+    <script src="../js/paciente.js"></script>
 
 </body>
 </html>

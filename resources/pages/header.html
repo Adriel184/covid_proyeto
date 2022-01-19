@@ -39,7 +39,7 @@
                             <label class="form-label">Contraseña:</label>
                             <input type="password" class="form-control" id="contra" name="contra" placeholder="Contraseña" />
                         </div>
-                        <button id="iniciarAdmin" type="submit" class="btn btn-success float-end">Iniciar sesión</button>
+                        <button id="iniciarAdmin" type="button" class="btn btn-outline-success float-end">Iniciar sesión</button>
                     </form>
                 </div>
             </div>
@@ -56,6 +56,7 @@
                 document.getElementById('soloRes').href = '#';
                 document.getElementById('imgLogoRes').src = 'resources/img/cruz_roja.png';
                 document.getElementById('dropdown').style.display = 'none';
+                document.getElementById('link').src = 'resources/js/admin.js';
             break;
 
             case 'index':
@@ -64,6 +65,7 @@
                 document.getElementById('soloRes').href = '#';
                 document.getElementById('imgLogoRes').src = 'resources/img/cruz_roja.png';
                 document.getElementById('dropdown').style.display = 'none';
+                document.getElementById('link').src = 'resources/js/admin.js';
             break;
         
             default:
@@ -72,9 +74,12 @@
                 document.getElementById('soloRes').href = '../../index.html';
                 document.getElementById('imgLogoRes').src = '../img/cruz_roja.png';
                 document.getElementById('loginbtn').style.visibility = 'hidden';
-                document.getElementById('link').src = '../js/main.js'
                 document.getElementById('textoCabecera').style.display = 'none';
+                document.getElementById('link').src = '../js/admin.js';
+
             break;
         }
 
     </script>
+
+    <script id="link" src="../js/admin.js"></script>
