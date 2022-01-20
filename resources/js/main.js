@@ -45,5 +45,5 @@ function login(x) {
             window.location.href="resources/pages/paciente.html";
         }
     }).catch(error => console.error('Error status:', error));
-});
+};
 
