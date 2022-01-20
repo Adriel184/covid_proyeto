@@ -1,6 +1,7 @@
 $('#loginPaciente').click(() => {
     var x="paciente"
-    login(x);
+    console.log("Se ha hecho click en el boton confirmar para entrar como: " +x);
+    login(x);  
 });
 
 /*
@@ -17,8 +18,8 @@ function login(x) {
     var surname = $('#surname').val();
     var birth = $('#birth').val();
 
+    console.log("Se ha entrado en la funcion login para: --->" +x+ "  Datos:")
     console.log(tis);
-    console.log(x);
     console.log(surname);
     console.log(birth);
 
@@ -38,7 +39,7 @@ function login(x) {
     })
     .then(res => res.json()).then(result => {
     
-        console.log(result.logged);
+        console.log( "El login ha sido correcto?: "+result.logged);
 
         if (result.logged) {
             window.location.href="resources/pages/paciente.html";

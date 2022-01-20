@@ -39,6 +39,7 @@ class paciente_model extends paciente {
         $fecha_nac=$this->getFecha_nac();
         $apellido=$this->getApellido();
 
+
         $sql = "SELECT * FROM paciente WHERE tis=$tis AND fecha_nac='$fecha_nac' AND apellido='$apellido'";
         $result = $this->link->query($sql);
         $response["logged"] = false;
