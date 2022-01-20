@@ -80,7 +80,7 @@
                     <input type="datetime-local" class="fechaHora form-control" id="fechaPedirCita">
                   </div>
                     
-                  <div id="bottomText" class="form-text text-dange">
+                  <div id="bottomText" class="form-text text-danger">
                     *Todos los campos son obligatorios.
                   </div><br>
                 </form>
@@ -322,7 +322,7 @@
                   <option value="1">Abierto</option>
                   <option value="2">Cerrado</option>
                 </select>
-              </div>
+              </div> 
                 
               <div class="mb-3">
                 <label for="jueves" class="form-label">Jueves:</label>
@@ -387,9 +387,20 @@
                     <div class="mb-3">
                       <label for="Provincia" class="form-label">Provincia:</label>
                       <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
-                        <option selected>Bizkaia</option>
-                        <option value="1">Gipuzkoa</option>
-                        <option value="2">Navarra</option>
+                        <option selected></option>
+                        <option value="1">Bizkaia</option>
+                        <option value="2">Gipuzkoa</option>
+                        <option value="3">Navarra</option>
+                      </select>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="Provincia" class="form-label">Población:</label>
+                      <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                        <option selected></option>
+                        <option value="1">Amorebieta-Etxano</option>
+                        <option value="2">Galdakao</option>
+                        <option value="3">Bilbao</option>
                       </select>
                     </div>
   
@@ -500,6 +511,12 @@
           <option value="1">centro 1</option>
           <option value="2">centro 2</option>
         </select> <br/>
+        <div class="form-inline">
+         <button type="button" class="btn btn-primary">Buscar</button>
+          <i class="fas fa-search"></i>
+        <input type="search" id="form1" class="form-control" placeholder="buscar paciente"/>
+       </div>
+
         <button type="button" class="collapsible">tis / nombre apellidos paciente</button>
         <div class="cita">
           <form>
@@ -531,7 +548,9 @@
                   <option value="" selected></option>
                   <option value="1">Pfizer</option>
                   <option value="2">Moderna</option>
-                  <option value="3">AstraZeneca</option>
+                  <option value="3">Johnson & Johnson</option>
+                  <option value="4">Novamax</option>
+                  <option value="5">AstraZeneca</option>
                 </select>
               </div>
 
@@ -555,7 +574,9 @@
                   <option value="" selected></option>
                   <option value="1">Pfizer</option>
                   <option value="2">Moderna</option>
-                  <option value="3">AstraZeneca</option>
+                  <option value="3">Johnson & Johnson</option>
+                  <option value="4">Novamax</option>
+                  <option value="5">AstraZeneca</option>
                 </select>
               </div>
 
@@ -579,7 +600,9 @@
                   <option value="" selected></option>
                   <option value="1">Pfizer</option>
                   <option value="2">Moderna</option>
-                  <option value="3">AstraZeneca</option>
+                  <option value="2">Johnson & Johnson</option>
+                  <option value="4">Novamax</option>
+                  <option value="5">AstraZeneca</option>
                 </select>
               </div>
           
