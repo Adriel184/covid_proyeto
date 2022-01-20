@@ -15,6 +15,7 @@ for (i = 0; i < coll.length; i++) {
 
 
 window.onload=loadPaciente();
+//$('#logOut').click(logout())
 
 function loadPaciente() {
   
@@ -32,10 +33,37 @@ function loadPaciente() {
   })
   .then(res => res.json()).then(result => {
   
-    console.log(result)
+    console.log(result.nombre)
+    $('#navbarDarkDropdownMenuLink').text(result.nombre)
+
 
   })
-  .catch(error => console.error('Error status:', error));	
+  .catch(error => console.error('Error status:', error));
+}
 
-  
+//LOGOUT
+function logout() {
+    console.log("aaaa")
+  var url = "controller/controllerLogout.php";
+  fetch(url, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+  }).then(res => res.json()).then(result => {
+      console.log(result);
+      if (result.error == "no error") {
+
+      }
+      window.location.href = "index.html";
+  })
+}
+
+//Permite modificar los centros
+function enableModify() {
+  $("input[name='enable']").prop('disabled', false);
+  $("select[name='enable']").prop('disabled', false);
+}
+
+function disableModify() {
+  $("input[name='enable']").prop('disabled', true);
+  $("select[name='enable']").prop('disabled', true);
 }

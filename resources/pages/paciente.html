@@ -37,7 +37,7 @@
 
   <!-- Modals -->
   <!-- Pedir cita -->
-  <div class="modal fade" id="pedirCita" tabindex="-1" aria-labelledby="pedirCitaLabel" aria-hidden="true">
+  <div class="modal fade" id="pedirCita" tabindex="-1" data-bs-backdrop="static" aria-labelledby="pedirCitaLabel" aria-hidden="true">
       <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-header">
@@ -56,8 +56,8 @@
                   </div>
 
                   <div class="mb-3">
-                    <label for="localidad" class="form-label">Localidad:</label>
-                    <input class="form-control" type="text" placeholder="Localidad">
+                    <label for="localidad" class="form-label">Provincia:</label>
+                    <input class="form-control" type="text" placeholder="Provincia">
                   </div>
 
                   <div class="mb-3"> 
@@ -66,8 +66,8 @@
                   </div>
                   
                   <div class="mb-3"> 
-                    <label for="tipoDosis" class="form-label">Tipo Dosis:</label>
-                    <input class="form-control" type="text" placeholder="Tipo de dosis" disabled>
+                    <label for="vacuna" class="form-label">Vacuna:</label>
+                    <input class="form-control" type="text" placeholder="Vacuna" disabled>
                   </div>
                   
                   <div class="mb-3"> 
@@ -77,7 +77,7 @@
 
                   <div class="mb-3"> 
                     <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
-                    <input type="datetime-local" class="fechaHora form-control" id="fechaCita">
+                    <input type="datetime-local" class="fechaHora form-control" id="fechaPedirCita">
                   </div>
                     
                   <div id="bottomText" class="form-text text-dange">
@@ -94,7 +94,7 @@
   </div>
 
   <!-- CONSULTAR LISTA DE CITAS -->
-  <div class="modal fade" id="consultarCita" tabindex="-1" aria-labelledby="consultarCitaLabel" aria-hidden="true">
+  <div class="modal fade" id="consultarCita" tabindex="-1" data-bs-backdrop="static" aria-labelledby="consultarCitaLabel" aria-hidden="true">
       <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-header">
@@ -114,8 +114,8 @@
                     <p>tis</p>
                 </div>
                 <div class="mb-3">
-                  <!-- <label for="localidad" class="form-label">Localidad:</label> -->
-                  <p>localidad</p>
+                  <!-- <label for="localidad" class="form-label">Provincia:</label> -->
+                  <p>Provincia</p>
                 </div>
                 <div class="mb-3"> 
                     <!-- <label for="localidad" class="form-label">Centro:</label> -->
@@ -123,7 +123,7 @@
                 </div>
                 <div class="mb-3"> 
                   <!-- <label for="tipoDosis" class="form-label">Tipo Dosis:</label> -->
-                  <p>tipo dosis</p>
+                  <p>vacuna</p>
                 </div>
                 <div class="mb-3"> 
                     <!-- <label for="dosis" class="form-label">Nº Dosis:</label> -->
@@ -131,7 +131,7 @@
                 </div>
                 <div class="mb-3"> 
                     <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
-                    <input type="datetime-local" class="fechaHora" id="fechaCita">
+                    <input type="datetime-local" class="fechaHora" id="fechaConsultarCita">
                 </div> <br>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#anularCita">Anular Cita</button>
               </form>
@@ -145,7 +145,7 @@
   </div>
 
   <!-- Historial Vacunación -->
-  <div class="modal fade" id="historial" tabindex="-1" aria-labelledby="historialLabel" aria-hidden="true">
+  <div class="modal fade" id="historial" tabindex="-1" data-bs-backdrop="static" aria-labelledby="historialLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         
@@ -165,8 +165,8 @@
                 <input type="text" class="form-control" placeholder="TIS" disabled>
             </div>
             <div class="mb-3">
-              <label for="localidad" class="form-label">Localidad:</label>
-              <input type="text" class="form-control" placeholder="Localidad" disabled>
+              <label for="localidad" class="form-label">Provincia:</label>
+              <input type="text" class="form-control" placeholder="Provincia" disabled>
             </div>
             <div class="mb-3"> 
                 <label for="localidad" class="form-label">Centro:</label>
@@ -178,8 +178,8 @@
           <div class="cita">
             <form>
               <div class="mb-3"> 
-                <label for="tipoDosis" class="form-label">Tipo Dosis:</label>
-                <input type="text" class="form-control" placeholder="Tipo de dosis" disabled>
+                <label for="vacuna" class="form-label">Vacuna:</label>
+                <input type="text" class="form-control" placeholder="Vacuna" disabled>
               </div>
               <div class="mb-3"> 
                   <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
@@ -198,7 +198,7 @@
   </div>
   
   <!-- Administrador General - Modificar Centros -->
-  <div class="modal fade" id="modificarCentros" tabindex="-1" aria-labelledby="modificarCentrosLabel" aria-hidden="true">
+  <div class="modal fade" id="modificarCentros" tabindex="-1" data-bs-backdrop="static" aria-labelledby="modificarCentrosLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -255,7 +255,7 @@
   </div>
 
   <!-- Data Centro -->
-  <div class="modal fade" id="dataCentro" tabindex="-1" aria-labelledby="dataCentroLabel" aria-hidden="true">
+  <div class="modal fade" id="dataCentro" tabindex="-1" data-bs-backdrop="static" aria-labelledby="dataCentroLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         
@@ -272,7 +272,7 @@
             </div>
         
               <div class="mb-3">
-                <label for="localidad" class="form-label">Localidad:</label>
+                <label for="Provincia" class="form-label">Provincia:</label>
                 <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
                   <option value="1">Bizkaia</option>
                   <option value="2">Gipuzkoa</option>
@@ -296,7 +296,7 @@
               </div>
         
               <div class="mb-3"> 
-                <label class="form-label" for="fechaHora">Hora de Cierre:</label><br>
+                <label class="form-label" for="horaCierre">Hora de Cierre:</label><br>
                 <input name="enable" type="time" class="form-control" disabled>
               </div>
         
@@ -359,9 +359,9 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" onclick="enableModify()">Modificar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button> 
           <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#borrarCentro">Eliminar Centro</button>
+          <button type="button" class="btn btn-primary" onclick="enableModify()">Modificar</button>
           <button type="button" class="btn btn-success" onclick="disableModify()">Confirmar</button>
         </div>
 
@@ -370,7 +370,7 @@
   </div>
 
 <!-- Administrador General - Añadir Centros -->
-  <div class="modal fade" id="añadirCentros" tabindex="-1" aria-labelledby="añadirCentrosLabel" aria-hidden="true">
+  <div class="modal fade" id="añadirCentros" tabindex="-1" data-bs-backdrop="static" aria-labelledby="añadirCentrosLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -385,7 +385,7 @@
                   </div>
   
                     <div class="mb-3">
-                      <label for="localidad" class="form-label">Localidad:</label>
+                      <label for="Provincia" class="form-label">Provincia:</label>
                       <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
                         <option selected>Bizkaia</option>
                         <option value="1">Gipuzkoa</option>
@@ -479,7 +479,7 @@
   </div>
 
 <!-- Administrador Pacientes - Ver Pacientes -->
-<div class="modal fade" id="verPacientes" tabindex="-1" aria-labelledby="verPacientesLabel" aria-hidden="true">
+<div class="modal fade" id="verPacientes" tabindex="-1" data-bs-backdrop="static" aria-labelledby="verPacientesLabel" aria-hidden="true">
   <div class="modal-dialog">
   <div class="modal-content">
       <div class="modal-header">
@@ -487,12 +487,14 @@
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
       <div class="modal-body">
+        <label for="provincia" class="form-label">Provincia:</label>
         <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
-          <option>Localidad</option>
+          <option selected></option>
           <option value="1">Bizkaia</option>
           <option value="2">Gipuzkoa</option>
           <option value="3">Navarra</option>
         </select>
+        <label for="centro" class="form-label">Centro:</label>
         <select class="form-select form-select-ms -mb-3" aria-label=".form-select-lg">
           <option selected></option>
           <option value="1">centro 1</option>
@@ -517,15 +519,15 @@
           
               <div class="mb-3"> 
                 <label for="dosis1" class="form-label">1ª dosis:</label>
-                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg">
+                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg" name="enable" disabled>
                   <option value="1" selected>No</option>
                   <option value="2">Si</option>
                 </select>
               </div>
 
               <div class="mb-3"> 
-                <label for="tipoDosis" class="form-label">Tipo Dosis:</label>
-                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg">
+                <label for="vacuna" class="form-label">Vacuna:</label>
+                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg" name="enable" disabled>
                   <option value="" selected></option>
                   <option value="1">Pfizer</option>
                   <option value="2">Moderna</option>
@@ -535,12 +537,12 @@
 
               <div class="mb-3"> 
                 <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
-                <input type="datetime-local" class="fechaHora form-control" id="fechaCita">
+                <input type="datetime-local" class="fechaHora form-control" id="fechaCita1" name="enable" disabled>
               </div>
 
               <div class="mb-3"> 
                 <label for="dosis1" class="form-label">2ª dosis:</label>
-                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg">
+                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg" name="enable" disabled>
                   <option value="1" selected>No</option>
                   <option value="2">Si</option>
                   <option value="3">No es necesaria</option>
@@ -548,8 +550,8 @@
               </div>
 
               <div class="mb-3"> 
-                <label for="tipoDosis" class="form-label">Tipo Dosis:</label>
-                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg">
+                <label for="vacuna" class="form-label">Vacuna:</label>
+                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg" name="enable" disabled>
                   <option value="" selected></option>
                   <option value="1">Pfizer</option>
                   <option value="2">Moderna</option>
@@ -559,12 +561,12 @@
 
               <div class="mb-3"> 
                 <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
-                <input type="datetime-local" class="fechaHora form-control" id="fechaCita">
+                <input type="datetime-local" class="fechaHora form-control" id="fechaCita2" name="enable" disabled>
               </div>
 
               <div class="mb-3"> 
                 <label for="dosis1" class="form-label">3ª dosis:</label>
-                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg">
+                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg" name="enable" disabled>
                   <option value="1" selected>No</option>
                   <option value="2">Si</option>
                   <option value="3">No es necesaria</option>
@@ -572,8 +574,8 @@
               </div>
               
               <div class="mb-3"> 
-                <label for="tipoDosis" class="form-label">Tipo Dosis:</label>
-                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg">
+                <label for="vacuna" class="form-label">Vacuna</label>
+                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg" name="enable" disabled>
                   <option value="" selected></option>
                   <option value="1">Pfizer</option>
                   <option value="2">Moderna</option>
@@ -583,27 +585,29 @@
           
               <div class="mb-3"> 
                 <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
-                <input type="datetime-local" class="fechaHora form-control" id="fechaCita">
+                <input type="datetime-local" class="fechaHora form-control" id="fechaCita3" name="enable" disabled>
               </div>
             </form>
-        
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" onclick="enableModify()">Registrar Vacunaciones</button> 
+              <button type="button" class="btn btn-success" onclick="disableModify()">Confirmar</button>
+            </div>
         </div>
       </div>
       <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-      <button type="button" class="btn btn-success">Confirmar</button>
+     
       </div>
   </div>
   </div>
 </div>
 
 
-
 <!-- Modals para borrar secciones -->
 
 <!-- Anular citas -->
-<div class="modal fade" id="anularCita" tabindex="-1" aria-labelledby="anularCitaLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<div class="modal fade bg-dark" id="anularCita" tabindex="-1" aria-labelledby="anularCitaLabel" data-bs-backdrop="static" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       
       <div class="modal-header">
@@ -627,18 +631,18 @@
 </div>
 
 <!-- Eliminar Centro -->
-<div class="modal fade" id="borrarCentro" tabindex="-1" aria-labelledby="borrarCentroLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<div class="modal fade bg-dark" id="borrarCentro" tabindex="-1" data-bs-backdrop="static" aria-labelledby="borrarCentroLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       
       <div class="modal-header">
-        <h5 class="modal-title" id="borrarCentroLabel">Anulando Cita</h5>
+        <h5 class="modal-title" id="borrarCentroLabel">Eliminando Centro</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
       
       <div class="modal-body">
         <form> 
-          <label for="texto" class="form-label">¿Estás segur@ de que quieres borrar este centro?</label>
+          <label for="texto" class="form-label">¿Estás segur@ de que quieres eliminar este centro?</label>
         </form>
       </div>
 
@@ -650,48 +654,6 @@
     </div>
   </div>
 </div>
-
-
-
-<!-- <form>
-  <div class="mb-3">
-    <label for="nombreYApePaciente" class="form-label">Nombre y Apellidos:</label>
-    <input class="form-control" type="text" placeholder="Nombre y apellidos" disabled>
-</div>
-    <div class="mb-3">
-      <label for="tis" class="form-label">TIS:</label>
-      <input class="form-control" type="text" placeholder="TIS" disabled>
-    </div>
-
-    <div class="mb-3">
-      <label for="localidad" class="form-label">Localidad:</label>
-      <input class="form-control" type="text" placeholder="Localidad">
-    </div>
-
-    <div class="mb-3"> 
-      <label for="localidad" class="form-label">Centro:</label>
-      <input class="form-control" type="text" placeholder="Centro">
-    </div>
-    
-    <div class="mb-3"> 
-      <label for="tipoDosis" class="form-label">Tipo Dosis:</label>
-      <input class="form-control" type="text" placeholder="Tipo de dosis" disabled>
-    </div>
-    
-    <div class="mb-3"> 
-      <label for="dosis" class="form-label">Nº Dosis:</label>
-      <input class="form-control" type="text" placeholder="Nº de dosis" disabled>
-    </div>
-
-    <div class="mb-3"> 
-      <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
-      <input type="datetime-local" class="fechaHora form-control" id="fechaCita">
-    </div>
-      
-    <div id="bottomText" class="form-text text-dange">
-      *Todos los campos son obligatorios.
-    </div><br>
-  </form> -->
 
 
     <!-- footer dinamico -->

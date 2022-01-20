@@ -10,11 +10,20 @@ $('#iniciarAdmin').click(function inicioSesion() {
         body: JSON.stringify(data),
         headers:{'Content-Type': 'application/json'}
     }).then(res => res.json()).then(result => {
+
         console.log(result);
-        // console.log(result.ses);
-        // if (result.ses) {
-        //     console.log(result.user);
-        // }
+        if (result.error == "incorrect user/password") {
+            $('#contraMal').show(150);
+            $('#sinContra').hide(150);
+        }else if (result.error == "Username or password not filled") {
+            $('#sinContra').show(150);
+            $('#contraMal').hide(150);
+        }else if (result.error == "no error") {
+            $('#sinContra').hide(150);
+            $('#contraMal').hide(150);
+            window.location.href="resources/pages/paciente.html";
+        }
+
     }).catch(error => console.error('Error status:', error));
     
 });

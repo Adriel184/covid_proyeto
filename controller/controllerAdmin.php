@@ -15,14 +15,15 @@ if(($user != null) && ($password != null)) {
     $admin -> setContrasena($password);
 
     if ($admin->adminExist()) {
-        
         session_start();
-        $_SESSION['usuario'] = $user;
-        $_SESSION['tipo'] = $admin -> getTipo();
 
         $admin->getAdmin();
         $response['user']=$admin->ObjVars();
         $response['error']="no error";
+
+        $_SESSION['usuario'] = $user;
+        $_SESSION['tipo'] = $admin->getTipo();
+
     }else{
         $response['error'] = "incorrect user/password";
     }
