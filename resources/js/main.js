@@ -44,9 +44,6 @@ function login(x) {
         if (result.logged) {
             window.location.href="resources/pages/paciente.html";
         }
+    }).catch(error => console.error('Error status:', error));
+});
 
-    })
-    .catch(error => console.error('Error status:', error));	
-  
-    
-}

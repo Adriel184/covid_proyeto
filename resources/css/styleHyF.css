@@ -23,6 +23,14 @@ span{
     word-wrap: break-word;
 }
 
+#contraMal{
+    display: none;
+}
+
+#sinContra{
+    display: none;
+}
+
 /*TODO *RESPONSIVE* */
 
 @media (max-width: 1130px){
