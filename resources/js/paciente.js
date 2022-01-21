@@ -76,3 +76,15 @@ function loadContent(x) {
   
 
 }
+
+
+//Permite modificar los centros
+function enableModify() {
+  $("input[name='enable']").prop('disabled', false);
+  $("select[name='enable']").prop('disabled', false);
+}
+
+function disableModify() {
+  $("input[name='enable']").prop('disabled', true);
+  $("select[name='enable']").prop('disabled', true);
+}
