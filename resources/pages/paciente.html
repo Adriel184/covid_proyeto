@@ -19,10 +19,50 @@
   <!--navbar dinamico-->
   <div id="dynamicHeader"></div>
 
-  <div class="informacion container fluid">
+  <!-- <div class="informacion container fluid">
       <h2>Texto de ejemplo</h2>
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa nostrum tenetur, veniam nobis esse beatae enim tempora, modi assumenda suscipit a aliquid accusantium? Cupiditate quibusdam repellendus harum quos necessitatibus neque.</p>
-  </div>
+  </div> -->
+
+  <!-- Datos paciente -->
+  
+  <div class="container margen">
+  <form class="row g-3">
+    <div class="col-md-2">
+      <label for="inputTis" class="form-label">TIS:</label>
+      <input type="text" class="form-control" id="inputTis" disabled>
+    </div>
+    <div class="col-md-2">
+      <label for="inputNombre" class="form-label">Nombre:</label>
+      <input type="text" class="form-control" id="inputNombre" disabled>
+    </div>
+    <div class="col-md-3">
+      <label for="inputApellidos" class="form-label">Apellidos:</label>
+      <input type="text" class="form-control" id="inputApellidos" disabled>
+    </div>
+    <div class="col-md-3">
+      <label for="inputProvincia" class="form-label">Provincia:</label>
+      <input type="text" class="form-control" id="inputProvincia" disabled>
+    </div>
+    <div class="col-md-2">
+      <label for="inputNac" class="form-label">Fecha de Nacimiento:</label>
+      <input type="date" class="form-control" id="inputNac" disabled>
+    </div>
+    <div class="col-md-7">
+      <label for="inputCentro" class="form-label text-danger">Centro de salud al que debe  asistir para su vacunación:</label>
+      <input type="text" class="form-control" id="inputCentro" disabled>
+    </div>
+    <div class=" col-md-3">
+      <label for="inputFile" class="form-label">Suba una foto de perfil:</label>
+      <input type="file" class="form-control" id="inputFile" aria-describedby="inputFile" aria-label="Upload">
+    </div>
+    <div class=" col-md-2">
+      <label for="inputButton" class="form-label transparente">Confirme su imagen:</label>
+      <input type="button" class="form-control btn btn-success" id="inputButton" aria-describedby="inputFile" aria-label="Upload" value="Confirmar">
+    </div>
+    
+  </form>
+</div>
 
   <!-- Botones Paciente -->
   <div class="container centrar">
@@ -82,7 +122,7 @@
                     
                   <div id="bottomText" class="form-text text-danger">
                     *Todos los campos son obligatorios.
-                  </div><br>
+                  </div> <br>
                 </form>
           </div>
           <div class="modal-footer">
