@@ -29,7 +29,7 @@ class paciente_model extends paciente {
 
     /********* FUNCIONES **********/
 
-    public function loginPaciente() {
+    public function logPaciente() {
 
         $this->OpenConnect();
 
@@ -38,6 +38,7 @@ class paciente_model extends paciente {
         $tis=$this->getTis();
         $fecha_nac=$this->getFecha_nac();
         $apellido=$this->getApellido();
+
 
         $sql = "SELECT * FROM paciente WHERE tis=$tis AND fecha_nac='$fecha_nac' AND apellido='$apellido'";
         $result = $this->link->query($sql);
@@ -50,19 +51,21 @@ class paciente_model extends paciente {
         mysqli_free_result($result);
         $this->CloseConnect();
         if ($response["logged"]) {
-            $response["paciente"] = $this->getPaciente();
+            $response["paciente"] = $this->getPacienteByTis();
         }
         return $response;
     }
 
-    public function getPaciente(){
+    public function getPacienteByTis(){
 
         $this->OpenConnect();
 
         $tis=$this->getTis();
 
         $sql = "SELECT * FROM paciente WHERE tis=$tis";
-        $result = $this->link->query($sql);        
+        $result = $this->link->query($sql);
+        
+        $response=array();
         
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $paciente = new paciente_model();
@@ -71,12 +74,17 @@ class paciente_model extends paciente {
             $paciente->apellido=$row['apellido'];
             $paciente->fecha_nac=$row['fecha_nac'];
             $paciente->fecha_pcr_pstv=$row['fecha_pcr'];
+
+            $response["paciente"]=get_object_vars($paciente);
+            $response["status"]="200";
+        }else {
+            $response["status"]="500";
         }
 
         mysqli_free_result($result);
         $this->CloseConnect();
 
-        return get_object_vars($paciente);
+        return $response;
 
     }
 
