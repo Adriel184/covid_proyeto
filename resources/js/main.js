@@ -1,6 +1,5 @@
 $('#loginPaciente').click(function loadPaciente() {
 
-
     var accion="login"
     var tis = $('#tis').val();
     var surname = $('#surname').val();
@@ -27,5 +26,5 @@ $('#loginPaciente').click(function loadPaciente() {
             console.log(result.paciente)
         }
     }).catch(error => console.error('Error status:', error));
+    
 });
-

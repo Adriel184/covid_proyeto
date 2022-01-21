@@ -15,7 +15,6 @@ for (i = 0; i < coll.length; i++) {
 
 
 window.onload=loadPaciente();
-//$('#logOut').click(logout())
 
 function loadPaciente() {
   
@@ -33,28 +32,18 @@ function loadPaciente() {
   })
   .then(res => res.json()).then(result => {
   
-    console.log(result.nombre)
+    console.log(result)
+    if(typeof result.tis === 'undefined'){
+      console.log("un")
+    }
+    else{
+      $('.paciente').show()
+    }
     $('#navbarDarkDropdownMenuLink').text(result.nombre)
-
+    
 
   })
   .catch(error => console.error('Error status:', error));
-}
-
-//LOGOUT
-function logout() {
-    console.log("aaaa")
-  var url = "controller/controllerLogout.php";
-  fetch(url, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' }
-  }).then(res => res.json()).then(result => {
-      console.log(result);
-      if (result.error == "no error") {
-
-      }
-      window.location.href = "index.html";
-  })
 }
 
 //Permite modificar los centros
