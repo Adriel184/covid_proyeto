@@ -19,10 +19,10 @@
   <!--navbar dinamico-->
   <div id="dynamicHeader"></div>
 
-  <!-- <div class="informacion container fluid">
+<!-- <div class="informacion container fluid">
       <h2>Texto de ejemplo</h2>
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa nostrum tenetur, veniam nobis esse beatae enim tempora, modi assumenda suscipit a aliquid accusantium? Cupiditate quibusdam repellendus harum quos necessitatibus neque.</p>
-  </div> -->
+    </div> -->
 
   <!-- Datos paciente -->
   
@@ -97,12 +97,12 @@
 
                   <div class="mb-3">
                     <label for="localidad" class="form-label">Provincia:</label>
-                    <input class="form-control" type="text" placeholder="Provincia">
+                    <input class="form-control" type="text" placeholder="Provincia" disabled>
                   </div>
 
                   <div class="mb-3"> 
                     <label for="localidad" class="form-label">Centro:</label>
-                    <input class="form-control" type="text" placeholder="Centro">
+                    <input class="form-control" type="text" placeholder="Centro" disabled>
                   </div>
                   
                   <div class="mb-3"> 
@@ -119,10 +119,6 @@
                     <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
                     <input type="datetime-local" class="fechaHora form-control" id="fechaPedirCita">
                   </div>
-                    
-                  <div id="bottomText" class="form-text text-danger">
-                    *Todos los campos son obligatorios.
-                  </div><br>
                 </form>
           </div>
           <div class="modal-footer">
@@ -171,9 +167,11 @@
                 </div>
                 <div class="mb-3"> 
                     <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
-                    <input type="datetime-local" class="fechaHora" id="fechaConsultarCita">
+                    <input name="enable" type="datetime-local" class="fechaHora" id="fechaConsultarCita" disabled>
                 </div> <br>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#anularCita">Anular Cita</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modificarCita" onclick="enableModify()">Cambiar fecha / hora</button>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmarCitaCita" onclick="disableModify()">Aceptar</button>
               </form>
             </div>
           </div>
@@ -551,11 +549,10 @@
           <option value="1">centro 1</option>
           <option value="2">centro 2</option>
         </select> <br/>
-        <div class="form-inline">
-         <button type="button" class="btn btn-primary">Buscar</button>
-          <i class="fas fa-search"></i>
-        <input type="search" id="form1" class="form-control" placeholder="buscar paciente"/>
-       </div>
+        <div class="form-inline col-md-6 flexible">
+          <button type="button" class="btn btn-primary">Buscar</button>
+          <input type="search" id="form1" class="form-control" placeholder="buscar paciente"/>
+        </div> <br>
 
         <button type="button" class="collapsible">tis / nombre apellidos paciente</button>
         <div class="cita">
@@ -658,7 +655,7 @@
         </div>
       </div>
       <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="disableModify()">Cerrar</button>
      
       </div>
   </div>

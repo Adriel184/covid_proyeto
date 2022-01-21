@@ -9,15 +9,28 @@ div.container button {
 
 div.container.centrar {
     margin-top: 4em;
+    margin-bottom:2em;
 }
 
 .informacion {
-    border-bottom: 2px solid green;
-    
+    border-bottom: 2px solid green; 
+}
+
+.transparente {
+  color: transparent;
 }
 
 .margen {
   margin-top: 1em;
+}
+
+.flexible {
+  display: flex;
+
+}
+
+.flexible .form-control {
+  margin-left: .5em;
 }
 
 /* Boton desplegable*/
