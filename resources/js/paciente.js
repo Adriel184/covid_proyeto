@@ -16,23 +16,11 @@ for (i = 0; i < coll.length; i++) {
 };
 
 window.onload=getView();
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-window.onload=getView();
 
 function getView() {
 
   console.log("Entrando en la funcion getView");
 
-=======
-function getView() {
-
-  console.log("Entrando en la funcion getView");
-
->>>>>>> main
   var url = "../../controller/controllerView.php";
 
   fetch(url, {
@@ -49,21 +37,12 @@ function getView() {
   .catch(error => console.error('Error status:', error));
 
 }
-
 function loadContent(x) {
 
   console.log("Entrando en la funcion loadcontent para cargar los datos del :"+ x);
 
   var accion="getData";
   var data = {"accion":accion};
-=======
-
-function getView() {
-
-  console.log("Entrando en la funcion getView");
-
-  var url = "../../controller/controllerView.php";
->>>>>>> main
 
   if (x=="paciente") {
     var url = "../../controller/controllerPaciente.php";
@@ -74,39 +53,11 @@ function getView() {
   }
 
   fetch(url, {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> main
-=======
-
-function getView() {
-
-  console.log("Entrando en la funcion getView");
-
-  var url = "../../controller/controllerView.php";
-
-  fetch(url, {
->>>>>>> main
-=======
-
-function getView() {
-
-  console.log("Entrando en la funcion getView");
-
-  var url = "../../controller/controllerView.php";
-
-  fetch(url, {
->>>>>>> main
-  method: 'GET', // or 'POST'
-  headers:{'Content-Type': 'application/json'}  //input data
+    method: 'GET', // or 'POST'
+    headers:{'Content-Type': 'application/json'}  //input data
+    
+    }).then(res => res.json()).then(result => {
   
-  })
-  .then(res => res.json()).then(result => {
-  
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     console.log("Los datos del ---> "+x+" se han recibido:");
     console.log(result);
 
@@ -124,98 +75,13 @@ function getView() {
 
 }
 
-
-=======
-=======
-    console.log("Este es el resultado que devuelve el controllerView: "+ result)
-    loadContent(result);
-
-  })
-  .catch(error => console.error('Error status:', error));
-
-}
-
-=======
-    console.log("Este es el resultado que devuelve el controllerView: "+ result)
-    loadContent(result);
-
-  })
-  .catch(error => console.error('Error status:', error));
-
-}
-
->>>>>>> main
-=======
-    console.log("Este es el resultado que devuelve el controllerView: "+ result)
-    loadContent(result);
-
-  })
-  .catch(error => console.error('Error status:', error));
-
-}
-
->>>>>>> main
-function loadContent(x) {
-
-  console.log("Entrando en la funcion loadcontent para cargar los datos del :"+ x);
-
-  var accion="getData";
-  var data = {"accion":accion};
-
-  if (x=="paciente") {
-    var url = "../../controller/controllerPaciente.php";
-  }else if(x=="admin") {
-    var url = "../../controller/controllerPaciente.php";
-  }else{
-    var url = "../../controller/controllerPaciente.php";
-  }
-
-  fetch(url, {
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> main
-=======
->>>>>>> main
-=======
->>>>>>> main
-  method: 'POST', // or 'POST'
-  body: JSON.stringify(data), // data can be `string` or {object}!
-  headers:{'Content-Type': 'application/json'}  //input data
-  
-  })
-  .then(res => res.json()).then(result => {
-  
-    console.log("Los datos del ---> "+x+" se han recibido:");
-    console.log(result);
-
-    if (x=="paciente") {
-      document.getElementById("navbarDarkDropdownMenuLink").innerHTML=result.paciente.nombre;
-      $(".nombreYApePaciente").val(result.paciente.nombre +" "+result.paciente.apellido);
-      $(".tis").val(result.paciente.tis);
-    }else if(x=="admin"){
-      console.log("Hola admin");
-    }
-
-  }).catch(error => console.error('Error status:', error));
-}
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> main
-=======
->>>>>>> main
-=======
->>>>>>> main
-=======
->>>>>>> main
 //activar y desactivar la funcion "Disabled"
 function enableModify() {
-  $("input[name='enable']").prop('disabled', false);
-  $("select[name='enable']").prop('disabled', false);
+$("input[name='enable']").prop('disabled', false);
+$("select[name='enable']").prop('disabled', false);
 }
 
 function disableModify() {
-  $("input[name='enable']").prop('disabled', true);
-  $("select[name='enable']").prop('disabled', true);
+$("input[name='enable']").prop('disabled', true);
+$("select[name='enable']").prop('disabled', true);
 }

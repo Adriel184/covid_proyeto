@@ -8,17 +8,12 @@
         </a>
         <h3 id="textoCabecera" class="textoCabecera m-auto">Pide cita previa para vacunarte</h3>
         <button class="btn btn-success" id="loginbtn" data-bs-toggle="modal" data-bs-target="#modalForm">login</button>
-
-
         <ul class="navbar-nav" id="dropdown">
             <li class="nav-item dropdown dropstart">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    nombre usuario
-                </a>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">nombre usuario</a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                     <li><button type="button" class="dropdown-item" id="logOut">Cerrar Sesión</button></li>
                 </ul>
-<<<<<<< HEAD
             </li>
         </ul>
 
@@ -50,37 +45,6 @@
                     <div id="sinContra" class="modal-dialog text-danger">Todos los campos deben estar rellenos.</div>
                     <button id="iniciarAdmin" type="button" class="btn btn-outline-success float-end">Iniciar sesión</button>
                 </form>
-=======
-              </li>
-            </ul>
-          
-        </div>
-    </nav>
-    
-    <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Inicie sesión</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <b>Solo si usted es un administrador puede iniciar sesion con las credenciales correspondientes.</b><br><br>
-                    <form>
-                        <div class="mb-3">
-                            <label class="form-label">Usuario:</label>
-                            <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario" required/>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Contraseña:</label>
-                            <input type="password" class="form-control" id="contra" name="contra" placeholder="Contraseña" required/>
-                        </div>
-                        <div id="contraMal" class="modal-dialog text-danger">Contraseña erronea por favor vuelva a intentarlo.</div>
-                        <div id="sinContra" class="modal-dialog text-danger">Todos los campos deben estar rellenos.</div>
-                        <button id="loginAdmin" type="button" class="btn btn-outline-success float-end">Iniciar sesión</button>
-                    </form>
-                </div>
->>>>>>> main
             </div>
         </div>
     </div>
@@ -88,11 +52,6 @@
 
 <script>
     var ruta = location.href.split('/').pop().split('.')[0];
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-<<<<<<< HEAD
     switch (ruta) {
         case '':
             document.getElementById('casa').href = '#';
@@ -111,12 +70,6 @@
             document.getElementById('dropdown').style.display = 'none';
             document.getElementById('link').src = 'resources/js/admin.js';
             break;
-=======
->>>>>>> main
-=======
->>>>>>> main
-=======
->>>>>>> main
 
         default:
             document.getElementById('casa').href = '../../index.html';
@@ -126,48 +79,9 @@
             document.getElementById('loginbtn').style.visibility = 'hidden';
             document.getElementById('textoCabecera').style.display = 'none';
             document.getElementById('link').src = '../js/admin.js';
-=======
-        switch (ruta) {
-            case '':
-                document.getElementById('casa').href = '#';
-                document.getElementById('imgLogo').src = 'resources/img/cruz_roja.png';
-                document.getElementById('soloRes').href = '#';
-                document.getElementById('imgLogoRes').src = 'resources/img/cruz_roja.png';
-                document.getElementById('dropdown').style.display = 'none';
-                document.getElementById('link').src = 'resources/js/main.js';
-            break;
-
-            case 'index':
-                document.getElementById('casa').href = '#';
-                document.getElementById('imgLogo').src = 'resources/img/cruz_roja.png';
-                document.getElementById('soloRes').href = '#';
-                document.getElementById('imgLogoRes').src = 'resources/img/cruz_roja.png';
-                document.getElementById('dropdown').style.display = 'none';
-                document.getElementById('link').src = 'resources/js/main.js';
-            break;
-        
-            default:
-                document.getElementById('casa').href = '../../index.html';
-                document.getElementById('imgLogo').src = '../img/cruz_roja.png';
-                document.getElementById('soloRes').href = '../../index.html';
-                document.getElementById('imgLogoRes').src = '../img/cruz_roja.png';
-                document.getElementById('loginbtn').style.visibility = 'hidden';
-                document.getElementById('textoCabecera').style.display = 'none';
-                document.getElementById('link').src = '../js/main.js';
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> main
-=======
->>>>>>> main
-=======
->>>>>>> main
-=======
->>>>>>> main
 
             break;
     }
-
 </script>
 
-    <script id="link" src="../js/main.js"></script>
+<script id="link" src="../js/admin.js"></script>
