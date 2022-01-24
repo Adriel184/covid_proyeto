@@ -29,7 +29,7 @@ $('#iniciarAdmin').click(function inicioSesion() {
 });
 
 if(window.location.href.includes("index.html")){
-    logout()
+    logout();
 }
 
 $('#logOut').click(function log() {logout()});
@@ -37,11 +37,6 @@ $('#logOut').click(function log() {logout()});
 function logout() {
     var url = "../../controller/controllerLogout.php";
     var href = "../../index.html";
-
-    if(window.location.href.includes("index.html")){
-        url = "controller/controllerLogout.php";
-        href = "index.html";
-    }
   
     fetch(url, {
         method: 'GET',
