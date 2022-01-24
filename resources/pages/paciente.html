@@ -303,7 +303,7 @@
       <div class="modal-content">
         
         <div class="modal-header">
-          <h5 class="modal-title" id="dataCentroLabel">Datos del centro</h5>
+          <h5 class="modal-title" id="dataCentroLabel">Datos de nombrecentro</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
         
@@ -377,81 +377,37 @@
                 </select>
               </div> 
                 
-                <div class="mb-3"> 
-                  <label for="codigoPostal" class="form-label">Código Postal:</label>
-                  <input name="enable" class="form-control" type="text" placeholder="Código Postal" disabled>
-                </div>
-                
-                <div class="mb-3"> 
-                  <label for="horaApertura" class="form-label">Hora de Apertura:</label>
-                  <input name="enable" class="form-control" type="time" disabled>
-                </div>
-          
-                <div class="mb-3"> 
-                  <label class="form-label" for="horaCierre">Hora de Cierre:</label><br>
-                  <input name="enable" type="time" class="form-control" disabled>
-                </div>
-              </div> <!--cierre del row-->
-
-              <div class="col-6">
-                <div class="mb-3">
-                  <label for="lunes" class="form-label">Lunes:</label>
-                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
-                    <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
-                  </select>
-                </div>
-          
-                <div class="mb-3">
-                  <label for="martes" class="form-label">Martes:</label>
-                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
-                    <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
-                  </select>
-                </div>
-          
-                <div class="mb-3">
-                  <label for="miercoles" class="form-label">Miércoles:</label>
-                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
-                    <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
-                  </select>
-                </div> 
-                  
-                <div class="mb-3">
-                  <label for="jueves" class="form-label">Jueves:</label>
-                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
-                    <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
-                  </select>
-                </div>
-          
-                <div class="mb-3">
-                  <label for="viernes" class="form-label">Viernes:</label>
-                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
-                    <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
-                  </select>
-                </div>
-          
-                <div class="mb-3">
-                  <label for="sabado" class="form-label">Sabado:</label>
-                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
-                    <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
-                  </select>
-                </div>
-          
-                <div class="mb-3">
-                  <label for="domingo" class="form-label">Domingo:</label>
-                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
-                    <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
-                  </select>
-                </div>
-              </div> <!--Cierre del col-->
-            </div> <!--Cierre del row-->
-
+              <div class="mb-3">
+                <label for="jueves" class="form-label">Jueves:</label>
+                <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
+                  <option value="1">Abierto</option>
+                  <option value="2">Cerrado</option>
+                </select>
+              </div>
+        
+              <div class="mb-3">
+                <label for="viernes" class="form-label">Viernes:</label>
+                <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
+                  <option value="1">Abierto</option>
+                  <option value="2">Cerrado</option>
+                </select>
+              </div>
+        
+              <div class="mb-3">
+                <label for="sabado" class="form-label">Sabado:</label>
+                <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
+                  <option value="1">Abierto</option>
+                  <option value="2">Cerrado</option>
+                </select>
+              </div>
+        
+              <div class="mb-3">
+                <label for="domingo" class="form-label">Domingo:</label>
+                <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
+                  <option value="1">Abierto</option>
+                  <option value="2">Cerrado</option>
+                </select>
+              </div>
           </form>  
         </div>
 
@@ -465,7 +421,7 @@
       </div>
     </div>
   </div>
-
+  
   <!-- Administrador General - Añadir Centros -->
   <div class="modal fade" id="añadirCentros" tabindex="-1" data-bs-backdrop="static" aria-labelledby="añadirCentrosLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -591,37 +547,6 @@
     </div>
   </div>
 
-  <!-- Administrador Pacientes - Ver Pacientes -->
-  <div class="modal fade" id="verPacientes" tabindex="-1" data-bs-backdrop="static" aria-labelledby="verPacientesLabel" aria-hidden="true">
-    <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title" id="verPacientesLabel">Ver Pacientes</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </div>
-        <div class="modal-body">
-          <label for="provincia" class="form-label">Provincia:</label>
-          <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
-            <option selected></option>
-            <option value="1">Bizkaia</option>
-            <option value="2">Gipuzkoa</option>
-            <option value="3">Navarra</option>
-          </select>
-          <label for="centro" class="form-label">Centro:</label>
-          <select class="form-select form-select-ms -mb-3" aria-label=".form-select-lg">
-            <option selected></option>
-            <option value="1">centro 1</option>
-            <option value="2">centro 2</option>
-          </select> <br/>
-          <div class="form-inline">
-            <!-- <i class="fas fa-search"></i> -->
-          <input type="search" id="form1" class="form-control" placeholder="buscar paciente"/><br>
-          <button type="button" class="btn btn-outline-success align-self-end">Buscar</button>
-        </div>
-          <br>
-          <button type="button" class="collapsible">tis / nombre apellidos paciente</button>
-          <div class="cita">
-            <form>
 <!-- Administrador Pacientes - Ver Pacientes -->
 <div class="modal fade" id="verPacientes" tabindex="-1" data-bs-backdrop="static" aria-labelledby="verPacientesLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -765,12 +690,8 @@
     </div>
     </div>
       </div>
-      <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="disableModify()">Cerrar</button>
      
-      </div>
-  </div>
-  </div>
+ 
 
 
 <!-- Modals para borrar secciones -->
