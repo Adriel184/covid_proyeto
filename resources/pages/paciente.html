@@ -19,9 +19,49 @@
   <!--navbar dinamico-->
   <div id="dynamicHeader"></div>
 
-  <div class="informacion container fluid">
+<!-- <div class="informacion container fluid">
       <h2>Texto de ejemplo</h2>
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa nostrum tenetur, veniam nobis esse beatae enim tempora, modi assumenda suscipit a aliquid accusantium? Cupiditate quibusdam repellendus harum quos necessitatibus neque.</p>
+    </div> -->
+
+  <!-- Datos paciente -->
+  
+  <div class="container margen">
+    <form class="row g-3">
+      <div class="col-md-2">
+        <label for="inputTis" class="form-label">TIS:</label>
+        <input type="text" class="form-control" id="inputTis" disabled>
+      </div>
+      <div class="col-md-2">
+        <label for="inputNombre" class="form-label">Nombre:</label>
+        <input type="text" class="form-control" id="inputNombre" disabled>
+      </div>
+      <div class="col-md-3">
+        <label for="inputApellidos" class="form-label">Apellidos:</label>
+        <input type="text" class="form-control" id="inputApellidos" disabled>
+      </div>
+      <div class="col-md-3">
+        <label for="inputProvincia" class="form-label">Provincia:</label>
+        <input type="text" class="form-control" id="inputProvincia" disabled>
+      </div>
+      <div class="col-md-2">
+        <label for="inputNac" class="form-label">Fecha de Nacimiento:</label>
+        <input type="date" class="form-control" id="inputNac" disabled>
+      </div>
+      <div class="col-md-7">
+        <label for="inputCentro" class="form-label text-danger">Centro de salud al que debe  asistir para su vacunación:</label>
+        <input type="text" class="form-control" id="inputCentro" disabled>
+      </div>
+      <div class=" col-md-3">
+        <label for="inputFile" class="form-label">Suba una foto de perfil:</label>
+        <input type="file" class="form-control" id="inputFile" aria-describedby="inputFile" aria-label="Upload">
+      </div>
+      <div class=" col-md-2">
+        <label for="inputButton" class="form-label transparente">Confirme su imagen:</label>
+        <input type="button" class="form-control btn btn-success" id="inputButton" aria-describedby="inputFile" aria-label="Upload" value="Confirmar">
+      </div>
+      
+    </form>
   </div>
 
   <!-- Botones Paciente -->
@@ -57,12 +97,12 @@
 
                   <div class="mb-3">
                     <label for="localidad" class="form-label">Provincia:</label>
-                    <input class="form-control" type="text" placeholder="Provincia">
+                    <input class="form-control" type="text" placeholder="Provincia" disabled>
                   </div>
 
                   <div class="mb-3"> 
                     <label for="localidad" class="form-label">Centro:</label>
-                    <input class="form-control" type="text" placeholder="Centro">
+                    <input class="form-control" type="text" placeholder="Centro" disabled>
                   </div>
                   
                   <div class="mb-3"> 
@@ -79,10 +119,6 @@
                     <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
                     <input type="datetime-local" class="fechaHora form-control" id="fechaPedirCita">
                   </div>
-                    
-                  <div id="bottomText" class="form-text text-dange">
-                    *Todos los campos son obligatorios.
-                  </div><br>
                 </form>
           </div>
           <div class="modal-footer">
@@ -106,34 +142,36 @@
             <div class="cita">
               <form>
                 <div class="mb-3">
-                  <!-- <label for="nombreYApePaciente" class="form-label">Nombre y Apellidos:</label> -->
-                  <p>nombre y apellidos</p>
+                  <label for="nombreYApePaciente" class="form-label">Nombre y Apellidos:</label>
+                  <input type="text" class="form-control" placeholder="Nombre y apellido" disabled>
                 </div>
                 <div class="mb-3">
-                    <!-- <label for="tis" class="form-label">TIS:</label> -->
-                    <p>tis</p>
+                    <label for="tis" class="form-label">TIS:</label>
+                    <input type="text" class="form-control" placeholder="Tis" disabled>
                 </div>
                 <div class="mb-3">
-                  <!-- <label for="localidad" class="form-label">Provincia:</label> -->
-                  <p>Provincia</p>
+                  <label for="localidad" class="form-label">Provincia:</label>
+                  <input type="text" class="form-control" placeholder="Localidad" disabled>
                 </div>
                 <div class="mb-3"> 
-                    <!-- <label for="localidad" class="form-label">Centro:</label> -->
-                    <p>centro</p>
+                    <label for="centro" class="form-label">Centro:</label>
+                    <input type="text" class="form-control" placeholder="Centro" disabled>
                 </div>
                 <div class="mb-3"> 
-                  <!-- <label for="tipoDosis" class="form-label">Tipo Dosis:</label> -->
-                  <p>vacuna</p>
+                  <label for="tipoDosis" class="form-label">Vacuna:</label>
+                  <input type="text" class="form-control" placeholder="Vacuna" disabled>
                 </div>
                 <div class="mb-3"> 
-                    <!-- <label for="dosis" class="form-label">Nº Dosis:</label> -->
-                    <p>nº dosis</p>
+                    <label for="dosis" class="form-label">Nº Dosis:</label>
+                    <input type="text" class="form-control" placeholder="Dosis" disabled>
                 </div>
                 <div class="mb-3"> 
                     <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
-                    <input type="datetime-local" class="fechaHora" id="fechaConsultarCita">
+                    <input name="enable" type="datetime-local" class="fechaHora" id="fechaConsultarCita" disabled>
                 </div> <br>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#anularCita">Anular Cita</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modificarCita" onclick="enableModify()">Cambiar fecha / hora</button>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmarCitaCita" onclick="disableModify()">Aceptar</button>
               </form>
             </div>
           </div>
@@ -279,6 +317,16 @@
                   <option value="3">Navarra</option>
                 </select>
               </div>
+
+              <div class="mb-3">
+                <label for="Provincia" class="form-label">Población:</label>
+                <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
+                  <option selected></option>
+                  <option value="1">Amorebieta-Etxano</option>
+                  <option value="2">Galdakao</option>
+                  <option value="3">Bilbao</option>
+                </select>
+              </div>
         
               <div class="mb-3"> 
                 <label for="direccion" class="form-label">Dirección:</label>
@@ -322,7 +370,7 @@
                   <option value="1">Abierto</option>
                   <option value="2">Cerrado</option>
                 </select>
-              </div>
+              </div> 
                 
               <div class="mb-3">
                 <label for="jueves" class="form-label">Jueves:</label>
@@ -387,9 +435,20 @@
                     <div class="mb-3">
                       <label for="Provincia" class="form-label">Provincia:</label>
                       <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
-                        <option selected>Bizkaia</option>
-                        <option value="1">Gipuzkoa</option>
-                        <option value="2">Navarra</option>
+                        <option selected></option>
+                        <option value="1">Bizkaia</option>
+                        <option value="2">Gipuzkoa</option>
+                        <option value="3">Navarra</option>
+                      </select>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="Provincia" class="form-label">Población:</label>
+                      <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                        <option selected></option>
+                        <option value="1">Amorebieta-Etxano</option>
+                        <option value="2">Galdakao</option>
+                        <option value="3">Bilbao</option>
                       </select>
                     </div>
   
@@ -500,6 +559,15 @@
           <option value="1">centro 1</option>
           <option value="2">centro 2</option>
         </select> <br/>
+        <div class="form-inline col-md-6 flexible">
+          <button type="button" class="btn btn-primary">Buscar</button>
+<<<<<<< HEAD
+          <input type="search" id="form1" class="form-control" placeholder="buscar paciente"/>
+=======
+          <input type="search" id="form1" class="form-control" placeholder="Buscar paciente"/>
+>>>>>>> Alejandro
+        </div> <br>
+
         <button type="button" class="collapsible">tis / nombre apellidos paciente</button>
         <div class="cita">
           <form>
@@ -531,7 +599,9 @@
                   <option value="" selected></option>
                   <option value="1">Pfizer</option>
                   <option value="2">Moderna</option>
-                  <option value="3">AstraZeneca</option>
+                  <option value="3">Johnson & Johnson</option>
+                  <option value="4">Novamax</option>
+                  <option value="5">AstraZeneca</option>
                 </select>
               </div>
 
@@ -555,7 +625,9 @@
                   <option value="" selected></option>
                   <option value="1">Pfizer</option>
                   <option value="2">Moderna</option>
-                  <option value="3">AstraZeneca</option>
+                  <option value="3">Johnson & Johnson</option>
+                  <option value="4">Novamax</option>
+                  <option value="5">AstraZeneca</option>
                 </select>
               </div>
 
@@ -579,7 +651,9 @@
                   <option value="" selected></option>
                   <option value="1">Pfizer</option>
                   <option value="2">Moderna</option>
-                  <option value="3">AstraZeneca</option>
+                  <option value="2">Johnson & Johnson</option>
+                  <option value="4">Novamax</option>
+                  <option value="5">AstraZeneca</option>
                 </select>
               </div>
           
@@ -595,7 +669,7 @@
         </div>
       </div>
       <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="disableModify()">Cerrar</button>
      
       </div>
   </div>

@@ -6,6 +6,7 @@ class paciente {
     protected $apellido;
     protected $fecha_nac;
     protected $fecha_pcr_pstv;
+    protected $id_centro;
 
     /**
      * Get the value of tis
@@ -123,6 +124,26 @@ class paciente {
     public function setFecha_pcr_pstv($fecha_pcr_pstv)
     {
         $this->fecha_pcr_pstv = $fecha_pcr_pstv;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of id_centro
+     */ 
+    public function getId_centro()
+    {
+        return $this->id_centro;
+    }
+
+    /**
+     * Set the value of id_centro
+     *
+     * @return  self
+     */ 
+    public function setId_centro($id_centro)
+    {
+        $this->id_centro = $id_centro;
 
         return $this;
     }

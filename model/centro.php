@@ -1,20 +1,20 @@
 <?php
 class centro {
-    private $id;
-    private $nombre;
-    private $poblacion;
-    private $cp;
-    private $provincia;
-    private $direccion;
-    private $lunes;
-    private $martes;
-    private $miercoles;
-    private $jueves;
-    private $viernes;
-    private $sabado;
-    private $domingo;
-    private $hora_apertura;
-    private $hora_cierre;
+    protected $id;
+    protected $nombre;
+    protected $poblacion;
+    protected $cp;
+    protected $provincia;
+    protected $direccion;
+    protected $lunes;
+    protected $martes;
+    protected $miercoles;
+    protected $jueves;
+    protected $viernes;
+    protected $sabado;
+    protected $domingo;
+    protected $hora_apertura;
+    protected $hora_cierre;
     
     /**
      * Get the value of id
