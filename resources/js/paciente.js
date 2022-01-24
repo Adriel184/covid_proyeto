@@ -18,6 +18,7 @@ for (i = 0; i < coll.length; i++) {
 window.onload=getView();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 window.onload=getView();
@@ -87,12 +88,23 @@ function getView() {
 
   fetch(url, {
 >>>>>>> main
+=======
+
+function getView() {
+
+  console.log("Entrando en la funcion getView");
+
+  var url = "../../controller/controllerView.php";
+
+  fetch(url, {
+>>>>>>> main
   method: 'GET', // or 'POST'
   headers:{'Content-Type': 'application/json'}  //input data
   
   })
   .then(res => res.json()).then(result => {
   
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     console.log("Los datos del ---> "+x+" se han recibido:");
@@ -133,6 +145,16 @@ function getView() {
 }
 
 >>>>>>> main
+=======
+    console.log("Este es el resultado que devuelve el controllerView: "+ result)
+    loadContent(result);
+
+  })
+  .catch(error => console.error('Error status:', error));
+
+}
+
+>>>>>>> main
 function loadContent(x) {
 
   console.log("Entrando en la funcion loadcontent para cargar los datos del :"+ x);
@@ -150,6 +172,9 @@ function loadContent(x) {
 
   fetch(url, {
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 =======
 >>>>>>> main
@@ -176,6 +201,9 @@ function loadContent(x) {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 =======
 >>>>>>> main

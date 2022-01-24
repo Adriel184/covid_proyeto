@@ -28,6 +28,7 @@
     
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 });
 
 if(window.location.href.includes("index.html")){
@@ -52,6 +53,9 @@ function logout() {
         }
     })
 }
+=======
+// });
+>>>>>>> main
 =======
 // });
 >>>>>>> main

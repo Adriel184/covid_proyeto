@@ -101,7 +101,10 @@ class cita_model extends cita {
             $cita->setId($row['id']);
             $cita->setFecha($row['fecha']);
 <<<<<<< HEAD
+<<<<<<< HEAD
             $cita->setDosis($row['dosis']);
+=======
+>>>>>>> main
 =======
 >>>>>>> main
             $cita->setTis($row['tis']);

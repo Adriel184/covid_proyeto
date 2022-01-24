@@ -10,8 +10,13 @@
     
         $response=array();
         
+<<<<<<< HEAD
         $view=$_SESSION['view'];
         $tis= $_SESSION['tis'];
+=======
+        $view=$_SESSION["view"];
+        $tis= $_SESSION["tis"];
+>>>>>>> main
     
         $paciente=new paciente_model();
         $paciente->setTis($tis);
