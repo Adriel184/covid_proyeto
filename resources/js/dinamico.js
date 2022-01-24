@@ -55,3 +55,24 @@ function loadPaciente() {
     })
     .catch(error => console.error('Error status:', error));
 }
+
+function pacientePrincipal() {
+    var accion="getData";
+  
+    var url = "../../controller/controllerPaciente.php";
+    var data = {"accion":accion};
+    fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers:{'Content-Type': 'application/json'}
+        
+        })
+        .then(res => res.json()).then(result => {
+            $('#inputTis').text(result.tis);
+            $('#inputNombre').text(result.nombre);
+            $('#inputApellidos').text(result.apellidos);
+            $('#inputProvincia').text(result.provincia);
+            $('#inputNac').text(result.fecha_nac);
+            $('#inputCentro').text(result.centro);
+        })
+}
