@@ -76,3 +76,15 @@ function loadContent(x) {
   
 
 }
+
+
+//activar y desactivar la funcion "Disabled"
+function enableModify() {
+  $("input[name='enable']").prop('disabled', false);
+  $("select[name='enable']").prop('disabled', false);
+}
+
+function disableModify() {
+  $("input[name='enable']").prop('disabled', true);
+  $("select[name='enable']").prop('disabled', true);
+}
