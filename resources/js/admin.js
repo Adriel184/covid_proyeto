@@ -35,7 +35,7 @@ if(window.location.href.includes("index.html")){
 $('#logOut').click(function log() {logout()});
 
 function logout() {
-    var url = "../../controller/controllerLogout.php";
+    var url = "controller/controllerLogout.php";
     var href = "../../index.html";
   
     fetch(url, {
