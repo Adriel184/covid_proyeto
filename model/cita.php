@@ -1,11 +1,11 @@
 <?php
 
 class cita {
-    private $id;
-    private $fecha;
-    private $dosis;
-    private $tis;
-    private $id_centro;
+    protected $id;
+    protected $fecha;
+    protected $dosis;
+    protected $tis;
+    protected $id_centro;
 
     /**
      * Get the value of id
