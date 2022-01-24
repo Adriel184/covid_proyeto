@@ -5,7 +5,7 @@ include_once ("connect_data.php");
 
 class cita_model extends cita {
 
-    private $link;  // datu basera lotura - enlace a la bbdd  
+    private $link;  // datu basera lotura - enlace a la bbdd
 
     public function OpenConnect() {
         $konDat=new connect_data();
@@ -34,19 +34,24 @@ class cita_model extends cita {
         $this->OpenConnect();
 
         $sql = "CALL spCita('$this->id')";
-        $result = $this->link->query($sql);         
+        $result = $this->link->query($sql);
+        $cita=null;       
         
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         
-            $this->id=$row['id'];
-            $this->fecha=$row['fecha'];
-            $this->dosis=$row['dosis'];
-            $this->tis=$row['tis'];
+            $cita=new cita_model();
+            $cita->setId($row['id']);
+            $cita->setFecha($row['fecha']);
+            $cita->setDosis($row['dosis']);
+            $cita->setTis($row['tis']);
+            $cita->setId_centro($row['id_centro']);
 
         }
 
         mysqli_free_result($result);
         $this->CloseConnect();
+
+        return $cita;
 
     }
 
@@ -62,15 +67,15 @@ class cita_model extends cita {
         {         
             //FILL LIST with all families
             $cita=new cita_model();
-            $cita->id=$row['id'];
-            $cita->fecha=$row['fecha'];
-            $cita->dosis=$row['dosis'];
-            $cita->tis=$row['tis'];
-            $cita->id_centro=$row['id_centro'];
+            $cita->setId($row['id']);
+            $cita->setFecha($row['fecha']);
+            $cita->setDosis($row['dosis']);
+            $cita->setTis($row['tis']);
+            $cita->setId_centro($row['id_centro']);
 
             //$arrmov = (array) $movimiento;
 
-            array_push($citas, $cita);
+            array_push($citas, get_object_vars($cita));
         }
         mysqli_free_result($result);
         $this->CloseConnect();
@@ -82,8 +87,9 @@ class cita_model extends cita {
 
         $this->OpenConnect();
 
-        $tis = $this->tis;
-        $sql = "SELECT * FROM citas WHERE tis='$tis'";
+        $tis=$this->getTis();
+
+        $sql = "SELECT * FROM cita WHERE tis=$tis";
         $result = $this->link->query($sql);
         
         $citas=array();
@@ -92,15 +98,14 @@ class cita_model extends cita {
         {         
             //FILL LIST with all families
             $cita=new cita_model();
-            $cita->id=$row['id'];
-            $cita->fecha=$row['fecha'];
-            $cita->dosis=$row['dosis'];
-            $cita->tis=$row['tis'];
-            $cita->id_centro=$row['id_centro'];
+            $cita->setId($row['id']);
+            $cita->setFecha($row['fecha']);
+            $cita->setDosis($row['dosis']);
+            $cita->setTis($row['tis']);
+            $cita->setId_centro($row['id_centro']);
 
             //$arrmov = (array) $movimiento;
-
-            array_push($citas, $cita);
+            array_push($citas, get_object_vars($cita));
         }
         mysqli_free_result($result);
         $this->CloseConnect();
