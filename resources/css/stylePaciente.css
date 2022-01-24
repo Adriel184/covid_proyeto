@@ -1,19 +1,25 @@
 .centrar {
     text-align: center;
 }
-
+ .margen {
+   margin-top: 1em;
+ }
 div.container button {
     padding: 1em;
     margin-left: 20px;
 }
 
 div.container.centrar {
-    margin-top: 5%;
+    margin-top: 3em;
 }
 
 .informacion {
     border-bottom: 2px solid green;
     
+}
+
+.transparente {
+  color: transparent;
 }
 
 /* Boton desplegable*/
