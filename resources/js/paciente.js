@@ -65,8 +65,8 @@ function loadContent(x) {
 
     if (x=="paciente") {
       document.getElementById("navbarDarkDropdownMenuLink").innerHTML=result.paciente.nombre;
-      document.getElementById("nombreYApePaciente").value=result.paciente.nombre +" "+result.paciente.apellido;
-      document.getElementById("tis").value=result.paciente.tis;
+      $(".nombreYApePaciente").value(result.paciente.nombre +" "+result.paciente.apellido);
+      $(".tis").value(result.paciente.tis);
     }else if(x=="admin"){
       console.log("Hola admin");
     }

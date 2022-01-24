@@ -41,7 +41,7 @@
                         </div>
                         <div id="contraMal" class="modal-dialog text-danger">Contraseña erronea por favor vuelva a intentarlo.</div>
                         <div id="sinContra" class="modal-dialog text-danger">Todos los campos deben estar rellenos.</div>
-                        <button id="iniciarAdmin" type="button" class="btn btn-outline-success float-end">Iniciar sesión</button>
+                        <button id="loginAdmin" type="button" class="btn btn-outline-success float-end">Iniciar sesión</button>
                     </form>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                 document.getElementById('soloRes').href = '#';
                 document.getElementById('imgLogoRes').src = 'resources/img/cruz_roja.png';
                 document.getElementById('dropdown').style.display = 'none';
-                document.getElementById('link').src = 'resources/js/admin.js';
+                document.getElementById('link').src = 'resources/js/main.js';
             break;
 
             case 'index':
@@ -67,7 +67,7 @@
                 document.getElementById('soloRes').href = '#';
                 document.getElementById('imgLogoRes').src = 'resources/img/cruz_roja.png';
                 document.getElementById('dropdown').style.display = 'none';
-                document.getElementById('link').src = 'resources/js/admin.js';
+                document.getElementById('link').src = 'resources/js/main.js';
             break;
         
             default:
@@ -77,11 +77,11 @@
                 document.getElementById('imgLogoRes').src = '../img/cruz_roja.png';
                 document.getElementById('loginbtn').style.visibility = 'hidden';
                 document.getElementById('textoCabecera').style.display = 'none';
-                document.getElementById('link').src = '../js/admin.js';
+                document.getElementById('link').src = '../js/main.js';
 
             break;
         }
 
     </script>
 
-    <script id="link" src="../js/admin.js"></script>
+    <script id="link" src="../js/main.js"></script>
