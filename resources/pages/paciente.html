@@ -78,55 +78,50 @@
   <!-- Modals -->
   <!-- Pedir cita -->
   <div class="modal fade" id="pedirCita" tabindex="-1" data-bs-backdrop="static" aria-labelledby="pedirCitaLabel" aria-hidden="true">
-      <div class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-header">
-          <h5 class="modal-title" id="pedirCitaLabel">Pedir cita</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-          </div>
-          <div class="modal-body">
-              <form>
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="pedirCitaLabel">Pedir cita</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="nombreYApePaciente" class="form-label">Nombre y Apellidos:</label>
+                <input id="nombreYApePaciente" class="form-control" type="text" placeholder="Nombre y apellidos" disabled>
+            </div>
                 <div class="mb-3">
-                  <label for="nombreYApePaciente" class="form-label">Nombre y Apellidos:</label>
-                  <input class="form-control" type="text" placeholder="Nombre y apellidos" disabled>
-              </div>
-                  <div class="mb-3">
-                    <label for="tis" class="form-label">TIS:</label>
-                    <input class="form-control" type="text" placeholder="TIS" disabled>
-                  </div>
+                  <label for="tis" class="form-label">TIS:</label>
+                  <input id="tis" class="form-control" type="text" placeholder="TIS" disabled>
+                </div>
 
-                  <div class="mb-3">
-                    <label for="localidad" class="form-label">Provincia:</label>
-                    <input class="form-control" type="text" placeholder="Provincia" disabled>
-                  </div>
+                <div class="mb-3">
+                  <label for="localidad" class="form-label">Provincia:</label>
+                  <input id="localidad" class="form-control" type="text" placeholder="Provincia" disabled>
+                </div>
 
-                  <div class="mb-3"> 
-                    <label for="localidad" class="form-label">Centro:</label>
-                    <input class="form-control" type="text" placeholder="Centro" disabled>
-                  </div>
-                  
-                  <div class="mb-3"> 
-                    <label for="vacuna" class="form-label">Vacuna:</label>
-                    <input class="form-control" type="text" placeholder="Vacuna" disabled>
-                  </div>
-                  
-                  <div class="mb-3"> 
-                    <label for="dosis" class="form-label">Nº Dosis:</label>
-                    <input class="form-control" type="text" placeholder="Nº de dosis" disabled>
-                  </div>
+                <div class="mb-3"> 
+                  <label for="centro" class="form-label">Centro:</label>
+                  <input id="centro" class="form-control" type="text" placeholder="Centro" disabled>
+                </div>
+                
+                <div class="mb-3"> 
+                  <label for="dosis" class="form-label">Nº Dosis:</label>
+                  <input id="dosis" class="form-control" type="text" placeholder="Nº de dosis" disabled>
+                </div>
 
-                  <div class="mb-3"> 
-                    <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
-                    <input type="datetime-local" class="fechaHora form-control" id="fechaPedirCita">
-                  </div>
-                </form>
-          </div>
-          <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-success">Confirmar</button>
-          </div>
-      </div>
-      </div>
+                <div class="mb-3"> 
+                  <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
+                  <input type="datetime-local" class="fechaHora form-control" id="fechaPedirCita">
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-success">Confirmar</button>
+        </div>
+    </div>
+    </div>
   </div>
 
   <!-- CONSULTAR LISTA DE CITAS -->
