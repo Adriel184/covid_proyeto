@@ -69,6 +69,7 @@ function loadPaciente() {
 <<<<<<< HEAD
     })
     .catch(error => console.error('Error status:', error));
+<<<<<<< HEAD
 }
 
 function pacientePrincipal() {
@@ -99,4 +100,6 @@ function pacientePrincipal() {
 =======
     }).catch(error => console.error('Error status:', error));
 >>>>>>> main
+=======
+>>>>>>> parent of 146e4d7 (Update dinamico.js)
 }
