@@ -5,14 +5,15 @@ for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
     var content = this.nextElementSibling;
-    if (content.style.maxHeight){
+
+    if(content.style.maxHeight){
       content.style.maxHeight = null;
-    } else {
+    }
+    else {
       content.style.maxHeight = content.scrollHeight + "px";
     }
   });
 };
-
 
 window.onload=getView();
 
@@ -73,10 +74,7 @@ function loadContent(x) {
 
   })
   .catch(error => console.error('Error status:', error));
-  
-
 }
-
 
 //activar y desactivar la funcion "Disabled"
 function enableModify() {

@@ -1,19 +1,22 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a id="casa" class="navbar-brand" href="#">
+            MEDICOS CON FRONTERA<img id="imgLogo" src="resources/img/cruz_roja.png" alt="la imagen no ha cargado" class="mx-1 mb-1" width="35px">
+        </a>
+        <a id="soloRes" href="#">
+            <img id="imgLogoRes" src="rescources/img/cruz_roja.png" alt="No ha cargado la imagen" class="mx-1 mb-1" width="35px">
+        </a>
+        <h3 id="textoCabecera" class="textoCabecera m-auto">Pide cita previa para vacunarte</h3>
+        <button class="btn btn-success" id="loginbtn" data-bs-toggle="modal" data-bs-target="#modalForm">login</button>
 
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a id="casa" class="navbar-brand" href="#">MEDICOS CON FRONTERA<img id="imgLogo" src="resources/img/cruz_roja.png" alt="la imagen no ha cargado" class="mx-1 mb-1" width="35px"></a>
-          <a id="soloRes" href="#"><img id="imgLogoRes" src="rescources/img/cruz_roja.png" alt="No ha cargado la imagen" class="mx-1 mb-1" width="35px"></a>
-          <h3 id="textoCabecera" class="textoCabecera m-auto">Pide cita previa para vacunarte</h3>
-          <button class="btn btn-success" id="loginbtn" data-bs-toggle="modal" data-bs-target="#modalForm">login</button>
 
-          
-            <ul class="navbar-nav" id="dropdown">
-              <li class="nav-item dropdown dropstart">
+        <ul class="navbar-nav" id="dropdown">
+            <li class="nav-item dropdown dropstart">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  nombre usuario
+                    nombre usuario
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                  <li><a class="dropdown-item" id=logOut href="#">Cerrar Sesión</a></li>
+                    <li><button type="button" class="dropdown-item" id="logOut">Cerrar Sesión</button></li>
                 </ul>
               </li>
             </ul>
@@ -47,9 +50,10 @@
             </div>
         </div>
     </div>
+</div>
 
-    <script>
-        var ruta = location.href.split('/').pop().split('.')[0];
+<script>
+    var ruta = location.href.split('/').pop().split('.')[0];
 
         switch (ruta) {
             case '':
@@ -80,8 +84,8 @@
                 document.getElementById('link').src = '../js/main.js';
 
             break;
-        }
+    }
 
-    </script>
+</script>
 
     <script id="link" src="../js/main.js"></script>

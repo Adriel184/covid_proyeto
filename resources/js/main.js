@@ -10,7 +10,6 @@ $('#loginAdmin').click(() => {
 });
 
 
-
 function login(x) {
 
     var tis = $('#tis').val();
