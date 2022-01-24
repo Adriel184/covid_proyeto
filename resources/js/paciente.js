@@ -17,12 +17,19 @@ for (i = 0; i < coll.length; i++) {
 
 window.onload=getView();
 
+<<<<<<< HEAD
 window.onload=getView();
 
 function getView() {
 
   console.log("Entrando en la funcion getView");
 
+=======
+function getView() {
+
+  console.log("Entrando en la funcion getView");
+
+>>>>>>> main
   var url = "../../controller/controllerView.php";
 
   fetch(url, {
@@ -56,6 +63,7 @@ function loadContent(x) {
   }
 
   fetch(url, {
+<<<<<<< HEAD
   method: 'GET', // or 'POST'
   headers:{'Content-Type': 'application/json'}  //input data
   
@@ -80,6 +88,29 @@ function loadContent(x) {
 }
 
 
+=======
+  method: 'POST', // or 'POST'
+  body: JSON.stringify(data), // data can be `string` or {object}!
+  headers:{'Content-Type': 'application/json'}  //input data
+  
+  })
+  .then(res => res.json()).then(result => {
+  
+    console.log("Los datos del ---> "+x+" se han recibido:");
+    console.log(result);
+
+    if (x=="paciente") {
+      document.getElementById("navbarDarkDropdownMenuLink").innerHTML=result.paciente.nombre;
+      $(".nombreYApePaciente").val(result.paciente.nombre +" "+result.paciente.apellido);
+      $(".tis").val(result.paciente.tis);
+    }else if(x=="admin"){
+      console.log("Hola admin");
+    }
+
+  }).catch(error => console.error('Error status:', error));
+}
+
+>>>>>>> main
 //activar y desactivar la funcion "Disabled"
 function enableModify() {
   $("input[name='enable']").prop('disabled', false);
