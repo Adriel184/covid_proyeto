@@ -3,12 +3,10 @@ $('#loginPaciente').click(() => {
     login(x);  
 });
 
-
 $('#loginAdmin').click(() => {
     var x="admin"
     login(x);
 });
-
 
 function login(x) {
 
@@ -80,3 +78,29 @@ function login(x) {
     }
 };
 
+if(window.location.href.includes("index.html")){
+    logout();
+}
+
+$('#logOut').click(function log() {logout()});
+
+function logout() {
+    var url = "controller/controllerLogout.php";
+    var href = "../../index.html";
+
+    if(window.location.href.includes("paciente.html")){
+        url = "../../controller/controllerLogout.php";
+    }
+  
+    fetch(url, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    })
+    .then(res => res.json()).then(result => {
+        console.log(result);
+
+        if(!window.location.href.includes("index.html")){
+            window.location.href = href;
+        }
+    })
+}
