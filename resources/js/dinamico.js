@@ -41,8 +41,7 @@ function loadPaciente() {
     body: JSON.stringify(data),
     headers:{'Content-Type': 'application/json'}
     
-    })
-    .then(res => res.json()).then(result => {
+    }).then(res => res.json()).then(result => {
       console.log(result)
       if(typeof result.tis === 'undefined'){
         console.log("un");
@@ -52,6 +51,5 @@ function loadPaciente() {
       }
       console.log($('#navbarDarkDropdownMenuLink').text());
       $('#navbarDarkDropdownMenuLink').text(result.nombre);
-    })
-    .catch(error => console.error('Error status:', error));
+    }).catch(error => console.error('Error status:', error));
 }

@@ -66,14 +66,13 @@ function loadContent(x) {
 
     if (x=="paciente") {
       document.getElementById("navbarDarkDropdownMenuLink").innerHTML=result.paciente.nombre;
-      $(".nombreYApePaciente").value(result.paciente.nombre +" "+result.paciente.apellido);
-      $(".tis").value(result.paciente.tis);
+      $(".nombreYApePaciente").val(result.paciente.nombre +" "+result.paciente.apellido);
+      $(".tis").val(result.paciente.tis);
     }else if(x=="admin"){
       console.log("Hola admin");
     }
 
-  })
-  .catch(error => console.error('Error status:', error));
+  }).catch(error => console.error('Error status:', error));
 }
 
 //activar y desactivar la funcion "Disabled"
