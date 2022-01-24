@@ -75,6 +75,44 @@ function loadContent(x) {
   }).catch(error => console.error('Error status:', error));
 }
 
+// function pacientePrincipal(x) {
+//   var x = "paciente";
+//   var accion="getData";
+//   var url = "../../controller/controllerPaciente.php";
+//   var data = {"accion":accion};
+
+//   if (x=="paciente") {
+//     var url = "../../controller/controllerPaciente.php";
+//   }else{
+//     var url = "../../controller/controllerPaciente.php";
+//   }
+
+//   fetch(url, {
+//       method: 'POST',
+//       body: JSON.stringify(data),
+//       headers:{'Content-Type': 'application/json'}
+      
+//       })
+//       .then(res => res.json()).then(result => {
+
+//         if (x=="paciente") {
+
+//           $('#inputTis').val(result.paciente.tis);
+//           $('#inputNombre').val(result.nombre);
+//           $('#inputApellidos').val(result.apellidos);
+//           $('#inputProvincia').val(result.provincia);
+//           $('#inputNac').val(result.fecha_nac);
+//           $('#inputCentro').val(result.centro);
+//         }
+
+//       })
+//       .catch(error => console.error('Error status:', error));
+// }
+
+
+
+
+
 //activar y desactivar la funcion "Disabled"
 function enableModify() {
   $("input[name='enable']").prop('disabled', false);
@@ -85,3 +123,4 @@ function disableModify() {
   $("input[name='enable']").prop('disabled', true);
   $("select[name='enable']").prop('disabled', true);
 }
+

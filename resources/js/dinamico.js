@@ -51,5 +51,7 @@ function loadPaciente() {
       }
       console.log($('#navbarDarkDropdownMenuLink').text());
       $('#navbarDarkDropdownMenuLink').text(result.nombre);
-    }).catch(error => console.error('Error status:', error));
+    })
+    .catch(error => console.error('Error status:', error));
 }
+
