@@ -42,8 +42,12 @@ function loadPaciente() {
     headers:{'Content-Type': 'application/json'}
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     })
     .then(res => res.json()).then(result => {
+=======
+    }).then(res => res.json()).then(result => {
+>>>>>>> main
 =======
     }).then(res => res.json()).then(result => {
 >>>>>>> main
@@ -56,6 +60,7 @@ function loadPaciente() {
       }
       console.log($('#navbarDarkDropdownMenuLink').text());
       $('#navbarDarkDropdownMenuLink').text(result.nombre);
+<<<<<<< HEAD
 <<<<<<< HEAD
     })
     .catch(error => console.error('Error status:', error));
@@ -80,6 +85,9 @@ function pacientePrincipal() {
             $('#inputNac').text(result.fecha_nac);
             $('#inputCentro').text(result.centro);
         })
+=======
+    }).catch(error => console.error('Error status:', error));
+>>>>>>> main
 =======
     }).catch(error => console.error('Error status:', error));
 >>>>>>> main

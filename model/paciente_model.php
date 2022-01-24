@@ -1,11 +1,15 @@
 <?php
 
 include_once ("paciente.php");
+include_once ("cita_model.php");
+include_once ("centro_model.php");
 include_once ("connect_data.php");
 
 class paciente_model extends paciente {
 
-    private $link;  // datu basera lotura - enlace a la bbdd  
+    private $link;  // datu basera lotura - enlace a la bbdd
+    private $citas;
+    private $centro;
 
     public function OpenConnect() {
         $konDat=new connect_data();
@@ -75,8 +79,22 @@ class paciente_model extends paciente {
             $paciente->fecha_nac=$row['fecha_nac'];
             $paciente->fecha_pcr_pstv=$row['fecha_pcr'];
 
+<<<<<<< HEAD
             $response["paciente"]=get_object_vars($paciente);
             $response["status"]="200";
+=======
+            $cita = new cita_model();
+            $cita->setTis($row['tis']); 
+            $paciente->citas=$cita->getCitasByTis();
+
+            $OBJcentro = new centro_model();
+            $OBJcentro->setId($row['id_centro']); 
+            $paciente->centro=$OBJcentro->getCentroById();
+
+            $response["paciente"]=get_object_vars($paciente);
+            $response["status"]="200";
+
+>>>>>>> main
         }else {
             $response["status"]="500";
         }
