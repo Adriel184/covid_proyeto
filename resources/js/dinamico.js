@@ -1,9 +1,5 @@
 window.addEventListener('DOMContentLoaded', () =>{
     loadHeaderFooter()
-
-    if(!window.location.href.includes("index.html")){
-        loadPaciente();
-    }
 })
 
 async function loadHeaderFooter(){
@@ -27,29 +23,4 @@ async function loadHeaderFooter(){
             break 
         }
     })
-}
-
-function loadPaciente() {
-    console.log("entrando en la funcion...")
-    var accion="load";
-  
-    var url = "../../controller/controllerPaciente.php";
-    var data = {"accion":accion};
-  
-    fetch(url, {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers:{'Content-Type': 'application/json'}
-    
-    }).then(res => res.json()).then(result => {
-      console.log(result)
-      if(typeof result.tis === 'undefined'){
-        console.log("un");
-      }
-      else{
-        $('.paciente').hide();
-      }
-      console.log($('#navbarDarkDropdownMenuLink').text());
-      $('#navbarDarkDropdownMenuLink').text(result.nombre);
-    }).catch(error => console.error('Error status:', error));
 }

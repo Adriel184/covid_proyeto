@@ -6,7 +6,7 @@
 
     $accion=$data["accion"];
 
-    if ($accion=="getData") {
+    if ($accion=="paciente") {
     
         $response=array();
         
@@ -31,7 +31,5 @@
         
         unset($response);
         
-    }elseif ($accion=="hjjgjh") {
-    
     }
 
