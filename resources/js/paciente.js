@@ -23,94 +23,97 @@ window.onload=getView();
 
 function getView() {
 
-  console.log("Entrando en la funcion getView");
-
   var url = "../../controller/controllerView.php";
 
   fetch(url, {
   method: 'GET', // or 'POST'
   headers:{'Content-Type': 'application/json'}  //input data
   
-  })
-  .then(res => res.json()).then(result => {
+  }).then(res => res.json()).then(result => {
   
-    console.log("Este es el resultado que devuelve el controllerView: "+ result)
     loadContent(result);
+    // loadContent(await getSession());
 
-  })
-  .catch(error => console.error('Error status:', error));
+  }).catch(error => console.error('Error status:', error));
 
 }
 
-function loadContent(x) {
+async function loadContent(x) {
 
-  console.log("Entrando en la funcion loadcontent para cargar los datos del :"+ x);
-
-  var accion="getData";
+  var accion = x;
   var data = {"accion":accion};
+  var url = "../../controller/controllerPaciente.php";
+  
+
+  console.log("Los datos del ---> "+x+" se han recibido:");
+  console.log(result);
 
   if (x=="paciente") {
-    var url = "../../controller/controllerPaciente.php";
-  }else if(x=="admin") {
-    var url = "../../controller/controllerPaciente.php";
-  }else{
-    var url = "../../controller/controllerPaciente.php";
+    document.getElementById("navbarDarkDropdownMenuLink").innerHTML=result.paciente.nombre;
+    document.getElementById("nombreYApePaciente").value=result.paciente.nombre +" "+result.paciente.apellido;
+    document.getElementById("tis").value=result.paciente.tis;
+    document.getElementById("localidad").value=result.paciente.centro.provincia;
+    document.getElementById("centro").value=result.paciente.centro.nombre;
+    document.getElementById("idCentro").value=result.paciente.centro.id;
+    document.getElementById("dosis").value=parseInt(result.paciente.ultimaDosis) + 1;
+
+    
+    result.paciente.citas.forEach(element => {
+      document.getElementById("divConsultarCitas").innerHTML+="<br><button type='button' class='collapsible'>Cita dosis "+element.dosis+"</button>"
+      +"<div class='cita'>"
+      +  "<form>"
+      +    "<div class='mb-3'>"
+      +      "<label for='localidad' class='form-label'>Provincia:</label>"
+      +      "<input type='text' class='form-control' placeholder='Localidad' disabled>"
+      +    "</div>"
+      +    "<div class='mb-3'>" 
+      +        "<label for='centro' class='form-label'>Centro:</label>"
+      +        "<input type='text' class='form-control' placeholder='Centro' disabled>"
+      +    "</div>"
+      +    "<div class='mb-3'>"
+      +        "<label class='form-label' for='fechaHora'>Fecha y Hora:</label><br>"
+      +        "<input type='' class='fechaHora form-control' id='fechaConsultarCita' value='"+element.fecha+" 'disabled>"
+      +    "</div> <br>"
+      +    "<button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#anularCita'>Anular Cita</button>"
+      +    "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modificarCita' onclick='enableModify()'>Cambiar fecha / hora</button>"
+      +    "<button type='button' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#confirmarCitaCita' onclick='disableModify()'>Aceptar</button>"
+      +  "</form>"
+      +"</div>"
+    });
+
+    collapse();
+    
   }
 
-  fetch(url, {
-  method: 'POST', // or 'POST'
-  body: JSON.stringify(data), // data can be `string` or {object}!
-  headers:{'Content-Type': 'application/json'}  //input data
+  var sesion = await getSession();
   
-  })
-  .then(res => res.json()).then(result => {
-  
-    console.log("Los datos del ---> "+x+" se han recibido:");
-    console.log(result);
+  console.log(sesion);
 
-    if (x=="paciente") {
-      document.getElementById("navbarDarkDropdownMenuLink").innerHTML=result.paciente.nombre;
-      document.getElementById("nombreYApePaciente").value=result.paciente.nombre +" "+result.paciente.apellido;
-      document.getElementById("tis").value=result.paciente.tis;
-      document.getElementById("localidad").value=result.paciente.centro.provincia;
-      document.getElementById("centro").value=result.paciente.centro.nombre;
-      document.getElementById("idCentro").value=result.paciente.centro.id;
-      document.getElementById("dosis").value=parseInt(result.paciente.ultimaDosis) + 1;
+  if (sesion.usuario) {
+    $(".paciente").hide();
+    
+    $("#navbarDarkDropdownMenuLink").html(sesion.usuario);
+  }else{
+    $(".admin").hide();
 
+    fetch(url, {
+      method: 'POST', // or 'POST'
+      body: JSON.stringify(data), // data can be `string` or {object}!
+      headers:{'Content-Type': 'application/json'}  //input data
       
-      result.paciente.citas.forEach(element => {
-        document.getElementById("divConsultarCitas").innerHTML+="<br><button type='button' class='collapsible'>Cita dosis "+element.dosis+"</button>"
-        +"<div class='cita'>"
-        +  "<form>"
-        +    "<div class='mb-3'>"
-        +      "<label for='localidad' class='form-label'>Provincia:</label>"
-        +      "<input type='text' class='form-control' placeholder='Localidad' disabled>"
-        +    "</div>"
-        +    "<div class='mb-3'>" 
-        +        "<label for='centro' class='form-label'>Centro:</label>"
-        +        "<input type='text' class='form-control' placeholder='Centro' disabled>"
-        +    "</div>"
-        +    "<div class='mb-3'>"
-        +        "<label class='form-label' for='fechaHora'>Fecha y Hora:</label><br>"
-        +        "<input type='' class='fechaHora form-control' id='fechaConsultarCita' value='"+element.fecha+" 'disabled>"
-        +    "</div> <br>"
-        +    "<button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#anularCita'>Anular Cita</button>"
-        +    "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modificarCita' onclick='enableModify()'>Cambiar fecha / hora</button>"
-        +    "<button type='button' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#confirmarCitaCita' onclick='disableModify()'>Aceptar</button>"
-        +  "</form>"
-        +"</div>"
-      });
-
-      collapse();
-
-    }else if(x=="admin"){
-      console.log("Hola admin");
-    }
-
-  })
-  .catch(error => console.error('Error status:', error));
-  
-
+    }).then(res => res.json()).then(result => {
+      console.log(result.paciente);
+      $("#navbarDarkDropdownMenuLink").html(result.paciente.nombre + ', ' + result.paciente.apellido);
+      // $(".nombreYApePaciente").val(result.paciente.nombre +", "+result.paciente.apellido);
+      $(".inputTis").val(result.paciente.tis);
+      $(".inputNombre").val(result.paciente.nombre);
+      $(".inputApellido").val(result.paciente.apellido);
+      $(".inputProvincia").val(result.paciente.centro.provincia);
+      $(".inputNac").val(result.paciente.fecha_nac);
+      $(".inputCentro").val(result.paciente.centro.nombre + ", " + result.paciente.centro.poblacion);
+        
+    }).catch(error => console.error('Error status:', error));
+  }
 }
 
 $('#ConfirmarPedirCita').click(() => {
@@ -165,3 +168,73 @@ function disableModify() {
   $("input[name='enable']").prop('disabled', true);
   $("select[name='enable']").prop('disabled', true);
 }
+
+function getSession() { //RECOGE LAS VARIABLES DE SESSION
+
+  return new Promise((resolve, reject) => {
+    var  url = "../../controller/controllerSession.php";
+    fetch(url, {
+      method: "GET",
+      headers:{'Content-Type': 'application/json'}
+      }).then(res => res.json()).then(result => {
+        resolve(result['SESSION']);
+      }).catch(error => console.error('Error status:', error));
+    
+  })
+}
+
+$('#btnCita').click(function () {
+  var fechaCitaNueva = $('#fechaPedirCita').val().split('T')[0];
+  var horaCitaNueva = $('#fechaPedirCita').val().split('T')[1]; 
+  console.log("fecha: "+ fechaCitaNueva);
+  console.log("hora: " + horaCitaNueva);
+  
+});
+
+
+
+// ! MOSTRAR LA CITA DEL PACIENTE TODAS LAS QUE TENGA
+
+// $(document).ready(function () {
+
+//   fetch(url,{
+//     method: "GET",
+//     headers:{'Content-Type': 'application/json'}
+//   }).then(res => res.json()).then(result =>{
+
+//     $('#citasPaciente').append(
+//       "<form>"+
+//         "<div class='mb-3'>" +
+//           "<label for='localidad' class='form-label'>Provincia:</label>" +
+//           "<input type='text' class='form-control' placeholder='Localidad' disabled>" +
+//         "</div>" +
+      
+//         "<div class='mb-3'>" +
+//           "<label for='centro' class='form-label'>Centro:</label>" +
+//           "<input type='text' class='form-control' placeholder='Centro' disabled>" +
+//         "</div>" +
+      
+//       "<div class='mb-3'>" +
+//         "<label for='tipoDosis' class='form-label'>Vacuna:</label>" +
+//         "<input type='text' class='form-control' placeholder='Vacuna' disabled>" +
+//       "</div>" +
+      
+//       "<div class='mb-3'>" +
+//         "<label for='dosis' class='form-label'>Nº Dosis:</label>" +
+//         "<input type='text' class='form-control' placeholder='Dosis' disabled>" +
+//       "</div>" +
+  
+//       "<div class='mb-3'> " +
+//         "<label class='form-label' for='fechaHora'>Fecha y Hora:</label><br>" +
+//         "<input name='enable' type='datetime-local' class='fechaHora' id='fechaConsultarCita' disabled>" +
+//       "</div> <br>" +
+      
+//       "<button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#anularCita'>Anular Cita</button>" +
+//       "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modificarCita' onclick='enableModify()'>Cambiar fecha / hora</button>" +
+//       "<button type='button' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#confirmarCitaCita' onclick='disableModify()'>Aceptar</button>" +
+//     "</form>");
+
+//   })
+
+    
+// });

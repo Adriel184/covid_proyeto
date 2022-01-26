@@ -28,7 +28,7 @@ class centro_model extends centro {
     }  
 
     /********* FUNCIONES **********/
-
+    
     public function getCentroById(){
 
         $this->OpenConnect();
@@ -70,4 +70,42 @@ class centro_model extends centro {
         
     }
 
+    public function getCentros(){
+
+        $this->OpenConnect();
+
+        $sql = "SELECT * FROM centro_vacunacion";
+        $result = $this->link->query($sql);
+
+        $centros=array();
+        
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+        {         
+
+            $centro=new centro_model();
+            $centro->setId($row['id']);
+            $centro->setNombre($row['nombre']);
+            $centro->setPoblacion($row['poblacion']);
+            $centro->setCp($row['cp']);
+            $centro->setProvincia($row['provincia']);
+            $centro->setDireccion($row['direccion']);
+
+            $centro->setLunes($row['lunes']);
+            $centro->setMartes($row['martes']);
+            $centro->setMiercoles($row['miercoles']);
+            $centro->setJueves($row['jueves']);
+            $centro->setViernes($row['viernes']);
+            $centro->setSabado($row['sabado']);
+            $centro->setDomingo($row['domingo']);
+
+            $centro->setHora_apertura($row['hora_apertura']);
+            $centro->setHora_cierre($row['hora_cierre']);
+
+            array_push($centros, get_object_vars($centro));
+        }
+
+        mysqli_free_result($result);
+        $this->CloseConnect();
+        return $centros;
+    }
 }

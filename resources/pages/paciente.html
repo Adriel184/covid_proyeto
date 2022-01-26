@@ -1,77 +1,92 @@
 <!DOCTYPE html>
 <html lang="es" class="h-100">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administra tus citas</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administra tus citas</title>
 
-    <link rel="shortcut icon" href="../img/cruz_roja.png" type="image/x-icon">
-    
-    <!-- Librerias de css -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="shortcut icon" href="../img/cruz_roja.png" type="image/x-icon">
 
-    <!-- Nuestros css -->
-    <link rel="stylesheet" href="../css/stylePaciente.css">
-    <link rel="stylesheet" href="../css/styleHyF.css">
+  <!-- Librerias de css -->
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+
+  <!-- Nuestros css -->
+  <link rel="stylesheet" href="../css/stylePaciente.css">
+  <link rel="stylesheet" href="../css/styleHyF.css">
 </head>
+
 <body class="d-flex flex-column h-100">
   <!--navbar dinamico-->
   <div id="dynamicHeader"></div>
 
-<!-- <div class="informacion container fluid">
+  <!-- <div class="informacion container fluid">
       <h2>Texto de ejemplo</h2>
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa nostrum tenetur, veniam nobis esse beatae enim tempora, modi assumenda suscipit a aliquid accusantium? Cupiditate quibusdam repellendus harum quos necessitatibus neque.</p>
     </div> -->
 
   <!-- Datos paciente -->
-  
-  <div class="container margen">
+
+  <div class="container margen paciente">
     <form class="row g-3">
       <div class="col-md-2">
         <label for="inputTis" class="form-label">TIS:</label>
-        <input type="text" class="form-control" id="inputTis" disabled>
+        <input type="text" class="form-control inputTis" disabled>
       </div>
+
       <div class="col-md-2">
         <label for="inputNombre" class="form-label">Nombre:</label>
-        <input type="text" class="form-control" id="inputNombre" disabled>
+        <input type="text" class="form-control inputNombre" disabled>
       </div>
+
       <div class="col-md-3">
-        <label for="inputApellidos" class="form-label">Apellidos:</label>
-        <input type="text" class="form-control" id="inputApellidos" disabled>
+        <label for="inputApellidos" class="form-label">Apellido:</label>
+        <input type="text" class="form-control inputApellido" disabled>
       </div>
+
       <div class="col-md-3">
-        <label for="inputProvincia" class="form-label">Provincia:</label>
-        <input type="text" class="form-control" id="inputProvincia" disabled>
-      </div>
-      <div class="col-md-2">
         <label for="inputNac" class="form-label">Fecha de Nacimiento:</label>
-        <input type="date" class="form-control" id="inputNac" disabled>
+        <input type="date" class="form-control inputNac" disabled>
       </div>
+
       <div class="col-md-7">
-        <label for="inputCentro" class="form-label text-danger">Centro de salud al que debe  asistir para su vacunación:</label>
-        <input type="text" class="form-control" id="inputCentro" disabled>
+        <label for="inputCentro" class="form-label">Centro de salud al que debe asistir para su vacunación:</label>
+        <input type="text" class="form-control inputCentro" disabled>
       </div>
+
       <div class=" col-md-3">
         <label for="inputFile" class="form-label">Suba una foto de perfil:</label>
         <input type="file" class="form-control" id="inputFile" aria-describedby="inputFile" aria-label="Upload">
       </div>
+
       <div class=" col-md-2">
         <label for="inputButton" class="form-label transparente">Confirme su imagen:</label>
-        <input type="button" class="form-control btn btn-success" id="inputButton" aria-describedby="inputFile" aria-label="Upload" value="Confirmar">
+        <input type="button" class="form-control btn btn-success" id="inputButton" aria-describedby="inputFile"
+          aria-label="Upload" value="Confirmar">
       </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
     </form>
   </div>
 
   <!-- Botones Paciente -->
   <div class="container centrar">
-      <p>Puedes pedir una cita o consultar y editar tus citas pendientes. Tambien puedes anular una cita.</p>
-      <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#pedirCita">Pedir cita</button>
-      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#consultarCita">Consultar citas</button> 
-      <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#historial">Historial de Vacunación</button>
-      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modificarCentros">Modificar Centros</button>
-      <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#añadirCentros">Añadir Centro</button>
-      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#verPacientes">Consultar Pacientes</button>
+    <p>Puedes pedir una cita o consultar y editar tus citas pendientes. Tambien puedes anular una cita.</p>
+    <button type="button" class="btn btn-outline-success paciente" data-bs-toggle="modal"
+      data-bs-target="#pedirCita">Pedir cita</button>
+    <button type="button" class="btn btn-outline-danger paciente" data-bs-toggle="modal"
+      data-bs-target="#consultarCita">Consultar citas</button>
+    <button type="button" class="btn btn-outline-success paciente" data-bs-toggle="modal"
+      data-bs-target="#historial">Historial de Vacunación</button>
+    <button type="button" class="btn btn-outline-danger admin" data-bs-toggle="modal"
+      data-bs-target="#modificarCentros">Modificar Centros</button>
+    <button type="button" class="btn btn-outline-success admin" data-bs-toggle="modal"
+      data-bs-target="#añadirCentros">Añadir Centro</button>
+    <button type="button" class="btn btn-outline-danger admin" data-bs-toggle="modal"
+      data-bs-target="#verPacientes">Consultar Pacientes</button>
   </div>
 
   <!-- Modals -->
@@ -125,12 +140,20 @@
   </div>
 
   <!-- CONSULTAR LISTA DE CITAS -->
-  <div class="modal fade" id="consultarCita" tabindex="-1" data-bs-backdrop="static" aria-labelledby="consultarCitaLabel" aria-hidden="true">
-      <div class="modal-dialog">
+  <div class="modal fade" id="consultarCita" tabindex="-1" data-bs-backdrop="static"
+    aria-labelledby="consultarCitaLabel" aria-hidden="true">
+    <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
+        <div class="modal-header">
           <h5 class="modal-title" id="consultarCitaLabel">Consultar Citas</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="text" placeholder="Introduce el codigo de cita" class="form-control">
+          <button class="btn btn-outline-success my-3">Buscar</button>
+          <button type="button" class="collapsible">Cita 1</button>
+          <div id="citasPaciente" class="cita">
+
           </div>
           <div id="divConsultarCitas" class="modal-body">
 
@@ -139,51 +162,46 @@
           </div>
           <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          </div>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Historial Vacunación -->
-  <div class="modal fade" id="historial" tabindex="-1" data-bs-backdrop="static" aria-labelledby="historialLabel" aria-hidden="true">
+  <div class="modal fade" id="historial" tabindex="-1" data-bs-backdrop="static" aria-labelledby="historialLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        
+
         <div class="modal-header">
           <h5 class="modal-title" id="historialLabel">Historial de vacunación</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
-        
+
         <div class="modal-body">
           <form>
-            <div class="mb-3">
-              <label for="nombreYApePaciente" class="form-label">Nombre y Apellidos:</label>
-              <input type="text" class="form-control" placeholder="Nombre y apellido" disabled>
-            </div>
-            <div class="mb-3">
-                <label for="tis" class="form-label">TIS:</label>
-                <input type="text" class="form-control" placeholder="TIS" disabled>
-            </div>
             <div class="mb-3">
               <label for="localidad" class="form-label">Provincia:</label>
               <input type="text" class="form-control" placeholder="Provincia" disabled>
             </div>
-            <div class="mb-3"> 
-                <label for="localidad" class="form-label">Centro:</label>
-                <input type="text" class="form-control" placeholder="Centro" disabled>
+
+            <div class="mb-3">
+              <label for="localidad" class="form-label">Centro:</label>
+              <input type="text" class="form-control" placeholder="Centro" disabled>
             </div>
           </form>
           <button type="button" class="collapsible">1ª Dosis</button>
 
           <div class="cita">
             <form>
-              <div class="mb-3"> 
+              <div class="mb-3">
                 <label for="vacuna" class="form-label">Vacuna:</label>
                 <input type="text" class="form-control" placeholder="Vacuna" disabled>
               </div>
-              <div class="mb-3"> 
-                  <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
-                  <input type="date" class="form-control" placeholder="Fecha y hora" disabled> <!-- para introducir el valor de date hay que hacerlo de la siguiente manera *value='10-01-2022'*-->
+              <div class="mb-3">
+                <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
+                <input type="date" class="form-control" placeholder="Fecha y hora" disabled>
+                <!-- para introducir el valor de date hay que hacerlo de la siguiente manera *value='10-01-2022'*-->
               </div><br>
             </form>
           </div>
@@ -196,181 +214,207 @@
       </div>
     </div>
   </div>
-  
+
   <!-- Administrador General - Modificar Centros -->
-  <div class="modal fade" id="modificarCentros" tabindex="-1" data-bs-backdrop="static" aria-labelledby="modificarCentrosLabel" aria-hidden="true">
+  <div class="modal fade" id="modificarCentros" tabindex="-1" data-bs-backdrop="static"
+    aria-labelledby="modificarCentrosLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="modificarCentrosLabel">Administrar Centros</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-          </div>
-            <div class="modal-body">
-              <button type="button" class="collapsible">Centros Bizkaia</button>
-              <div class="cita">
-                <!-- <button type="button" class="collapsible-no-back">centro bizkaia 1</button> -->
-                <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro bizkaia 1</button>
-                <div class="centro">
-                  
-                </div>
+        </div>
+        <div class="modal-body">
+          <input type="text" class="form-control" placeholder="Introduce el codigo del centro">
+          <button type="button" class="btn btn-outline-success my-3">Buscar</button>
+          <button type="button" class="collapsible">Centros Bizkaia</button>
+          <div class="cita">
+            <!-- <button type="button" class="collapsible-no-back">centro bizkaia 1</button> -->
+            <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro
+              bizkaia 1</button>
+            <div class="centro">
 
-                <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro bizkaia 2</button>
-                <div class="centro">
-                  
-                </div>
-              </div>
-                <button type="button" class="collapsible">Centros Gipuzkoa</button>
-              <div class="cita">
-                <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro gipuzkoa 1</button>
-                <div class="centro">
-                 
-                </div> 
-
-                  <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro gipuzkoa 2</button>
-                <div class="centro">
-                  
-                </div>
-
-                </div>
-
-              <button type="button" class="collapsible">Centros Navarra</button>
-              <div class="cita">
-                <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro navarra 1</button>
-                <div class="centro">
-                 
-                </div>
-
-                <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro navarra 2</button>
-                <div class="centro">
-                  
-                </div>
-
-              </div>
             </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Confirmar</button>
+
+            <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro
+              bizkaia 2</button>
+            <div class="centro">
+
+            </div>
           </div>
+
+          <button type="button" class="collapsible">Centros Gipuzkoa</button>
+          <div class="cita">
+            <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro
+              gipuzkoa 1</button>
+            <div class="centro">
+
+            </div>
+
+            <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro
+              gipuzkoa 2</button>
+            <div class="centro">
+
+            </div>
+
+          </div>
+
+          <button type="button" class="collapsible">Centros Navarra</button>
+          <div class="cita">
+            <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro
+              navarra 1</button>
+            <div class="centro">
+
+            </div>
+
+            <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro
+              navarra 2</button>
+            <div class="centro">
+
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Confirmar</button>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Data Centro -->
-  <div class="modal fade" id="dataCentro" tabindex="-1" data-bs-backdrop="static" aria-labelledby="dataCentroLabel" aria-hidden="true">
+  <div class="modal fade" id="dataCentro" tabindex="-1" data-bs-backdrop="static" aria-labelledby="dataCentroLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        
+
         <div class="modal-header">
-          <h5 class="modal-title" id="dataCentroLabel">Datos de nombrecentro</h5>
+          <h5 class="modal-title" id="dataCentroLabel">Datos del centro</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
-        
+
         <div class="modal-body">
           <form name="datos">
-            <div class="mb-3">
-              <label for="nombreCentro" class="form-label">Nombre:</label>
-              <input name="enable" class="form-control" type="text" placeholder="Nombre del Centro" disabled>
-            </div>
-        
-              <div class="mb-3">
-                <label for="Provincia" class="form-label">Provincia:</label>
-                <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
-                  <option value="1">Bizkaia</option>
-                  <option value="2">Gipuzkoa</option>
-                  <option value="3">Navarra</option>
-                </select>
-              </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="mb-3">
+                  <label for="nombreCentro" class="form-label">Nombre:</label>
+                  <input name="enable" class="form-control" type="text" placeholder="Nombre del Centro">
+                </div>
 
-              <div class="mb-3">
-                <label for="Provincia" class="form-label">Población:</label>
-                <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
-                  <option selected></option>
-                  <option value="1">Amorebieta-Etxano</option>
-                  <option value="2">Galdakao</option>
-                  <option value="3">Bilbao</option>
-                </select>
+                <div class="mb-3">
+                  <label for="Provincia" class="form-label">Provincia:</label>
+                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <option value="1">Bizkaia</option>
+                    <option value="2">Gipuzkoa</option>
+                    <option value="3">Navarra</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="Provincia" class="form-label">Población:</label>
+                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <option selected></option>
+                    <option value="1">Amorebieta-Etxano</option>
+                    <option value="2">Galdakao</option>
+                    <option value="3">Bilbao</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="direccion" class="form-label">Dirección:</label>
+                  <input name="enable" class="form-control" type="text" placeholder="Dirección">
+                </div>
+
+                <div class="mb-3">
+                  <label for="codigoPostal" class="form-label">Código Postal:</label>
+                  <input name="enable" class="form-control" type="text" placeholder="Código Postal">
+                </div>
+
+                <div class="mb-3">
+                  <label for="horaApertura" class="form-label">Hora de Apertura:</label>
+                  <input name="enable" class="form-control" type="time">
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label" for="horaCierre">Hora de Cierre:</label><br>
+                  <input name="enable" type="time" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                  <label for="codigoPostal" class="form-label">Código Postal:</label>
+                  <input name="enable" class="form-control" type="text" placeholder="Código Postal">
+                </div>
               </div>
-        
-              <div class="mb-3"> 
-                <label for="direccion" class="form-label">Dirección:</label>
-                <input name="enable" class="form-control" type="text" placeholder="Dirección" disabled>
-              </div>
-              
-              <div class="mb-3"> 
-                <label for="codigoPostal" class="form-label">Código Postal:</label>
-                <input name="enable" class="form-control" type="text" placeholder="Código Postal" disabled>
-              </div>
-              
-              <div class="mb-3"> 
-                <label for="horaApertura" class="form-label">Hora de Apertura:</label>
-                <input name="enable" class="form-control" type="time" disabled>
-              </div>
-        
-              <div class="mb-3"> 
-                <label class="form-label" for="horaCierre">Hora de Cierre:</label><br>
-                <input name="enable" type="time" class="form-control" disabled>
-              </div>
-        
-              <div class="mb-3">
-                <label for="lunes" class="form-label">Lunes:</label>
-                <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
-                  <option value="1">Abierto</option>
-                  <option value="2">Cerrado</option>
-                </select>
-              </div>
-        
-              <div class="mb-3">
-                <label for="martes" class="form-label">Martes:</label>
-                <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
-                  <option value="1">Abierto</option>
-                  <option value="2">Cerrado</option>
-                </select>
-              </div>
-        
-              <div class="mb-3">
-                <label for="miercoles" class="form-label">Miércoles:</label>
-                <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
-                  <option value="1">Abierto</option>
-                  <option value="2">Cerrado</option>
-                </select>
-              </div> 
-                
-              <div class="mb-3">
-                <label for="jueves" class="form-label">Jueves:</label>
-                <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
-                  <option value="1">Abierto</option>
-                  <option value="2">Cerrado</option>
-                </select>
-              </div>
-        
-              <div class="mb-3">
-                <label for="viernes" class="form-label">Viernes:</label>
-                <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
-                  <option value="1">Abierto</option>
-                  <option value="2">Cerrado</option>
-                </select>
-              </div>
-        
-              <div class="mb-3">
-                <label for="sabado" class="form-label">Sabado:</label>
-                <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
-                  <option value="1">Abierto</option>
-                  <option value="2">Cerrado</option>
-                </select>
-              </div>
-        
-              <div class="mb-3">
-                <label for="domingo" class="form-label">Domingo:</label>
-                <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg" disabled>
-                  <option value="1">Abierto</option>
-                  <option value="2">Cerrado</option>
-                </select>
-              </div>
-          </form>  
+              <!--cierre del col-->
+
+              <div class="col-6">
+                <div class="mb-3">
+                  <label for="lunes" class="form-label">Lunes:</label>
+                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <option value="1">Abierto</option>
+                    <option value="2">Cerrado</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="martes" class="form-label">Martes:</label>
+                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <option value="1">Abierto</option>
+                    <option value="2">Cerrado</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="miercoles" class="form-label">Miércoles:</label>
+                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <option value="1">Abierto</option>
+                    <option value="2">Cerrado</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="jueves" class="form-label">Jueves:</label>
+                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <option value="1">Abierto</option>
+                    <option value="2">Cerrado</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="viernes" class="form-label">Viernes:</label>
+                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <option value="1">Abierto</option>
+                    <option value="2">Cerrado</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="sabado" class="form-label">Sabado:</label>
+                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <option value="1">Abierto</option>
+                    <option value="2">Cerrado</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="domingo" class="form-label">Domingo:</label>
+                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <option value="1">Abierto</option>
+                    <option value="2">Cerrado</option>
+                  </select>
+                </div>
+              </div><!--Cierre del col-->
+            </div><!--Cierre del row-->
+
+          </form>
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button> 
-          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#borrarCentro">Eliminar Centro</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#borrarCentro">Eliminar
+            Centro</button>
           <button type="button" class="btn btn-primary" onclick="enableModify()">Modificar</button>
           <button type="button" class="btn btn-success" onclick="disableModify()">Confirmar</button>
         </div>
@@ -379,326 +423,220 @@
     </div>
   </div>
 
-<!-- Administrador General - Añadir Centros -->
-  <div class="modal fade" id="añadirCentros" tabindex="-1" data-bs-backdrop="static" aria-labelledby="añadirCentrosLabel" aria-hidden="true">
+  <!-- Administrador General - Añadir Centros -->
+  <div class="modal fade" id="añadirCentros" tabindex="-1" data-bs-backdrop="static"
+    aria-labelledby="añadirCentrosLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="añadirCentrosLabel">Añadir Centro</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-          </div>
-            <div class="modal-body">           
-                <form>
-                  <div class="mb-3">
-                    <label for="nombreCentro" class="form-label">Nombre:</label>
-                    <input class="form-control" type="text" placeholder="Nombre del Centro">
-                  </div>
-  
-                    <div class="mb-3">
-                      <label for="Provincia" class="form-label">Provincia:</label>
-                      <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
-                        <option selected></option>
-                        <option value="1">Bizkaia</option>
-                        <option value="2">Gipuzkoa</option>
-                        <option value="3">Navarra</option>
-                      </select>
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="Provincia" class="form-label">Población:</label>
-                      <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
-                        <option selected></option>
-                        <option value="1">Amorebieta-Etxano</option>
-                        <option value="2">Galdakao</option>
-                        <option value="3">Bilbao</option>
-                      </select>
-                    </div>
-  
-                    <div class="mb-3"> 
-                      <label for="direccion" class="form-label">Dirección:</label>
-                      <input class="form-control" type="text" placeholder="Dirección">
-                    </div>
-                    
-                    <div class="mb-3"> 
-                      <label for="codigoPostal" class="form-label">Código Postal:</label>
-                      <input class="form-control" type="text" placeholder="Código Postal">
-                    </div>
-                    
-                    <div class="mb-3"> 
-                      <label for="horaApertura" class="form-label">Hora de Apertura:</label>
-                      <input class="form-control" type="time">
-                    </div>
-  
-                    <div class="mb-3"> 
-                      <label class="form-label" for="fechaHora">Hora de Cierre:</label><br>
-                      <input type="time" class="form-control">
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="lunes" class="form-label">Lunes:</label>
-                      <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
-                        <option value="1">Abierto</option>
-                        <option value="2">Cerrado</option>
-                      </select>
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="martes" class="form-label">Martes:</label>
-                      <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
-                        <option value="1">Abierto</option>
-                        <option value="2">Cerrado</option>
-                      </select>
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="miercoles" class="form-label">Miércoles:</label>
-                      <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
-                        <option value="1">Abierto</option>
-                        <option value="2">Cerrado</option>
-                      </select>
-                    </div>
-                      
-                    <div class="mb-3">
-                      <label for="jueves" class="form-label">Jueves:</label>
-                      <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
-                        <option value="1">Abierto</option>
-                        <option value="2">Cerrado</option>
-                      </select>
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="viernes" class="form-label">Viernes:</label>
-                      <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
-                        <option value="1">Abierto</option>
-                        <option value="2">Cerrado</option>
-                      </select>
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="sabado" class="form-label">Sabado:</label>
-                      <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
-                        <option value="1">Abierto</option>
-                        <option value="2">Cerrado</option>
-                      </select>
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="domingo" class="form-label">Domingo:</label>
-                      <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
-                        <option value="1">Abierto</option>
-                        <option value="2">Cerrado</option>
-                      </select>
-                    </div>
-                </form>
-            </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-success">Crear Centro</button>
-          </div>
-      </div>
-    </div>
-  </div>
-
-<!-- Administrador Pacientes - Ver Pacientes -->
-<div class="modal fade" id="verPacientes" tabindex="-1" data-bs-backdrop="static" aria-labelledby="verPacientesLabel" aria-hidden="true">
-  <div class="modal-dialog">
-  <div class="modal-content">
-      <div class="modal-header">
-      <h5 class="modal-title" id="verPacientesLabel">Ver Pacientes</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body">
-        <label for="provincia" class="form-label">Provincia:</label>
-        <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
-          <option selected></option>
-          <option value="1">Bizkaia</option>
-          <option value="2">Gipuzkoa</option>
-          <option value="3">Navarra</option>
-        </select>
-        <label for="centro" class="form-label">Centro:</label>
-        <select class="form-select form-select-ms -mb-3" aria-label=".form-select-lg">
-          <option selected></option>
-          <option value="1">centro 1</option>
-          <option value="2">centro 2</option>
-        </select> <br/>
-        <div class="form-inline col-md-6 flexible">
-          <button type="button" class="btn btn-primary">Buscar</button>
-          <input type="search" id="form1" class="form-control" placeholder="Buscar paciente"/>
-        </div> <br>
-
-        <button type="button" class="collapsible">tis / nombre apellidos paciente</button>
-        <div class="cita">
+        </div>
+        
+        <div class="modal-body">
           <form>
-            <div class="mb-3">
-              <label for="nombreYApePaciente" class="form-label">Nombre y Apellidos:</label>
-              <input class="form-control" type="text" placeholder="Nombre y apellidos" disabled>
-          </div>
-              <div class="mb-3">
-                <label for="tis" class="form-label">TIS:</label>
-                <input class="form-control" type="text" placeholder="TIS" disabled>
-              </div>
-          
-              <div class="mb-3">
-                <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento:</label>
-                <input class="form-control" type="date" placeholder="fechaNacimiento" disabled>
-              </div>
-          
-              <div class="mb-3"> 
-                <label for="dosis1" class="form-label">1ª dosis:</label>
-                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg" name="enable" disabled>
-                  <option value="1" selected>No</option>
-                  <option value="2">Si</option>
-                </select>
+            <div class="row">
+              <div class="col-6">
+                <div class="mb-3">
+                  <label for="nombreCentro" class="form-label">Nombre:</label>
+                  <input class="form-control" type="text" placeholder="Nombre del Centro">
+                </div>
+
+                <div class="mb-3">
+                  <label for="Provincia" class="form-label">Provincia:</label>
+                  <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <option selected></option>
+                    <option value="1">Bizkaia</option>
+                    <option value="2">Gipuzkoa</option>
+                    <option value="3">Navarra</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="Provincia" class="form-label">Población:</label>
+                  <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <option selected></option>
+                    <option value="1">Amorebieta-Etxano</option>
+                    <option value="2">Galdakao</option>
+                    <option value="3">Bilbao</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="direccion" class="form-label">Dirección:</label>
+                  <input class="form-control" type="text" placeholder="Dirección">
+                </div>
+
+                <div class="mb-3">
+                  <label for="codigoPostal" class="form-label">Código Postal:</label>
+                  <input class="form-control" type="text" placeholder="Código Postal">
+                </div>
+                <div class="mb-3">
+                  <label for="horaApertura" class="form-label">Hora de Apertura:</label>
+                  <input class="form-control" type="time">
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label" for="fechaHora">Hora de Cierre:</label><br>
+                  <input type="time" class="form-control">
+                </div>
               </div>
 
-              <div class="mb-3"> 
-                <label for="vacuna" class="form-label">Vacuna:</label>
-                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg" name="enable" disabled>
-                  <option value="" selected></option>
-                  <option value="1">Pfizer</option>
-                  <option value="2">Moderna</option>
-                  <option value="3">Johnson & Johnson</option>
-                  <option value="4">Novamax</option>
-                  <option value="5">AstraZeneca</option>
-                </select>
-              </div>
+              <div class="col-6">
+                <div class="mb-3">
+                  <label for="lunes" class="form-label">Lunes:</label>
+                  <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <option value="1">Abierto</option>
+                    <option value="2">Cerrado</option>
+                  </select>
+                </div>
 
-              <div class="mb-3"> 
-                <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
-                <input type="datetime-local" class="fechaHora form-control" id="fechaCita1" name="enable" disabled>
-              </div>
+                <div class="mb-3">
+                  <label for="martes" class="form-label">Martes:</label>
+                  <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <option value="1">Abierto</option>
+                    <option value="2">Cerrado</option>
+                  </select>
+                </div>
 
-              <div class="mb-3"> 
-                <label for="dosis1" class="form-label">2ª dosis:</label>
-                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg" name="enable" disabled>
-                  <option value="1" selected>No</option>
-                  <option value="2">Si</option>
-                  <option value="3">No es necesaria</option>
-                </select>
-              </div>
+                <div class="mb-3">
+                  <label for="miercoles" class="form-label">Miércoles:</label>
+                  <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <option value="1">Abierto</option>
+                    <option value="2">Cerrado</option>
+                  </select>
+                </div>
 
-              <div class="mb-3"> 
-                <label for="vacuna" class="form-label">Vacuna:</label>
-                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg" name="enable" disabled>
-                  <option value="" selected></option>
-                  <option value="1">Pfizer</option>
-                  <option value="2">Moderna</option>
-                  <option value="3">Johnson & Johnson</option>
-                  <option value="4">Novamax</option>
-                  <option value="5">AstraZeneca</option>
-                </select>
-              </div>
+                <div class="mb-3">
+                  <label for="jueves" class="form-label">Jueves:</label>
+                  <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <option value="1">Abierto</option>
+                    <option value="2">Cerrado</option>
+                  </select>
+                </div>
 
-              <div class="mb-3"> 
-                <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
-                <input type="datetime-local" class="fechaHora form-control" id="fechaCita2" name="enable" disabled>
-              </div>
+                <div class="mb-3">
+                  <label for="viernes" class="form-label">Viernes:</label>
+                  <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <option value="1">Abierto</option>
+                    <option value="2">Cerrado</option>
+                  </select>
+                </div>
 
-              <div class="mb-3"> 
-                <label for="dosis1" class="form-label">3ª dosis:</label>
-                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg" name="enable" disabled>
-                  <option value="1" selected>No</option>
-                  <option value="2">Si</option>
-                  <option value="3">No es necesaria</option>
-                </select>
+                <div class="mb-3">
+                  <label for="sabado" class="form-label">Sabado:</label>
+                  <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <option value="1">Abierto</option>
+                    <option value="2">Cerrado</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="domingo" class="form-label">Domingo:</label>
+                  <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <option value="1">Abierto</option>
+                    <option value="2">Cerrado</option>
+                  </select>
+                </div>
               </div>
-              
-              <div class="mb-3"> 
-                <label for="vacuna" class="form-label">Vacuna</label>
-                <select class="form-select form-select-ms mb-3" aria-label=".form-select-lg" name="enable" disabled>
-                  <option value="" selected></option>
-                  <option value="1">Pfizer</option>
-                  <option value="2">Moderna</option>
-                  <option value="2">Johnson & Johnson</option>
-                  <option value="4">Novamax</option>
-                  <option value="5">AstraZeneca</option>
-                </select>
-              </div>
-          
-              <div class="mb-3"> 
-                <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
-                <input type="datetime-local" class="fechaHora form-control" id="fechaCita3" name="enable" disabled>
-              </div>
-            </form>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" onclick="enableModify()">Registrar Vacunaciones</button> 
-              <button type="button" class="btn btn-success" onclick="disableModify()">Confirmar</button>
             </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-success">Crear Centro</button>
         </div>
       </div>
-      <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="disableModify()">Cerrar</button>
-     
-      </div>
-  </div>
-  </div>
-</div>
-
-
-<!-- Modals para borrar secciones -->
-
-<!-- Anular citas -->
-<div class="modal fade bg-dark" id="anularCita" tabindex="-1" aria-labelledby="anularCitaLabel" data-bs-backdrop="static" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      
-      <div class="modal-header">
-        <h5 class="modal-title" id="anularCitaLabel">Anulando Cita</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      
-      <div class="modal-body">
-        <form> 
-          <label for="texto" class="form-label">¿Estás segur@ de que quieres anular esta cita?</label>
-        </form>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
-        <button type="button" class="btn btn-success">Si</button>
-      </div>
-
     </div>
   </div>
-</div>
 
-<!-- Eliminar Centro -->
-<div class="modal fade bg-dark" id="borrarCentro" tabindex="-1" data-bs-backdrop="static" aria-labelledby="borrarCentroLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      
-      <div class="modal-header">
-        <h5 class="modal-title" id="borrarCentroLabel">Eliminando Centro</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+  <!-- Administrador Pacientes - Ver Pacientes -->
+  <div class="modal fade" id="verPacientes" tabindex="-1" data-bs-backdrop="static" aria-labelledby="verPacientesLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="verPacientesLabel">Ver Pacientes</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
       </div>
-      
-      <div class="modal-body">
-        <form> 
-          <label for="texto" class="form-label">¿Estás segur@ de que quieres eliminar este centro?</label>
-        </form>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
-        <button type="button" class="btn btn-success">Si</button>
-      </div>
-
     </div>
   </div>
-</div>
+  
 
 
-    <!-- footer dinamico -->
-    <footer id="dynamicFooter" class="mt-auto bg-dark"></footer>
-    
+  <!-- Modals para borrar secciones -->
 
-    <!-- Librerias -->
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/jquery-3.6.0.js"></script>
+  <!-- Anular citas -->
+  <div class="modal fade bg-dark" id="anularCita" tabindex="-1" aria-labelledby="anularCitaLabel"
+    data-bs-backdrop="static" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
 
-    <!-- JS nuestros -->
-    <script src="../js/dinamico.js"></script>
-    <script src="../js/paciente.js"></script>
+        <div class="modal-header">
+          <h5 class="modal-title" id="anularCitaLabel">Anulando Cita</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+
+        <div class="modal-body">
+          <form>
+            <label for="texto" class="form-label">¿Estás segur@ de que quieres anular esta cita?</label>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+          <button type="button" class="btn btn-success">Si</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Eliminar Centro -->
+  <div class="modal fade bg-dark" id="borrarCentro" tabindex="-1" data-bs-backdrop="static"
+    aria-labelledby="borrarCentroLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="borrarCentroLabel">Eliminando Centro</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+
+        <div class="modal-body">
+          <form>
+            <label for="texto" class="form-label">¿Estás segur@ de que quieres eliminar este centro?</label>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+          <button type="button" class="btn btn-success">Si</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- footer dinamico -->
+  <footer id="dynamicFooter" class="mt-auto bg-dark"></footer>
+
+  <!-- Librerias -->
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/jquery-3.6.0.js"></script>
+
+  <!-- JS nuestros -->
+  <script src="../js/dinamico.js"></script>
+  <script src="../js/paciente.js"></script>
+  <script src="../js/admin.js"></script>
 
 </body>
+
 </html>
