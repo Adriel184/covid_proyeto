@@ -1,4 +1,4 @@
-function collapse(params) {
+function collapse() {
   var coll = document.getElementsByClassName("collapsible");
   var i;
 
@@ -56,10 +56,6 @@ async function loadContent(x) {
       headers:{'Content-Type': 'application/json'}  //input data
       
     }).then(res => res.json()).then(result => {
-
-
-      console.log("Los datos del ---> "+x+" se han recibido:");
-      console.log(result);
     
       if (x=="paciente") {
         document.getElementById("navbarDarkDropdownMenuLink").innerHTML=result.paciente.nombre;
@@ -69,7 +65,6 @@ async function loadContent(x) {
         document.getElementById("centro").value=result.paciente.centro.nombre;
         document.getElementById("idCentro").value=result.paciente.centro.id;
         document.getElementById("dosis").value=parseInt(result.paciente.ultimaDosis) + 1;
-    
         
         result.paciente.citas.forEach(element => {
           document.getElementById("divConsultarCitas").innerHTML+="<br><button type='button' class='collapsible'>Cita dosis "+element.dosis+"</button>"
@@ -88,16 +83,13 @@ async function loadContent(x) {
           +        "<input type='' class='fechaHora form-control' id='fechaConsultarCita' value='"+element.fecha+" 'disabled>"
           +    "</div> <br>"
           +    "<button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#anularCita'>Anular Cita</button>"
-          +    "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modificarCita' onclick='enableModify()'>Cambiar fecha / hora</button>"
+          +    "<button type='button' class='btn btn-primary mx-3' data-bs-toggle='modal' data-bs-target='#modificarCita' onclick='enableModify()'>Cambiar fecha / hora</button>"
           +    "<button type='button' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#confirmarCitaCita' onclick='disableModify()'>Aceptar</button>"
           +  "</form>"
           +"</div>"
         });
-    
-        collapse();
-        
+        collapse();        
       }
-
 
       console.log(result.paciente);
       $("#navbarDarkDropdownMenuLink").html(result.paciente.nombre + ', ' + result.paciente.apellido);

@@ -14,7 +14,6 @@ $(document).ready(function() {
         
         $(centros).each(function(i) {
             if(centros[i].provincia.includes("Vizcaya")){
-                console.log(centros[i]);
                 vizcaya += "<button type='button' class='collapsible-no-back centroM' data-bs-toggle='modal' data-bs-target='#dataCentro' "
                 + "data-id='" + centros[i].id + "' "
                 + "data-nombre='" + centros[i].nombre + "' "

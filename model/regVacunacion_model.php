@@ -31,14 +31,14 @@ class regVacunacion_model extends regVacunacion{
 
 
     public function getRegVacunacionByTis() {
-
         $this->OpenConnect();
 
-        $vacunas=$this->getVacunas();
-        $centros=$this->getCentros();
+        $vacunas = $this -> getVacunas();
+        $centros = $this -> getCentro();
+        $tis = $this -> getTis();
         
         $sql="SELECT * FROM paciente WHERE tis=$tis";
-        $result=$this->link_>query($sql);
+        $result=$this->link->query($sql);
 
         $response=array();
 
@@ -69,9 +69,8 @@ class regVacunacion_model extends regVacunacion{
 
             $response["registro"]=get_object_vars($registro);
             $response["status"]="200";
-        }else {
-            $response["status"]="500";
         }
+
         mysqli_free_result($result);
         $this->CloseConnect();
 

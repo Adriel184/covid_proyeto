@@ -3,7 +3,6 @@
 class regVacunacion {
     protected $id;
     protected $dosis;
-    protected $marca;
     protected $fecha;
     protected $id_vacuna;
     protected $tis;
@@ -44,25 +43,6 @@ class regVacunacion {
     public function setDosis($dosis)
     {
         $this->dosis = $dosis;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of marca
-     */ 
-    public function getMarca()
-    {
-        return $this->dosis;
-    }
-
-    /**
-     * Set the value of marca
-     * @return  self
-     */ 
-    public function setMarca($marca)
-    {
-        $this->marca = $marca;
 
         return $this;
     }
