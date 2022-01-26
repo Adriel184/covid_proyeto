@@ -78,6 +78,8 @@ class paciente_model extends paciente {
             $paciente->apellido=$row['apellido'];
             $paciente->fecha_nac=$row['fecha_nac'];
             $paciente->fecha_pcr_pstv=$row['fecha_pcr'];
+            $response["paciente"]=get_object_vars($paciente);
+            $response["status"]="200";
 
             $cita = new cita_model();
             $cita->setTis($row['tis']); 
@@ -90,7 +92,6 @@ class paciente_model extends paciente {
 
             $response["paciente"]=get_object_vars($paciente);
             $response["status"]="200";
-
         }else {
             $response["status"]="500";
         }

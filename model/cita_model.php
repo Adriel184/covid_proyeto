@@ -99,6 +99,8 @@ class cita_model extends cita {
             $cita=new cita_model();
             $cita->setId($row['id']);
             $cita->setFecha($row['fecha']);
+            $cita->setDosis($row['dosis']);
+
             $cita->setTis($row['tis']);
             $cita->setId_centro($row['id_centro']);
 
