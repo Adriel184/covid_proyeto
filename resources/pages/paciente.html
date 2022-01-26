@@ -60,7 +60,6 @@
         <label for="inputButton" class="form-label transparente">Confirme su imagen:</label>
         <input type="button" class="form-control btn btn-success" id="inputButton" aria-describedby="inputFile" aria-label="Upload" value="Confirmar">
       </div>
-      
     </form>
   </div>
 
@@ -103,6 +102,7 @@
                 <div class="mb-3"> 
                   <label for="centro" class="form-label">Centro:</label>
                   <input id="centro" class="form-control" type="text" placeholder="Centro" disabled>
+                  <input id="idCentro" class="form-control" type="text" placeholder="" hidden disabled>
                 </div>
                 
                 <div class="mb-3"> 
@@ -118,7 +118,7 @@
         </div>
         <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-success">Confirmar</button>
+        <button id="ConfirmarPedirCita" type="button" class="btn btn-success">Confirmar</button>
         </div>
     </div>
     </div>
@@ -132,43 +132,10 @@
           <h5 class="modal-title" id="consultarCitaLabel">Consultar Citas</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
           </div>
-          <div class="modal-body">
-            <button type="button" class="collapsible">Cita 1</button>
-            <div class="cita">
-              <form>
-                <div class="mb-3">
-                  <label for="nombreYApePaciente" class="form-label">Nombre y Apellidos:</label>
-                  <input type="text" class="form-control" placeholder="Nombre y apellido" disabled>
-                </div>
-                <div class="mb-3">
-                    <label for="tis" class="form-label">TIS:</label>
-                    <input type="text" class="form-control" placeholder="Tis" disabled>
-                </div>
-                <div class="mb-3">
-                  <label for="localidad" class="form-label">Provincia:</label>
-                  <input type="text" class="form-control" placeholder="Localidad" disabled>
-                </div>
-                <div class="mb-3"> 
-                    <label for="centro" class="form-label">Centro:</label>
-                    <input type="text" class="form-control" placeholder="Centro" disabled>
-                </div>
-                <div class="mb-3"> 
-                  <label for="tipoDosis" class="form-label">Vacuna:</label>
-                  <input type="text" class="form-control" placeholder="Vacuna" disabled>
-                </div>
-                <div class="mb-3"> 
-                    <label for="dosis" class="form-label">Nº Dosis:</label>
-                    <input type="text" class="form-control" placeholder="Dosis" disabled>
-                </div>
-                <div class="mb-3"> 
-                    <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
-                    <input name="enable" type="datetime-local" class="fechaHora" id="fechaConsultarCita" disabled>
-                </div> <br>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#anularCita">Anular Cita</button>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modificarCita" onclick="enableModify()">Cambiar fecha / hora</button>
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmarCitaCita" onclick="disableModify()">Aceptar</button>
-              </form>
-            </div>
+          <div id="divConsultarCitas" class="modal-body">
+
+            <!-- carga las citas desde paciente.js -->
+
           </div>
           <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -556,11 +523,7 @@
         </select> <br/>
         <div class="form-inline col-md-6 flexible">
           <button type="button" class="btn btn-primary">Buscar</button>
-<<<<<<< HEAD
-          <input type="search" id="form1" class="form-control" placeholder="buscar paciente"/>
-=======
           <input type="search" id="form1" class="form-control" placeholder="Buscar paciente"/>
->>>>>>> Alejandro
         </div> <br>
 
         <button type="button" class="collapsible">tis / nombre apellidos paciente</button>

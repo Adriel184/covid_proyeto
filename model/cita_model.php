@@ -147,18 +147,17 @@ class cita_model extends cita {
     public function addCita(){
 
         $this->OpenConnect();
-        $fecha = $this -> fecha;
-        $dosis = $this -> dosis;
-        $tis = $this -> tis;
-        $id_centro = $this -> id_centro;
+        $fecha=$this->getFecha();
+        $dosis=$this->getDosis();
+        $tis=$this->getTis();
+        $id_centro=$this->getId_centro();
 
-        $sql = "INSERT INTO `citas`(`fecha`, `dosis`, `tis`, `id_centro`) VALUES ('$fecha','$dosis','$tis','$id_centro')";
+        $sql = "INSERT INTO `cita`(`fecha`, `dosis`, `tis`, `id_centro`) VALUES ('$fecha','$dosis','$tis','$id_centro')";
 
         $result = $this->link->query($sql);
 
         $this->CloseConnect();
         return $result;
-
     }
 
 
