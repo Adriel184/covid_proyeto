@@ -43,48 +43,6 @@ async function loadContent(x) {
   var accion = x;
   var data = {"accion":accion};
   var url = "../../controller/controllerPaciente.php";
-  
-
-  console.log("Los datos del ---> "+x+" se han recibido:");
-  console.log(result);
-
-  if (x=="paciente") {
-    document.getElementById("navbarDarkDropdownMenuLink").innerHTML=result.paciente.nombre;
-    document.getElementById("nombreYApePaciente").value=result.paciente.nombre +" "+result.paciente.apellido;
-    document.getElementById("tis").value=result.paciente.tis;
-    document.getElementById("localidad").value=result.paciente.centro.provincia;
-    document.getElementById("centro").value=result.paciente.centro.nombre;
-    document.getElementById("idCentro").value=result.paciente.centro.id;
-    document.getElementById("dosis").value=parseInt(result.paciente.ultimaDosis) + 1;
-
-    
-    result.paciente.citas.forEach(element => {
-      document.getElementById("divConsultarCitas").innerHTML+="<br><button type='button' class='collapsible'>Cita dosis "+element.dosis+"</button>"
-      +"<div class='cita'>"
-      +  "<form>"
-      +    "<div class='mb-3'>"
-      +      "<label for='localidad' class='form-label'>Provincia:</label>"
-      +      "<input type='text' class='form-control' placeholder='Localidad' disabled>"
-      +    "</div>"
-      +    "<div class='mb-3'>" 
-      +        "<label for='centro' class='form-label'>Centro:</label>"
-      +        "<input type='text' class='form-control' placeholder='Centro' disabled>"
-      +    "</div>"
-      +    "<div class='mb-3'>"
-      +        "<label class='form-label' for='fechaHora'>Fecha y Hora:</label><br>"
-      +        "<input type='' class='fechaHora form-control' id='fechaConsultarCita' value='"+element.fecha+" 'disabled>"
-      +    "</div> <br>"
-      +    "<button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#anularCita'>Anular Cita</button>"
-      +    "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modificarCita' onclick='enableModify()'>Cambiar fecha / hora</button>"
-      +    "<button type='button' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#confirmarCitaCita' onclick='disableModify()'>Aceptar</button>"
-      +  "</form>"
-      +"</div>"
-    });
-
-    collapse();
-    
-  }
-
   var sesion = await getSession();
   
   console.log(sesion);
@@ -102,6 +60,49 @@ async function loadContent(x) {
       headers:{'Content-Type': 'application/json'}  //input data
       
     }).then(res => res.json()).then(result => {
+
+
+      console.log("Los datos del ---> "+x+" se han recibido:");
+      console.log(result);
+    
+      if (x=="paciente") {
+        document.getElementById("navbarDarkDropdownMenuLink").innerHTML=result.paciente.nombre;
+        document.getElementById("nombreYApePaciente").value=result.paciente.nombre +" "+result.paciente.apellido;
+        document.getElementById("tis").value=result.paciente.tis;
+        document.getElementById("localidad").value=result.paciente.centro.provincia;
+        document.getElementById("centro").value=result.paciente.centro.nombre;
+        document.getElementById("idCentro").value=result.paciente.centro.id;
+        document.getElementById("dosis").value=parseInt(result.paciente.ultimaDosis) + 1;
+    
+        
+        result.paciente.citas.forEach(element => {
+          document.getElementById("divConsultarCitas").innerHTML+="<br><button type='button' class='collapsible'>Cita dosis "+element.dosis+"</button>"
+          +"<div class='cita'>"
+          +  "<form>"
+          +    "<div class='mb-3'>"
+          +      "<label for='localidad' class='form-label'>Provincia:</label>"
+          +      "<input type='text' class='form-control' placeholder='Localidad' disabled>"
+          +    "</div>"
+          +    "<div class='mb-3'>" 
+          +        "<label for='centro' class='form-label'>Centro:</label>"
+          +        "<input type='text' class='form-control' placeholder='Centro' disabled>"
+          +    "</div>"
+          +    "<div class='mb-3'>"
+          +        "<label class='form-label' for='fechaHora'>Fecha y Hora:</label><br>"
+          +        "<input type='' class='fechaHora form-control' id='fechaConsultarCita' value='"+element.fecha+" 'disabled>"
+          +    "</div> <br>"
+          +    "<button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#anularCita'>Anular Cita</button>"
+          +    "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modificarCita' onclick='enableModify()'>Cambiar fecha / hora</button>"
+          +    "<button type='button' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#confirmarCitaCita' onclick='disableModify()'>Aceptar</button>"
+          +  "</form>"
+          +"</div>"
+        });
+    
+        collapse();
+        
+      }
+
+
       console.log(result.paciente);
       $("#navbarDarkDropdownMenuLink").html(result.paciente.nombre + ', ' + result.paciente.apellido);
       // $(".nombreYApePaciente").val(result.paciente.nombre +", "+result.paciente.apellido);

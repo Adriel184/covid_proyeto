@@ -102,6 +102,7 @@ class cita_model extends cita {
             $cita->setFecha($row['fecha']);
             $cita->setTis($row['tis']);
             $cita->setId_centro($row['id_centro']);
+            $cita->setDosis($row['dosis']);
 
             //$arrmov = (array) $movimiento;
             array_push($citas, get_object_vars($cita));
