@@ -175,4 +175,7 @@ class cita_model extends cita {
         
     }
 
+    public function ObjVars(){
+        return get_object_vars($this);
+    }
 }
