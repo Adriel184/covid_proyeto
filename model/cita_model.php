@@ -94,25 +94,18 @@ class cita_model extends cita {
         
         $citas=array();
         
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
-        {         
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){         
             //FILL LIST with all families
             $cita=new cita_model();
             $cita->setId($row['id']);
             $cita->setFecha($row['fecha']);
-<<<<<<< HEAD
-<<<<<<< HEAD
-            $cita->setDosis($row['dosis']);
-=======
->>>>>>> main
-=======
->>>>>>> main
             $cita->setTis($row['tis']);
             $cita->setId_centro($row['id_centro']);
 
-            //$arrmov = (array) $movimiento;
             array_push($citas, get_object_vars($cita));
+
         }
+
         mysqli_free_result($result);
         $this->CloseConnect();
         return $citas;
@@ -149,7 +142,6 @@ class cita_model extends cita {
 
     }
 
-
     public function addCita(){
 
         $this->OpenConnect();
@@ -166,7 +158,6 @@ class cita_model extends cita {
         return $result;
 
     }
-
 
     public function deleteCita(){
 

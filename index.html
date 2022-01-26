@@ -38,20 +38,21 @@
         <form id="inicio" >
           <div class="mb-3">
             <label for="exampleInputText1" class="form-label">TIS:</label>
-            <input type="text" class="form-control" id="tis" >
+            <input type="text" class="form-control" id="tis">
           </div>
           <div class="mb-3">
             <label for="exampleInputText2" class="form-label">Apellido:</label>
-            <input type="text" class="form-control" id="surname" >
+            <input type="text" class="form-control" id="surname">
           </div>
           <div class="mb-3"> 
-            <label class="form-label" for="exampleDate1">Fecha de Nacimiento:</label><br>
+            <label class="form-label" for="exampleDate1">Fecha de Nacimiento:</label>
             <input type="date" class="form-control" id="birth">
           </div>
           <div id="bottomText" class="form-text">
               *Todos los campos son obligatorios.
-          </div><br>
-          <button type="button" class="btn btn-outline-success" id="loginPaciente">Confirmar</button>
+          </div>
+          <p id="mensajeError" class="text-danger" style="display: none;">No se ha rellenado algún campo</p>
+          <button type="button" class="btn btn-outline-success my-3"  id="loginPaciente">Confirmar</button>
         </form>
       </div>
     </div>

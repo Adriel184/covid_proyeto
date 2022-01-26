@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-01-2022 a las 08:58:29
--- Versión del servidor: 10.4.22-MariaDB
--- Versión de PHP: 8.1.1
+-- Tiempo de generación: 25-01-2022 a las 08:40:13
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,6 +29,7 @@ USE `covid_ddbb`;
 -- Estructura de tabla para la tabla `admin`
 --
 
+DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
   `id` int(9) NOT NULL,
   `usuario` varchar(50) NOT NULL,
@@ -54,6 +55,7 @@ INSERT INTO `admin` (`id`, `usuario`, `contrasena`, `nombre`, `apellido`, `tipo`
 -- Estructura de tabla para la tabla `centro_vacunacion`
 --
 
+DROP TABLE IF EXISTS `centro_vacunacion`;
 CREATE TABLE `centro_vacunacion` (
   `id` int(9) NOT NULL,
   `nombre` varchar(50) NOT NULL,
@@ -86,6 +88,7 @@ INSERT INTO `centro_vacunacion` (`id`, `nombre`, `poblacion`, `cp`, `provincia`,
 -- Estructura de tabla para la tabla `cita`
 --
 
+DROP TABLE IF EXISTS `cita`;
 CREATE TABLE `cita` (
   `id` int(9) NOT NULL,
   `tis` int(8) NOT NULL,
@@ -106,10 +109,11 @@ INSERT INTO `cita` (`id`, `tis`, `id_centro`, `fecha`) VALUES
 -- Estructura de tabla para la tabla `paciente`
 --
 
+DROP TABLE IF EXISTS `paciente`;
 CREATE TABLE `paciente` (
   `tis` int(8) NOT NULL,
   `nombre` varchar(50) NOT NULL,
-  `apellidos` varchar(75) NOT NULL,
+  `apellido` varchar(75) NOT NULL,
   `fecha_nac` date NOT NULL,
   `fecha_pcr` date DEFAULT NULL,
   `id_centro` int(9) NOT NULL
@@ -119,9 +123,9 @@ CREATE TABLE `paciente` (
 -- Volcado de datos para la tabla `paciente`
 --
 
-INSERT INTO `paciente` (`tis`, `nombre`, `apellidos`, `fecha_nac`, `fecha_pcr`, `id_centro`) VALUES
-(12345678, 'Adriel', 'Crespo Neves', '2001-12-10', NULL, 2),
-(23456789, 'Iñigo', 'Rosado Rico', '2002-02-07', '2020-10-12', 1);
+INSERT INTO `paciente` (`tis`, `nombre`, `apellido`, `fecha_nac`, `fecha_pcr`, `id_centro`) VALUES
+(12345678, 'Adriel', 'Crespo', '2001-12-10', NULL, 2),
+(23456789, 'Iñigo', 'Rosado', '2002-02-07', '2020-10-12', 1);
 
 -- --------------------------------------------------------
 
@@ -129,6 +133,7 @@ INSERT INTO `paciente` (`tis`, `nombre`, `apellidos`, `fecha_nac`, `fecha_pcr`, 
 -- Estructura de tabla para la tabla `recibe`
 --
 
+DROP TABLE IF EXISTS `recibe`;
 CREATE TABLE `recibe` (
   `tis` int(8) NOT NULL,
   `id_vacuna` int(9) NOT NULL,
@@ -149,6 +154,7 @@ INSERT INTO `recibe` (`tis`, `id_vacuna`, `fecha`, `dosis`) VALUES
 -- Estructura de tabla para la tabla `vacuna`
 --
 
+DROP TABLE IF EXISTS `vacuna`;
 CREATE TABLE `vacuna` (
   `id` int(9) NOT NULL,
   `marca` varchar(25) NOT NULL

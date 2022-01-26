@@ -34,4 +34,3 @@
     }elseif ($accion=="admin") {
         
     }
-

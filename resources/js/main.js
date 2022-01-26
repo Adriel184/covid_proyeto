@@ -45,7 +45,7 @@ function login(x) {
         }
     }else if(x == "admin"){
         if ((usuario != null && usuario != "") && (pass != null && pass != "")) {
-            var data = {'user':usuario, 'password':pass};
+            var data = {'user':usuario, 'password':pass, 'accion':x};
 
             url = "controller/controllerAdmin.php";
 
