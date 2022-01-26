@@ -100,13 +100,8 @@ class cita_model extends cita {
             $cita=new cita_model();
             $cita->setId($row['id']);
             $cita->setFecha($row['fecha']);
-<<<<<<< HEAD
-<<<<<<< HEAD
             $cita->setDosis($row['dosis']);
-=======
->>>>>>> main
-=======
->>>>>>> main
+
             $cita->setTis($row['tis']);
             $cita->setId_centro($row['id_centro']);
 
