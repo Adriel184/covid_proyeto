@@ -150,7 +150,7 @@ function pedirCita () {
   .then(res => res.json()).then(result => {
   
     console.log( "Se ha creado la cita correctamente?: "+result.added);
-
+    console.log(result.message);
     if (result.added) {
       console.log("Cita creada correctamente");
     }
