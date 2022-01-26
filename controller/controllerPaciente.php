@@ -15,22 +15,22 @@
     
         $paciente=new paciente_model();
         $paciente->setTis($tis);
-        
+
         $respGetPaciente=array();
 
         $respGetPaciente=$paciente->getPacienteByTis();
+
         if ($respGetPaciente["status"]=="200") {
             $response["paciente"]= $respGetPaciente["paciente"];
             $response["paciente"]["ultimaDosis"]= $paciente->getLastDosis();
         }else{
             $response["paciente"]=null;
         }
-
+        
         $response["view"]=$view;
-    
+        
         echo json_encode($response);
         
         unset($response);
-        
     }
-
+?>
