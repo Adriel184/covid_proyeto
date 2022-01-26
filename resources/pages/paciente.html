@@ -15,6 +15,9 @@
   <!-- Nuestros css -->
   <link rel="stylesheet" href="../css/stylePaciente.css">
   <link rel="stylesheet" href="../css/styleHyF.css">
+
+  <!-- Link de la libreria de Angular -->
+  <link rel="stylesheet" href="../js/angular.min.js">
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -219,53 +222,14 @@
         <div class="modal-body">
           <input type="text" class="form-control" placeholder="Introduce el codigo del centro">
           <button type="button" class="btn btn-outline-success my-3">Buscar</button>
-          <button type="button" class="collapsible">Centros Bizkaia</button>
-          <div class="cita">
-            <!-- <button type="button" class="collapsible-no-back">centro bizkaia 1</button> -->
-            <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro
-              bizkaia 1</button>
-            <div class="centro">
-
-            </div>
-
-            <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro
-              bizkaia 2</button>
-            <div class="centro">
-
-            </div>
-          </div>
+          <button type="button" class="collapsible">Centros Vizcaya</button>
+          <div class="cita" id="vizcaya"></div>
 
           <button type="button" class="collapsible">Centros Gipuzkoa</button>
-          <div class="cita">
-            <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro
-              gipuzkoa 1</button>
-            <div class="centro">
-
-            </div>
-
-            <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro
-              gipuzkoa 2</button>
-            <div class="centro">
-
-            </div>
-
-          </div>
+          <div class="cita" id="gipuzkoa"></div>
 
           <button type="button" class="collapsible">Centros Navarra</button>
-          <div class="cita">
-            <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro
-              navarra 1</button>
-            <div class="centro">
-
-            </div>
-
-            <button type="button" class="collapsible-no-back" data-bs-toggle="modal" data-bs-target="#dataCentro">centro
-              navarra 2</button>
-            <div class="centro">
-
-            </div>
-
-          </div>
+          <div class="cita" id="navarra"></div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -547,14 +511,21 @@
   <!-- Administrador Pacientes - Ver Pacientes -->
   <div class="modal fade" id="verPacientes" tabindex="-1" data-bs-backdrop="static" aria-labelledby="verPacientesLabel"
     aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="verPacientesLabel">Ver Pacientes</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
         <div class="modal-body">
-          
+          <p>Introduzca el tis del paciente:<span class="fst-normal text-muted">(8 digitos numericos)</span></p>
+          <input type="text" name="numTis" id="numTis" class="form-control" placeholder="Tis">
+          <button id="buscaTis" class="btn btn-success mt-3">Buscar</button>
+
+          <div id="infoPaciente" class="row mt-3">
+            
+          </div>
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -562,11 +533,8 @@
       </div>
     </div>
   </div>
-  
-
 
   <!-- Modals para borrar secciones -->
-
   <!-- Anular citas -->
   <div class="modal fade bg-dark" id="anularCita" tabindex="-1" aria-labelledby="anularCitaLabel"
     data-bs-backdrop="static" aria-hidden="true">
