@@ -26,6 +26,9 @@ function getView() {
   headers:{'Content-Type': 'application/json'}  //input data
   
   }).then(res => res.json()).then(result => {
+    loadContent(result)
+  }).catch(error => console.error('Error status:', error));
+}
   
 async function loadContent(x) {
 
@@ -96,6 +99,8 @@ $('#btnCita').click(function () {
   console.log("hora: " + horaCitaNueva);
   
 });
+
+
 
 
 

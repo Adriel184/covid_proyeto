@@ -1,9 +1,7 @@
 window.addEventListener('DOMContentLoaded', () =>{
     loadHeaderFooter()
 
-    if(!window.location.href.includes("index.html")){
-        loadPaciente();
-    }
+    
 })
 
 async function loadHeaderFooter(){
