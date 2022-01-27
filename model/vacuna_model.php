@@ -35,7 +35,7 @@ class vacuna_model extends vacuna {
             $vacuna->id=$row['id'];
             $vacuna->marca=$row['marca'];
 
-            array_push($vacunas, $vacuna);
+            array_push($vacunas, get_object_vars($vacuna));
         }
         mysqli_free_result($result);
         $this->CloseConnect();
@@ -43,4 +43,7 @@ class vacuna_model extends vacuna {
 
     }
 
+    public function ObjVars(){
+        return get_object_vars($this);
+    }
 }

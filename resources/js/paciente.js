@@ -17,8 +17,6 @@ function collapse() {
 
 collapse();
 
-
-
 window.onload=getView();
 
 function getView() {
@@ -158,6 +156,58 @@ function disableModify() {
   $("select[name='enable']").prop('disabled', true);
 }
 
+$('#btnCita').click(function () {
+  var fechaCitaNueva = $('#fechaPedirCita').val().split('T')[0];
+  var horaCitaNueva = $('#fechaPedirCita').val().split('T')[1]; 
+  console.log("fecha: "+ fechaCitaNueva);
+  console.log("hora: " + horaCitaNueva);
+  
+});
+
+$('#historial').ready(()=>{
+  historialVacu()
+})
+
+async function historialVacu() {
+  var sesion = await getSession();
+  var data = {'tis':sesion.tis};
+  var url = '../../controller/controllerHistorial.php'
+
+  fetch(url,{
+    method:'POST',
+    body: JSON.stringify(data),
+    headers:{'Content-Type': 'application/json'}
+  }).then(res => res.json()).then(result =>{
+    console.log(result.historial);
+
+    i = 0;
+    e = 1;
+    while (i < result.historial.length) {
+      $('#historialVacunacion').append(
+        "<button type='button' class='collapsible active'>Vacunacion "+e+"</button>"+
+        "<div class='cita row mt-3'>"+
+          "<div class='col-6 mb-4'>"+
+            "<label for='tis' class='form-label'>Tis:</label>"+
+            "<input type='text' class='form-control' placeholder='"+result.historial[i].tis+"' disabled>"+
+            "<label for='Vacuna' class='form-label'>Vacuna:</label>"+
+            "<input type='text' class='form-control' placeholder='"+result.historial[i].objVacuna.marca+"' disabled>"+
+          "</div>"+
+          "<div class='col-6 mb-4'>"+
+            "<label for='Fecha' class='form-label'>Fecha:</label>"+
+            "<input type='date' class='form-control' value='"+result.historial[i].fecha+"' disabled>"+
+            "<label for='Dosis' class='form-label'>Dosis:</label>"+
+            "<input type='text' class='form-control' placeholder='"+result.historial[i].dosis+"' disabled>"+
+          "</div>"+
+        "</div>"
+      );
+
+      i++;
+      e++;
+    }
+    
+  })
+}
+
 function getSession() { //RECOGE LAS VARIABLES DE SESSION
 
   return new Promise((resolve, reject) => {
@@ -171,18 +221,6 @@ function getSession() { //RECOGE LAS VARIABLES DE SESSION
     
   })
 }
-
-$('#btnCita').click(function () {
-  var fechaCitaNueva = $('#fechaPedirCita').val().split('T')[0];
-  var horaCitaNueva = $('#fechaPedirCita').val().split('T')[1]; 
-  console.log("fecha: "+ fechaCitaNueva);
-  console.log("hora: " + horaCitaNueva);
-  
-});
-
-
-
-
 
 // ! MOSTRAR LA CITA DEL PACIENTE TODAS LAS QUE TENGA
 

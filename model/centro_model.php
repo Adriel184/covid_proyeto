@@ -108,6 +108,70 @@ class centro_model extends centro {
         $this->CloseConnect();
         return $centros;
     }
+
+    public function insertCentro(){       
+
+        $this->OpenConnect();
+
+        $nombre = $this->getNombre();
+        $provincia = $this->getProvincia();
+        $poblacion = $this->getPoblacion();
+        $direccion = $this->getDireccion();
+        $cp = $this->getCp();
+        $hora_apertura = $this->getHora_apertura();
+        $hora_cierre = $this->getHora_cierre();
+        $lunes = $this->getLunes();
+        $martes = $this->getMartes();
+        $miercoles = $this->getMiercoles();
+        $jueves = $this->getJueves();
+        $viernes = $this->getViernes();
+        $sabado = $this->getSabado();
+        $domingo = $this->getDomingo();
+
+        $sql = "INSERT INTO `centro_vacunacion`(`nombre`, `poblacion`, `cp`, `provincia`, `direccion`, `hora_apertura`, `hora_cierre`, `lunes`, `martes`, `miercoles`, `jueves`, `viernes`, `sabado`, `domingo`) VALUES ('$nombre','$poblacion',$cp, '$provincia','$direccion','$hora_apertura:00','$hora_cierre:00',$lunes,$martes,$miercoles,$jueves,$viernes,$sabado,$domingo)";
+        
+        $result= $this->link->query($sql);
+        $this->CloseConnect();
+
+        return $result;
+    }
+
+    // public function updateCentro(){
+    //    $this -> OpenConnect();
+
+    //    $id = $this -> id;
+    //    $nombre = $this->nombre;
+    //    $provincia = $this->provincia;
+    //    $poblacion = $this->poblacion;
+    //    $direccion = $this->direccion;
+    //    $cp = $this->cp;
+    //    $hora_apertura = $this->hora_apertura;
+    //    $hora_cierre = $this->hora_cierre;
+    //    $lunes = $this->lunes;
+    //    $martes = $this->martes;
+    //    $miercoles = $this->miercoles;
+    //    $jueves = $this->jueves;
+    //    $viernes = $this->viernes;
+    //    $sabado = $this->sabado;
+    //    $domingo = $this->domingo;
+
+    //    $sql = "UPDATE `centro_vacunacion` SET `nombre`='$nombre',`poblacion`='$poblacion',`cp`='$cp',`provincia`='$provincia',`direccion`='$direccion',`hora_apertura`='$hora_apertura',`hora_cierre`='$hora_apertura',`lunes`='$lunes',`martes`='$martes',`miercoles`='$miercoles',`jueves`='$jueves',`viernes`='$viernes',`sabado`='$sabado',`domingo`='$domingo' WHERE id=$id";
+
+    //    $result = $this -> link -> query($sql);
+
+    //    $error = 'no error';
+
+    //    if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    //        $error = 'no error';
+    //    }else{
+    //        $error = 'Algo no ha salido bien al actualizar el centro de vacunacion.';
+    //    }
+
+    //    mysqli_free_result($result);
+    //    $this-> CloseConnect();
+    //    return $error;
+    // }
+
     public function ObjVars(){
         return get_object_vars($this);
     }
