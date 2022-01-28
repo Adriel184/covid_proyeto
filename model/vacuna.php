@@ -1,8 +1,8 @@
 <?php
 
 class vacuna {
-    private $id;
-    private $marca;
+    protected $id;
+    protected $marca;
 
     /**
      * Get the value of id

@@ -1,4 +1,4 @@
-function collapse(params) {
+function collapse() {
   var coll = document.getElementsByClassName("collapsible");
   var i;
 
@@ -16,8 +16,6 @@ function collapse(params) {
 };
 
 collapse();
-
-
 
 window.onload=getView();
 
@@ -56,10 +54,6 @@ async function loadContent(x) {
       headers:{'Content-Type': 'application/json'}  //input data
       
     }).then(res => res.json()).then(result => {
-
-
-      console.log("Los datos del ---> "+x+" se han recibido:");
-      console.log(result);
     
       if (x=="paciente") {
         document.getElementById("navbarDarkDropdownMenuLink").innerHTML=result.paciente.nombre;
@@ -69,7 +63,6 @@ async function loadContent(x) {
         document.getElementById("centro").value=result.paciente.centro.nombre;
         document.getElementById("idCentro").value=result.paciente.centro.id;
         document.getElementById("dosis").value=parseInt(result.paciente.ultimaDosis) + 1;
-    
         
         result.paciente.citas.forEach(element => {
           document.getElementById("divConsultarCitas").innerHTML+="<br><button type='button' class='collapsible'>Cita dosis "+element.dosis+"</button>"
@@ -88,16 +81,13 @@ async function loadContent(x) {
           +        "<input type='' class='fechaHora form-control' id='fechaConsultarCita' value='"+element.fecha+" 'disabled>"
           +    "</div> <br>"
           +    "<button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#anularCita'>Anular Cita</button>"
-          +    "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modificarCita' onclick='enableModify()'>Cambiar fecha / hora</button>"
+          +    "<button type='button' class='btn btn-primary mx-3' data-bs-toggle='modal' data-bs-target='#modificarCita' onclick='enableModify()'>Cambiar fecha / hora</button>"
           +    "<button type='button' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#confirmarCitaCita' onclick='disableModify()'>Aceptar</button>"
           +  "</form>"
           +"</div>"
         });
-    
-        collapse();
-        
+        collapse();        
       }
-
 
       console.log(result.paciente);
       $("#navbarDarkDropdownMenuLink").html(result.paciente.nombre + ', ' + result.paciente.apellido);
@@ -168,6 +158,58 @@ function disableModify() {
   $("button[name='disable']").prop('disabled', false);
 }
 
+$('#btnCita').click(function () {
+  var fechaCitaNueva = $('#fechaPedirCita').val().split('T')[0];
+  var horaCitaNueva = $('#fechaPedirCita').val().split('T')[1]; 
+  console.log("fecha: "+ fechaCitaNueva);
+  console.log("hora: " + horaCitaNueva);
+  
+});
+
+$('#historial').ready(()=>{
+  historialVacu()
+})
+
+async function historialVacu() {
+  var sesion = await getSession();
+  var data = {'tis':sesion.tis};
+  var url = '../../controller/controllerHistorial.php'
+
+  fetch(url,{
+    method:'POST',
+    body: JSON.stringify(data),
+    headers:{'Content-Type': 'application/json'}
+  }).then(res => res.json()).then(result =>{
+    console.log(result.historial);
+
+    i = 0;
+    e = 1;
+    while (i < result.historial.length) {
+      $('#historialVacunacion').append(
+        "<button type='button' class='collapsible active'>Vacunacion "+e+"</button>"+
+        "<div class='cita row mt-3'>"+
+          "<div class='col-6 mb-4'>"+
+            "<label for='tis' class='form-label'>Tis:</label>"+
+            "<input type='text' class='form-control' placeholder='"+result.historial[i].tis+"' disabled>"+
+            "<label for='Vacuna' class='form-label'>Vacuna:</label>"+
+            "<input type='text' class='form-control' placeholder='"+result.historial[i].objVacuna.marca+"' disabled>"+
+          "</div>"+
+          "<div class='col-6 mb-4'>"+
+            "<label for='Fecha' class='form-label'>Fecha:</label>"+
+            "<input type='date' class='form-control' value='"+result.historial[i].fecha+"' disabled>"+
+            "<label for='Dosis' class='form-label'>Dosis:</label>"+
+            "<input type='text' class='form-control' placeholder='"+result.historial[i].dosis+"' disabled>"+
+          "</div>"+
+        "</div>"
+      );
+
+      i++;
+      e++;
+    }
+    
+  })
+}
+
 function getSession() { //RECOGE LAS VARIABLES DE SESSION
 
   return new Promise((resolve, reject) => {
@@ -181,18 +223,6 @@ function getSession() { //RECOGE LAS VARIABLES DE SESSION
     
   })
 }
-
-$('#btnCita').click(function () {
-  var fechaCitaNueva = $('#fechaPedirCita').val().split('T')[0];
-  var horaCitaNueva = $('#fechaPedirCita').val().split('T')[1]; 
-  console.log("fecha: "+ fechaCitaNueva);
-  console.log("hora: " + horaCitaNueva);
-  
-});
-
-
-
-
 
 // ! MOSTRAR LA CITA DEL PACIENTE TODAS LAS QUE TENGA
 
