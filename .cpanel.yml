@@ -2,4 +2,4 @@
 deployment:
       tasks:
         - rm -rf /home/batzerbi/public_html/*
-        - cp -Rf /home/batzerbi/repositories/4 - COVID/* /home/batzerbi/public_html/.
+        - cp -Rf /home/batzerbi/repositories/4-COVID/* /home/batzerbi/public_html/.
