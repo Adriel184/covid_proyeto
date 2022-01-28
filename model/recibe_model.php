@@ -1,8 +1,12 @@
 <?php
-
+if ($_SERVER['SERVER_NAME']== "bat.zerbitzaria.net") {
+    include_once ("connect_data_serv.php");
+}
+else {
+    include_once ("connect_data.php");
+}
 include_once ("recibe.php");
 include_once ("vacuna_model.php");
-include_once ("connect_data.php");
 
 class recibe_model extends recibe{
     private $link;  // datu basera lotura - enlace a la bbdd

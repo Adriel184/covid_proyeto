@@ -1,8 +1,11 @@
 <?php
-
+if ($_SERVER['SERVER_NAME']== "bat.zerbitzaria.net") {
+    include_once ("connect_data_serv.php");
+}
+else {
+    include_once ("connect_data.php");
+}
 include_once ("centro.php");
-include_once ("connect_data.php");
-
 class centro_model extends centro {
 
     private $link;  // datu basera lotura - enlace a la bbdd
@@ -136,41 +139,41 @@ class centro_model extends centro {
         return $result;
     }
 
-    // public function updateCentro(){
-    //    $this -> OpenConnect();
+    public function updateCentro(){
+        $this -> OpenConnect();
 
-    //    $id = $this -> id;
-    //    $nombre = $this->nombre;
-    //    $provincia = $this->provincia;
-    //    $poblacion = $this->poblacion;
-    //    $direccion = $this->direccion;
-    //    $cp = $this->cp;
-    //    $hora_apertura = $this->hora_apertura;
-    //    $hora_cierre = $this->hora_cierre;
-    //    $lunes = $this->lunes;
-    //    $martes = $this->martes;
-    //    $miercoles = $this->miercoles;
-    //    $jueves = $this->jueves;
-    //    $viernes = $this->viernes;
-    //    $sabado = $this->sabado;
-    //    $domingo = $this->domingo;
+        $id = $this -> getId();
+        $nombre = $this->getNombre();
+        $provincia = $this->getProvincia();
+        $poblacion = $this->getPoblacion();
+        $direccion = $this->getDireccion();
+        $cp = $this->getCp();
+        $hora_apertura = $this->getHora_apertura();
+        $hora_cierre = $this->getHora_cierre();
+        $lunes = $this->getLunes();
+        $martes = $this->getMartes();
+        $miercoles = $this->getMiercoles();
+        $jueves = $this->getJueves();
+        $viernes = $this->getViernes();
+        $sabado = $this->getSabado();
+        $domingo = $this->getDomingo();
 
-    //    $sql = "UPDATE `centro_vacunacion` SET `nombre`='$nombre',`poblacion`='$poblacion',`cp`='$cp',`provincia`='$provincia',`direccion`='$direccion',`hora_apertura`='$hora_apertura',`hora_cierre`='$hora_apertura',`lunes`='$lunes',`martes`='$martes',`miercoles`='$miercoles',`jueves`='$jueves',`viernes`='$viernes',`sabado`='$sabado',`domingo`='$domingo' WHERE id=$id";
+        $sql = "UPDATE `centro_vacunacion` SET `nombre`='$nombre',`poblacion`='$poblacion',`cp`='$cp',`provincia`='$provincia',`direccion`='$direccion',`hora_apertura`='$hora_apertura:00',`hora_cierre`='$hora_apertura:00',`lunes`='$lunes',`martes`='$martes',`miercoles`='$miercoles',`jueves`='$jueves',`viernes`='$viernes',`sabado`='$sabado',`domingo`='$domingo' WHERE id=$id";
 
-    //    $result = $this -> link -> query($sql);
+        $result = $this -> link -> query($sql);
 
-    //    $error = 'no error';
+        // $error = 'no error';
 
-    //    if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-    //        $error = 'no error';
-    //    }else{
-    //        $error = 'Algo no ha salido bien al actualizar el centro de vacunacion.';
-    //    }
+        // if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        //     $error = 'no error';
+        // }else{
+        //     $error = 'Algo no ha salido bien al actualizar el centro de vacunacion.';
+        // }
 
-    //    mysqli_free_result($result);
-    //    $this-> CloseConnect();
-    //    return $error;
-    // }
+        //mysqli_free_result($result);
+        $this-> CloseConnect();
+        return $result;
+    }
 
     public function ObjVars(){
         return get_object_vars($this);

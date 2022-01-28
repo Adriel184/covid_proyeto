@@ -1,7 +1,11 @@
 <?php
-
+if ($_SERVER['SERVER_NAME']== "bat.zerbitzaria.net") {
+    include_once ("connect_data_serv.php");
+}
+else {
+    include_once ("connect_data.php");
+}
 include_once ("cita.php");
-include_once ("connect_data.php");
 
 class cita_model extends cita {
 
@@ -166,7 +170,7 @@ class cita_model extends cita {
         $this->OpenConnect();
         $id = $this -> id;
 
-        $sql = "DELETE FROM `citas` WHERE `id`=$id";
+        $sql = "DELETE FROM `cita` WHERE `id`=$id";
 
         $result = $this->link->query($sql);
 

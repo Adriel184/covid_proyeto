@@ -1,9 +1,13 @@
 <?php
-
+if ($_SERVER['SERVER_NAME']== "bat.zerbitzaria.net") {
+    include_once ("connect_data_serv.php");
+}
+else {
+    include_once ("connect_data.php");
+}
 include_once ("paciente.php");
 include_once ("cita_model.php");
 include_once ("centro_model.php");
-include_once ("connect_data.php");
 
 class paciente_model extends paciente {
 

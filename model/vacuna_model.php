@@ -1,5 +1,10 @@
 <?php
-
+if ($_SERVER['SERVER_NAME']== "bat.zerbitzaria.net") {
+    include_once ("connect_data_serv.php");
+}
+else {
+    include_once ("connect_data.php");
+}
 include_once ("vacuna.php");
 
 class vacuna_model extends vacuna {
