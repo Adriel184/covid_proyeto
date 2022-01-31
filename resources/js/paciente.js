@@ -30,14 +30,10 @@ function getView() {
   headers:{'Content-Type': 'application/json'}  //input data
   
   }).then(res => res.json()).then(result => {
-  
-    loadContent(result);
-    // loadContent(await getSession());
-
+    loadContent(result)
   }).catch(error => console.error('Error status:', error));
-
 }
-
+  
 async function loadContent(x) {
 
   var accion = x;
@@ -72,7 +68,16 @@ async function loadContent(x) {
         document.getElementById("localidad").value=result.paciente.centro.provincia;
         document.getElementById("centro").value=result.paciente.centro.nombre;
         document.getElementById("idCentro").value=result.paciente.centro.id;
-        document.getElementById("dosis").value=parseInt(result.paciente.ultimaDosis) + 1;
+
+        var a = new Date(result.dateTime6monthsAgo);
+        var b = new Date(result.paciente.fecha_pcr_pstv);
+
+        if (result.paciente.fecha_pcr_pstv==null || a>b) {
+          document.getElementById("dosis").value="1 y 2";
+        }else{
+          document.getElementById("dosis").value=parseInt(result.paciente.ultimaDosis) + 1;
+        }
+        
     
         
         result.paciente.citas.forEach(element => {
@@ -161,8 +166,8 @@ function pedirCita () {
 
 //activar y desactivar la funcion "Disabled"
 function enableModify() {
-  $("input[name='enable']").prop('disabled', false);
-  $("select[name='enable']").prop('disabled', false);
+$("input[name='enable']").prop('disabled', false);
+$("select[name='enable']").prop('disabled', false);
 }
 
 function disableModify() {
@@ -191,6 +196,8 @@ $('#btnCita').click(function () {
   console.log("hora: " + horaCitaNueva);
   
 });
+
+
 
 
 
