@@ -63,6 +63,24 @@ class recibe_model extends recibe{
         return $list;
     }
 
+    public function nuevaVacuna(){
+        $this -> OpenConnect();
+
+        $tis = $this -> getTis();
+        $fecha = $this -> getFecha();
+        $dosis = $this -> getId_vacuna();
+        $nDosis = $this -> getDosis();
+
+        $sql = "INSERT INTO `recibe` (`tis`, `id_vacuna`, `fecha`, `dosis`) VALUES ('$tis', '$dosis', '$fecha', '$nDosis');";
+
+        $result = $this -> link -> query($sql);
+
+        mysqli_free_result($result);
+
+        $this -> CloseConnect();
+        return $result;
+    }
+
     public function ObjVars(){
         return get_object_vars($this);
     }

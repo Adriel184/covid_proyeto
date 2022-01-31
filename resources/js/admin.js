@@ -1,6 +1,10 @@
 $(document).ready(function() {
+    traerCentros();
+});
+
+function traerCentros(){
     var url = "../../controller/controllerCentros.php";
-    console.log("centros");
+    
     fetch(url, {
         method: 'POST',
         headers:{'Content-Type': 'application/json'}
@@ -31,8 +35,7 @@ $(document).ready(function() {
                 + "data-hora_apertura='" + centros[i].hora_apertura + "' "
                 + "data-hora_cierre='" + centros[i].hora_cierre + "' "
                 + ">" + centros[i].nombre + "</button>";
-            }
-            else if(centros[i].provincia.includes("Gipuzkoa")){
+            }else if(centros[i].provincia.includes("Gipuzkoa")){
                 gipuzkoa += "<button type='button' class='collapsible-no-back centroM' data-bs-toggle='modal' data-bs-target='#dataCentro' "
                 + "data-id='" + centros[i].id + "' "
                 + "data-nombre='" + centros[i].nombre + "' "
@@ -50,8 +53,7 @@ $(document).ready(function() {
                 + "data-hora_apertura='" + centros[i].hora_apertura + "' "
                 + "data-hora_cierre='" + centros[i].hora_cierre + "' "
                 + ">" + centros[i].nombre + "</button>";
-            }
-            else if(centros[i].provincia.includes("Navarra")){
+            }else if(centros[i].provincia.includes("Navarra")){
                 navarra += "<button type='button' class='collapsible-no-back centroM' data-bs-toggle='modal' data-bs-target='#dataCentro' "
                 + "data-id='" + centros[i].id + "' "
                 + "data-nombre='" + centros[i].nombre + "' "
@@ -97,7 +99,7 @@ $(document).ready(function() {
             $("#centroDomingo").val(data.domingo);
         });
       }).catch(error => console.error('Error status:', error));
-});
+}
 
 $('#crearCentro').click(function log() {
     var nombre = $("#crearNombre").val();
@@ -159,13 +161,15 @@ $('#modificarCentro').click(function log() {
     var sabado = $("#centroSabado").val();
     var domingo = $("#centroDomingo").val();
 
-    console.log(hora_cierre_format.split(':').length);
+    console.log(hora_cierre_format);
 
     if(hora_cierre_format.split(':').length >= 3){
         var hora_cierre_post = hora_cierre_format.split(':');
         hora_cierre_post.pop();
         hora_cierre = hora_cierre_post.join(':');
         console.log(hora_cierre);
+    }else{
+        var hora_cierre = hora_cierre_format;
     }
 
     var data = {'id': id, 'nombre': nombre,'provincia': provincia,'poblacion': poblacion,'direccion': direccion,'cp': cp,'hora_apertura': hora_apertura,'hora_cierre': hora_cierre,'lunes': lunes,'martes': martes,'miercoles': miercoles,'jueves': jueves,'viernes': viernes,'sabado': sabado,'domingo': domingo};
@@ -183,6 +187,7 @@ $('#modificarCentro').click(function log() {
 
         if (result.error == 'Centro modificado') {
             alert('Centro modificado con exito.');
+            traerCentros();
         }
         else{
             alert('Todos los campos son obligatorios.');
@@ -201,8 +206,6 @@ $('#buscaTis').click(function () {
         body: JSON.stringify(data),
         headers:{'Content-Type': 'application/json'}  
     }).then(res => res.json()).then(result => {
-        
-        console.log(result);
 
         var fechaPcr = result.paciente.fecha_pcr_pstv;
 
@@ -222,14 +225,90 @@ $('#buscaTis').click(function () {
             "<div class='col-5'>" +
               "<label class='fw-bold'>Ultima pcr positiva del paciente: </label><span> "+fechaPcr+"</span><br>" +
               "<label class='fw-bold'>Nº de dosis del paciente: </label><span> "+result.paciente.citas.dosis+"</span><br>" +
-              "<label class='fw-bold'>Id de la cita del paciente: </label><span> "+result.paciente.citas.id+"</span><br>" +
+              "<label class='fw-bold'>Id de la cita del paciente: </label><span id='idCitaVacuna'> "+result.paciente.citas.id+"</span><br>" +
               "<label class='fw-bold'>Fecha de la cita del paciente: </label><span> "+result.paciente.citas.fecha.split(" ")[0]+"</span><br>" +
               "<label class='fw-bold'>Hora de la cita del paciente: </label><span> "+result.paciente.citas.fecha.split(" ")[1]+" </span><br>" +
+              "<button id='vacunar' class='btn btn-outline-primary mt-2' data-bs-toggle='modal' data-bs-target='#vacunarPaciente' value='"+result.paciente.tis+"'>Vacunar</button>" +
             "</div>"
         );
+
+        $('#vacunar').click(()=>{
+            vacunacion(result.paciente);
+        })
 
     }).catch(error => console.error('Error status:', error));
 
     $('#datosPaciente').html();
 });
 
+function vacunacion(infoPaciente){
+    
+    var today = new Date();
+    var date = today.getFullYear()+'-0'+(today.getMonth()+1)+'-'+today.getDate();
+
+    $('#vacunacion').html(
+        "<label for='tis' class='form-label mt-3'>Tis:</label>"+
+        "<input id='tisVacunado' class='form-control' type='text' value='"+infoPaciente.tis+"' disabled>"+
+        "<label for='Nº de dosis' class='form-label mt-3'>Nº de dosis:</label>"+
+        "<input id='nDosis' class='form-control' type='text' value='"+infoPaciente.citas.dosis+"' required>"+
+        "<label for='fecha' class='form-label mt-3'>Fecha de vacunación:</label>"+
+        "<input id='dateVacunado' class='form-control' type='date' value='"+date+"' required disabled>"+
+        "<label for='nombreDosis' class='form-label mt-3'>Nombre de la dosis:</label>"+
+        "<select id='nombreDosis' class='form-select' aria-label='.form-select-lg' required>"+
+            "<option selected>Seleccione una...</option>"+
+        "</select>"+
+        "<button class='btn btn-outline-success mt-3' id='confirVacuna'>confirmar</button>"
+    );
+
+    var url = "../../controller/controllerGetVacunas.php"
+
+    fetch(url,{
+        method: 'GET',
+        headers: {'Content-Type':'application/json'}
+    }).then(res => res.json()).then(result => {
+
+        var i = 0;
+        result.vacunas.forEach(element => {
+            $('#nombreDosis').append(
+                "<option value='"+result.vacunas[i].id+"'>"+result.vacunas[i].marca+"</option>"
+            );
+            i++;
+        });
+
+        $('#confirVacuna').click(()=>{
+            vacunar();
+        })
+    }).catch(error => console.error('Error status:', error));
+
+}
+
+function vacunar() {
+
+    var citaId = $('#idCitaVacuna').html();
+    var tis = $('#tisVacunado').val();
+    var fecha = $('#dateVacunado').val();
+    var idDosis = $('#idDosis').val();
+    var nDosis = $('#nDosis').val();
+    
+    var data = {'id': citaId, 'tis': tis, 'fecha': fecha, 'dosis':idDosis, 'nDosis': nDosis};
+
+    // fetch('../../controller/controllerVacunacion.php', {
+    //     method: 'POST', 
+    //     body: JSON.stringify(data),
+    //     headers:{'Content-Type': 'application/json'}  
+    // }).then(res => res.json()).then(result => {
+
+    //     console.log(result);
+
+    // }).catch(error => console.error('Error status:', error));
+
+    fetch('../../controller/controllerAddRecibe.php', {
+        method: 'POST', 
+        body: JSON.stringify(data),
+        headers:{'Content-Type': 'application/json'}  
+    }).then(res => res.json()).then(result => {
+
+        console.log(result);
+
+    }).catch(error => console.error('Error status:', error));
+}

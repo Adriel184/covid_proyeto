@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html ng-app='miapp'>
 <html lang="es" class="h-100">
 
 <head>
@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="../css/styleHyF.css">
 
   <!-- Link de la libreria de Angular -->
-  <!-- <link rel="stylesheet" href="../js/angular.min.js"> -->
+  <!-- <script src="../js/angular.min.js"></script> -->
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -25,7 +25,6 @@
   <div id="dynamicHeader"></div>
 
   <!-- Datos paciente -->
-
   <div class="container margen paciente">
     <form class="row g-3">
       <div class="col-md-2">
@@ -75,9 +74,9 @@
       data-bs-target="#consultarCita">Consultar citas</button>
     <button type="button" class="btn btn-outline-success paciente" data-bs-toggle="modal"
       data-bs-target="#historial">Historial de Vacunación</button>
-    <button type="button" class="btn btn-outline-danger admin" data-bs-toggle="modal"
+    <button type="button" class="btn btn-outline-danger admin adming" data-bs-toggle="modal"
       data-bs-target="#modificarCentros">Modificar Centros</button>
-    <button type="button" class="btn btn-outline-success admin" data-bs-toggle="modal"
+    <button type="button" class="btn btn-outline-success admin adming" data-bs-toggle="modal"
       data-bs-target="#añadirCentros">Añadir Centro</button>
     <button type="button" class="btn btn-outline-danger admin" data-bs-toggle="modal"
       data-bs-target="#verPacientes">Consultar Pacientes</button>
@@ -146,16 +145,14 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
         <div class="modal-body">
-          <input type="text" placeholder="Introduce el codigo de cita" class="form-control">
-          <button class="btn btn-outline-success mt-3">Buscar</button>
-          <div id="divConsultarCitas" class="modal-body pt-0">
+          <div id="divConsultarCitas" class="pt-0">
 
             <!-- carga las citas desde paciente.js -->
 
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
@@ -465,8 +462,7 @@
   </div>
 
   <!-- Administrador Pacientes - Ver Pacientes -->
-  <div class="modal fade" id="verPacientes" tabindex="-1" data-bs-backdrop="static" aria-labelledby="verPacientesLabel"
-    aria-hidden="true">
+  <div class="modal fade" id="verPacientes" tabindex="-1" data-bs-backdrop="static" aria-labelledby="verPacientesLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header">
@@ -482,6 +478,23 @@
             
           </div>
 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vacunar al paciente y quitar la cita pendiente -->
+  <div class="modal fade" id="vacunarPaciente" tabindex="-1" data-bs-backdrop="static" aria-labelledby="vacunarPaciente" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Vacunacion de un paciente:</h5>
+        </div>
+        <div class="modal-body" id="vacunacion">
+          <!-- Contenido rellenable -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -510,7 +523,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
-          <button type="button" class="btn btn-success" id="anularCita">Si</button>
+          <button type="button" class="btn btn-success" id="anularCitaConfir">Si</button>
         </div>
 
       </div>
@@ -554,6 +567,7 @@
   <script src="../js/dinamico.js"></script>
   <script src="../js/paciente.js"></script>
   <script src="../js/admin.js"></script>
+  <!-- <script src="../js/angularBuscador.js"></script> -->
 
 </body>
 

@@ -61,22 +61,19 @@ async function loadContent(x) {
       $(".inputNombre").html(result.paciente.nombre);
       $(".inputApellido").html(result.paciente.apellido);
 
-      
-      // $("#tis").val(result.paciente.tis);
-      // $("#localidad").val(result.paciente.centro.provincia);
-      // $("#centro").val(result.paciente.centro.nombre);
-      // $("#idCentro").val(result.paciente.centro.id);
       $("#dosis").val(parseInt(result.paciente.ultimaDosis) + 1);
-
       id_cita = result.paciente.citas[0].id;
+      var i = 0;
       
       result.paciente.citas.forEach(element => {
         $("#divConsultarCitas").append("<br><button type='button' class='collapsible'>Cita "+element.dosis+"ª dosis </button>"
         +"<div class='cita'>"
         +  "<form>"
         +    "<div class='mb-3'>"
-        +      "<label for='localidad' class='form-label'>Provincia:</label>"
-        +      "<input type='text' class='form-control' placeholder='Localidad' disabled>"
+        +      "<label fro='idCite' class='form-label mt-2'>ID de la cita:</label>"
+        +      "<input type='text' class='form-control mb-3' placeholder='"+result.paciente.citas[i].id+"' disabled>" 
+        +      "<label for='localidad' class='form-label'>Población:</label>"
+        +      "<input type='text' class='form-control' placeholder='"+result.paciente.centro.poblacion+"' disabled>"
         +    "</div>"
         +    "<div class='mb-3'>" 
         +        "<label for='centro' class='form-label'>Centro:</label>"
@@ -85,12 +82,11 @@ async function loadContent(x) {
         +    "<div class='mb-3'>"
         +        "<label class='form-label' for='fechaHora'>Fecha y Hora:</label><br>"
         +        "<input type='' name='enable' class='fechaHora form-control' id='fechaConsultarCita' value='"+element.fecha+" 'disabled>"
-        +    "</div> <br>"
+        +    "</div>"
         +    "<button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#anularCita'>Anular Cita</button>"
-        +    "<button type='button' class='btn btn-primary mx-3' data-bs-toggle='modal' data-bs-target='#modificarCita' onclick='enableModify()'>Cambiar fecha / hora</button>"
-        +    "<button type='button' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#confirmarCitaCita' onclick='disableModify()'>Aceptar</button>"
         +  "</form>"
         +"</div>")
+        i++;
       });
       collapse();
       
@@ -109,7 +105,6 @@ $('#ConfirmarPedirCita').click(() => {
   console.log("Se ha clicado en ConfirmarPedirCita");
   pedirCita();
 });
-
 
 function pedirCita () {
 
@@ -224,7 +219,7 @@ function getSession() { //RECOGE LAS VARIABLES DE SESSION
   })
 }
 
-$('#anularCita').click(()=>{
+$('#anularCitaConfir').click(()=>{
 
   var data = {'idCita': id_cita};
   var url = '../../controller/controllerCitaAnu.php';
