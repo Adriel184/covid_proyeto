@@ -18,10 +18,14 @@
         
         $respGetPaciente=array();
 
+        $response["dateTimeNow"]=date('Y-m-d H:i:s');
+        $response["dateTime6monthsAgo"]=date('Y-m-d H:i:s',strtotime($response["dateTimeNow"]."- 6 months"));
+
         $respGetPaciente=$paciente->getPacienteByTis();
         if ($respGetPaciente["status"]=="200") {
             $response["paciente"]= $respGetPaciente["paciente"];
-            $response["paciente"]["ultimaDosis"]= $paciente->getLastDosis();
+            $response["paciente"]["ultimaDosis"]= $paciente->getLastDosis()["numDosis"];
+            $response["paciente"]["UltimaFechaPcrPositiva"]= $paciente->getLastDosis()["UltimaFechaPcrPositiva"];
         }else{
             $response["paciente"]=null;
         }

@@ -135,19 +135,24 @@ class paciente_model extends paciente {
         $this->OpenConnect();
 
         $tis=$this->getTis();
-        $numDosis=0;
 
-        $sql = "SELECT MAX(recibe.dosis) AS dosis FROM recibe INNER JOIN paciente ON paciente.tis = recibe.tis WHERE paciente.tis=$tis;";
+        $sql = "SELECT MAX(recibe.dosis) AS dosis, paciente.fecha_pcr AS UltimaFechaPcrPositiva FROM recibe INNER JOIN paciente ON paciente.tis = recibe.tis WHERE paciente.tis=$tis;";
         $result = $this->link->query($sql);
+
+        $response=array();
         
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $numDosis=$row['dosis'];
+            $response["numDosis"]=$row['dosis'];
+            $response["UltimaFechaPcrPositiva"]=$row['UltimaFechaPcrPositiva'];
+            if($response["numDosis"]==null){
+                $response["numDosis"]=0;
+            }
         }
 
         mysqli_free_result($result);
         $this->CloseConnect();
 
-        return $numDosis;
+        return $response;
     }
 
 }
