@@ -44,6 +44,10 @@ async function loadContent(x) {
   if (sesion.usuario) {
     $(".paciente").hide();
     
+    if(sesion.usuario!="admin_general") {
+      $(".adming").hide();
+    }
+    $(".textoPaciente").hide();
     $("#navbarDarkDropdownMenuLink").html(sesion.usuario);
   }else{
     $(".admin").hide();
@@ -146,11 +150,13 @@ function pedirCita () {
 function enableModify() {
 $("input[name='enable']").prop('disabled', false);
 $("select[name='enable']").prop('disabled', false);
+$("button[name='disable']").prop('disabled', true);
 }
 
 function disableModify() {
   $("input[name='enable']").prop('disabled', true);
   $("select[name='enable']").prop('disabled', true);
+  $("button[name='disable']").prop('disabled', false);
 }
 
 $('#btnCita').click(function () {
