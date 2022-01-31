@@ -108,4 +108,7 @@ class centro_model extends centro {
         $this->CloseConnect();
         return $centros;
     }
+    public function ObjVars(){
+        return get_object_vars($this);
+    }
 }

@@ -30,14 +30,10 @@ function getView() {
   headers:{'Content-Type': 'application/json'}  //input data
   
   }).then(res => res.json()).then(result => {
-  
-    loadContent(result);
-    // loadContent(await getSession());
-
+    loadContent(result)
   }).catch(error => console.error('Error status:', error));
-
 }
-
+  
 async function loadContent(x) {
 
   var accion = x;
@@ -170,8 +166,8 @@ function pedirCita () {
 
 //activar y desactivar la funcion "Disabled"
 function enableModify() {
-  $("input[name='enable']").prop('disabled', false);
-  $("select[name='enable']").prop('disabled', false);
+$("input[name='enable']").prop('disabled', false);
+$("select[name='enable']").prop('disabled', false);
 }
 
 function disableModify() {
@@ -200,6 +196,8 @@ $('#btnCita').click(function () {
   console.log("hora: " + horaCitaNueva);
   
 });
+
+
 
 
 
