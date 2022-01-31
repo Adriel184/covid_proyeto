@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', () =>{
     loadHeaderFooter()
-
+    console.log('se actualiza');
     
 })
 

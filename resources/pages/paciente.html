@@ -17,17 +17,12 @@
   <link rel="stylesheet" href="../css/styleHyF.css">
 
   <!-- Link de la libreria de Angular -->
-  <link rel="stylesheet" href="../js/angular.min.js">
+  <!-- <link rel="stylesheet" href="../js/angular.min.js"> -->
 </head>
 
 <body class="d-flex flex-column h-100">
   <!--navbar dinamico-->
   <div id="dynamicHeader"></div>
-
-  <!-- <div class="informacion container fluid">
-      <h2>Texto de ejemplo</h2>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa nostrum tenetur, veniam nobis esse beatae enim tempora, modi assumenda suscipit a aliquid accusantium? Cupiditate quibusdam repellendus harum quos necessitatibus neque.</p>
-    </div> -->
 
   <!-- Datos paciente -->
 
@@ -100,35 +95,39 @@
         <div class="modal-body">
             <form>
               <div class="mb-3">
-                <label for="nombreYApePaciente" class="form-label">Nombre y Apellidos:</label>
-                <input id="nombreYApePaciente" class="form-control" type="text" placeholder="Nombre y apellidos" disabled>
-            </div>
-                <div class="mb-3">
-                  <label for="tis" class="form-label">TIS:</label>
-                  <input id="tis" class="form-control" type="text" placeholder="TIS" disabled>
-                </div>
+                <label for="Nombre" class="form-label">Nombre:</label>
+                <input id="nombre" class="form-control inputNombre" type="text" placeholder="Nombre y apellidos" disabled>
+              </div>
+              <div class="mb-3">
+                <label for="Apellido" class="form-label">Apellido:</label>
+                <input id="apellido" class="form-control inputApellido" type="text" placeholder="Nombre y apellidos" disabled>
+              </div>
+              <div class="mb-3">
+                <label for="tis" class="form-label">TIS:</label>
+                <input id="tis" class="form-control inputTis" type="text" placeholder="TIS" disabled>
+              </div>
 
-                <div class="mb-3">
-                  <label for="localidad" class="form-label">Provincia:</label>
-                  <input id="localidad" class="form-control" type="text" placeholder="Provincia" disabled>
-                </div>
+              <div class="mb-3">
+                <label for="localidad" class="form-label">Provincia:</label>
+                <input id="localidad" class="form-control inputProvincia" type="text" placeholder="Provincia" disabled>
+              </div>
 
-                <div class="mb-3"> 
-                  <label for="centro" class="form-label">Centro:</label>
-                  <input id="centro" class="form-control" type="text" placeholder="Centro" disabled>
-                  <input id="idCentro" class="form-control" type="text" placeholder="" hidden disabled>
-                </div>
-                
-                <div class="mb-3"> 
-                  <label for="dosis" class="form-label">Nº Dosis:</label>
-                  <input id="dosis" class="form-control" type="text" placeholder="Nº de dosis" disabled>
-                </div>
+              <div class="mb-3"> 
+                <label for="centro" class="form-label">Centro:</label>
+                <input id="centro" class="form-control inputCentro" type="text" placeholder="Centro" disabled>
+                <input id="idCentro" class="form-control" type="text" placeholder="" hidden disabled>
+              </div>
+              
+              <div class="mb-3"> 
+                <label for="dosis" class="form-label">Nº Dosis:</label>
+                <input id="dosis" class="form-control" type="text" placeholder="Nº de dosis" disabled>
+              </div>
 
-                <div class="mb-3"> 
-                  <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
-                  <input type="datetime-local" class="fechaHora form-control" id="fechaPedirCita">
-                </div>
-              </form>
+              <div class="mb-3"> 
+                <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
+                <input type="datetime-local" class="fechaHora form-control" id="fechaPedirCita">
+              </div>
+            </form>
         </div>
         <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -148,8 +147,8 @@
         </div>
         <div class="modal-body">
           <input type="text" placeholder="Introduce el codigo de cita" class="form-control">
-          <button class="btn btn-outline-success my-3">Buscar</button>
-          <div id="divConsultarCitas" class="modal-body">
+          <button class="btn btn-outline-success mt-3">Buscar</button>
+          <div id="divConsultarCitas" class="modal-body pt-0">
 
             <!-- carga las citas desde paciente.js -->
 
@@ -230,6 +229,8 @@
             <div class="row">
               <div class="col-6">
                 <div class="mb-3">
+                  <input id="centroId" name="enable" class="form-control" type="text" hidden>
+
                   <label for="nombreCentro" class="form-label">Nombre:</label>
                   <input id="centroNombre" name="enable" class="form-control" type="text" placeholder="Nombre del Centro">
                 </div>
@@ -275,7 +276,7 @@
                   <label for="lunes" class="form-label">Lunes:</label>
                   <select id="centroLunes" name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
                     <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
+                    <option value="0">Cerrado</option>
                   </select>
                 </div>
 
@@ -283,7 +284,7 @@
                   <label for="martes" class="form-label">Martes:</label>
                   <select id="centroMartes" name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
                     <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
+                    <option value="0">Cerrado</option>
                   </select>
                 </div>
 
@@ -291,7 +292,7 @@
                   <label for="miercoles" class="form-label">Miércoles:</label>
                   <select id="centroMiercoles" name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
                     <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
+                    <option value="0">Cerrado</option>
                   </select>
                 </div>
 
@@ -299,7 +300,7 @@
                   <label for="jueves" class="form-label">Jueves:</label>
                   <select id="centroJueves" name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
                     <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
+                    <option value="0">Cerrado</option>
                   </select>
                 </div>
 
@@ -307,7 +308,7 @@
                   <label for="viernes" class="form-label">Viernes:</label>
                   <select id="centroViernes" name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
                     <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
+                    <option value="0">Cerrado</option>
                   </select>
                 </div>
 
@@ -315,7 +316,7 @@
                   <label for="sabado" class="form-label">Sabado:</label>
                   <select id="centroSabado" name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
                     <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
+                    <option value="0">Cerrado</option>
                   </select>
                 </div>
 
@@ -323,7 +324,7 @@
                   <label for="domingo" class="form-label">Domingo:</label>
                   <select id="centroDomingo" name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
                     <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
+                    <option value="0">Cerrado</option>
                   </select>
                 </div>
               </div><!--Cierre del col-->
@@ -335,7 +336,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
           <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#borrarCentro">Eliminar Centro</button>
-          <button type="button" class="btn btn-success" onclick="disableModify()">Confirmar</button>
+          <button id="modificarCentro" type="button" class="btn btn-success">Confirmar</button>
         </div>
 
       </div>
@@ -352,53 +353,53 @@
           </div>
           
           <div class="modal-body">
-            <form>
+            <form id="formAnadir">
               <div class="row">
                 <div class="col-6">
                   <div class="mb-3">
                     <label for="nombreCentro" class="form-label">Nombre:</label>
-                    <input id="crearNombre" class="form-control" type="text" placeholder="Nombre del Centro">
+                    <input id="crearNombre" class="form-control anadirInput" type="text" placeholder="Nombre del Centro">
                   </div>
 
                   <div class="mb-3">
                     <label for="Provincia" class="form-label">Provincia:</label>
-                    <select id="crearProvincia" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <select id="crearProvincia" class="form-select form-select-md mb-3 anadirInput" aria-label=".form-select-lg">
                       <option selected></option>
-                      <option value="1">Bizkaia</option>
-                      <option value="2">Gipuzkoa</option>
-                      <option value="3">Navarra</option>
+                      <option value="Vizcaya">Vizcaya</option>
+                      <option value="Gipuzkoa">Gipuzkoa</option>
+                      <option value="Navarra">Navarra</option>
                     </select>
                   </div>
 
                   <div class="mb-3">
                     <label for="Provincia" class="form-label">Población:</label>
-                    <input type="text" id="crearPoblacion" class="form-control" placeholder="Población">
+                    <input type="text" id="crearPoblacion" class="form-control anadirInput" placeholder="Población">
                   </div>
 
                   <div class="mb-3">
                     <label for="direccion" class="form-label">Dirección:</label>
-                    <input id="crearDireccion" class="form-control" type="text" placeholder="Dirección">
+                    <input id="crearDireccion" class="form-control anadirInput" type="text" placeholder="Dirección">
                   </div>
 
                   <div class="mb-3">
                     <label for="codigoPostal" class="form-label">Código Postal:</label>
-                    <input id="crearCP" class="form-control" type="text" placeholder="Código Postal">
+                    <input id="crearCP" class="form-control anadirInput" type="text" placeholder="Código Postal">
                   </div>
                   <div class="mb-3">
                     <label for="horaApertura" class="form-label">Hora de Apertura:</label>
-                    <input id="crearHora_aper" class="form-control" type="time">
+                    <input id="crearHora_aper" class="form-control anadirInput" type="time">
                   </div>
 
                   <div class="mb-3">
                     <label class="form-label" for="fechaHora">Hora de Cierre:</label><br>
-                    <input id="crearHora_cerrar" type="time" class="form-control">
+                    <input id="crearHora_cerrar" type="time" class="form-control anadirInput">
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="mb-3">
                     <label for="lunes" class="form-label">Lunes:</label>
-                    <select id="crearLunes" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <select id="crearLunes" class="form-select form-select-md mb-3 anadirSelect" aria-label=".form-select-lg">
                       <option value="1">Abierto</option>
                       <option value="0">Cerrado</option>
                     </select>
@@ -406,7 +407,7 @@
 
                   <div class="mb-3">
                     <label for="martes" class="form-label">Martes:</label>
-                    <select id="crearMartes" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <select id="crearMartes" class="form-select form-select-md mb-3 anadirSelect" aria-label=".form-select-lg">
                       <option value="1">Abierto</option>
                       <option value="0">Cerrado</option>
                     </select>
@@ -414,7 +415,7 @@
 
                   <div class="mb-3">
                     <label for="miercoles" class="form-label">Miércoles:</label>
-                    <select id="crearMiercoles" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <select id="crearMiercoles" class="form-select form-select-md mb-3 anadirSelect" aria-label=".form-select-lg">
                       <option value="1">Abierto</option>
                       <option value="0">Cerrado</option>
                     </select>
@@ -422,7 +423,7 @@
 
                   <div class="mb-3">
                     <label for="jueves" class="form-label">Jueves:</label>
-                    <select id="crearJueves" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <select id="crearJueves" class="form-select form-select-md mb-3 anadirSelect" aria-label=".form-select-lg">
                       <option value="1">Abierto</option>
                       <option value="0">Cerrado</option>
                     </select>
@@ -430,7 +431,7 @@
 
                   <div class="mb-3">
                     <label for="viernes" class="form-label">Viernes:</label>
-                    <select id="crearViernes" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <select id="crearViernes" class="form-select form-select-md mb-3 anadirSelect" aria-label=".form-select-lg">
                       <option value="1">Abierto</option>
                       <option value="0">Cerrado</option>
                     </select>
@@ -438,7 +439,7 @@
 
                   <div class="mb-3">
                     <label for="sabado" class="form-label">Sabado:</label>
-                    <select id="crearSabado" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <select id="crearSabado" class="form-select form-select-md mb-3 anadirSelect" aria-label=".form-select-lg">
                       <option value="1">Abierto</option>
                       <option value="0">Cerrado</option>
                     </select>
@@ -446,7 +447,7 @@
 
                   <div class="mb-3">
                     <label for="domingo" class="form-label">Domingo:</label>
-                    <select id="crearDomingo" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                    <select id="crearDomingo" class="form-select form-select-md mb-3 anadirSelect" aria-label=".form-select-lg">
                       <option value="1">Abierto</option>
                       <option value="0">Cerrado</option>
                     </select>
@@ -510,7 +511,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
-          <button type="button" class="btn btn-success">Si</button>
+          <button type="button" class="btn btn-success" id="anularCita">Si</button>
         </div>
 
       </div>
