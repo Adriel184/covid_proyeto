@@ -7,6 +7,7 @@ class paciente {
     protected $fecha_nac;
     protected $fecha_pcr_pstv;
     protected $id_centro;
+    protected $img;
 
     /**
      * Get the value of tis
@@ -144,6 +145,26 @@ class paciente {
     public function setId_centro($id_centro)
     {
         $this->id_centro = $id_centro;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of img
+     */ 
+    public function getImg()
+    {
+        return $this->img;
+    }
+
+    /**
+     * Set the value of img
+     *
+     * @return  self
+     */ 
+    public function setImg($img)
+    {
+        $this->img = $img;
 
         return $this;
     }

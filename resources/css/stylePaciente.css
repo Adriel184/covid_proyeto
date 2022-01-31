@@ -22,6 +22,10 @@ div.container.centrar {
   color: transparent;
 }
 
+#fotoPerfil{
+  width: 230px;
+}
+
 /* Boton desplegable*/
 .collapsible {
     background-color: #eee;

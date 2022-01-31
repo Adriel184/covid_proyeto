@@ -1,3 +1,5 @@
+var savedFileBase64;
+
 function collapse() {
   var coll = document.getElementsByClassName("collapsible");
   var i;
@@ -100,6 +102,7 @@ async function loadContent(x) {
       $(".inputProvincia").val(result.paciente.centro.provincia);
       $(".inputNac").val(result.paciente.fecha_nac);
       $(".inputCentro").val(result.paciente.centro.nombre + ", " + result.paciente.centro.poblacion);
+      $("#fotoPerfil").attr("src",result.paciente.img);
         
     }).catch(error => console.error('Error status:', error));
   }
@@ -110,6 +113,61 @@ $('#ConfirmarPedirCita').click(() => {
   pedirCita();
 });
 
+$('#inputFile').change(() => {
+  console.log("inputFile");
+
+  var file=event.currentTarget.files[0];
+  console.log(file);
+
+	var reader  = new FileReader();
+	  
+	filename = file.name;
+	filesize= file.size;
+	  
+	  if (!   new RegExp("(.*?).(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$").test(filename)) {
+		  	  
+	    alert("Solo se aceptan imágenes JPG, PNG y GIF");
+	    $("#inputFile").val("");
+	    
+	  }else{
+      
+		  reader.onloadend = function () {
+				savedFileBase64 = reader.result;
+        //console.log(savedFileBase64);
+		  }
+	  }
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+});
+
+$('#fileButton').click(() => {
+  fileUpload();
+});
+
+function fileUpload() {
+  console.log("fiel upload")
+  var tis = $(".inputTis").val();
+  console.log(tis)
+
+  var url = "../../controller/controllerImg.php";
+  console.log(savedFileBase64)
+  var data = {'tis':tis, 'savedFileBase64':savedFileBase64};
+
+  fetch(url, {
+  method: 'POST',
+  body: JSON.stringify(data),
+  headers:{'Content-Type': 'application/json'} 
+  
+  })
+  .then(res => res.json()).then(result => {
+  
+    alert(result.error);
+    $("#fotoPerfil").attr("src",savedFileBase64);
+
+  }).catch(error => console.error('Error status:', error));
+
+}
 
 function pedirCita () {
 

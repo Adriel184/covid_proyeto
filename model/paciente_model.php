@@ -82,6 +82,7 @@ class paciente_model extends paciente {
             $paciente->apellido=$row['apellido'];
             $paciente->fecha_nac=$row['fecha_nac'];
             $paciente->fecha_pcr_pstv=$row['fecha_pcr'];
+            $paciente->img=$row['img'];
             $response["paciente"]=get_object_vars($paciente);
             $response["status"]="200";
 
@@ -125,6 +126,7 @@ class paciente_model extends paciente {
             $paciente->apellidos=$row['apellidos'];
             $paciente->fecha_nac=$row['fecha_nac'];
             $paciente->fecha_pcr_pstv=$row['fecha_pcr_pstv'];
+            $paciente->img=$row['img'];
 
             //$arrmov = (array) $movimiento;
             
@@ -188,6 +190,29 @@ class paciente_model extends paciente {
         mysqli_free_result($result);
         $this -> CloseConnect();
         return get_object_vars($this);
+    }
+
+    public function updateFile(){
+        $this -> OpenConnect();
+
+        $tis = $this -> getTis();
+        $img = $this -> getImg();
+
+        $sql = "UPDATE `paciente` SET `img`='$img' WHERE tis=$tis";
+
+        $result = $this -> link -> query($sql);
+
+        // $error = 'no error';
+
+        // if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        //     $error = 'no error';
+        // }else{
+        //     $error = 'Algo no ha salido bien al actualizar el centro de vacunacion.';
+        // }
+
+        //mysqli_free_result($result);
+        $this-> CloseConnect();
+        return $result;
     }
 
     public function ObjVars(){
