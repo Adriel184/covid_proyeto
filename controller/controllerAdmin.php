@@ -1,6 +1,5 @@
 <?php
 include_once '../model/admin_model.php';
-include_once '../model/centro_model.php';
 
 $data = json_decode(file_get_contents("php://input"), true);
 
@@ -18,7 +17,6 @@ $response = array();
 if(($user != null) && ($password != null)) {
 
     $admin = new admin_model();
-    $centro = new centro_model();
     $admin -> setUsuario($user);
     $admin -> setContrasena($password);
 
@@ -28,13 +26,10 @@ if(($user != null) && ($password != null)) {
         $admin->getAdmin();
         $response['user']=$admin->ObjVars();
         $response['error']="no error";
-        $response['centros']=$centro->getCentros();
 
         $_SESSION['usuario'] = $user;
         $_SESSION['tipo'] = $admin->getTipo();
         $_SESSION['view']=$accion;
-
-
 
     }else{
         $response['error'] = "incorrect user/password";
@@ -47,5 +42,4 @@ if(($user != null) && ($password != null)) {
 echo json_encode($response);
 
 unset($response);
-
 ?>
