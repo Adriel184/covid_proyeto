@@ -78,6 +78,8 @@ class paciente_model extends paciente {
             $paciente->apellido=$row['apellido'];
             $paciente->fecha_nac=$row['fecha_nac'];
             $paciente->fecha_pcr_pstv=$row['fecha_pcr'];
+            $response["paciente"]=get_object_vars($paciente);
+            $response["status"]="200";
 
             $cita = new cita_model();
             $cita->setTis($row['tis']); 
@@ -87,9 +89,9 @@ class paciente_model extends paciente {
             $OBJcentro->setId($row['id_centro']); 
             $paciente->centro=$OBJcentro->getCentroById();
 
+
             $response["paciente"]=get_object_vars($paciente);
             $response["status"]="200";
-
         }else {
             $response["status"]="500";
         }
@@ -130,24 +132,53 @@ class paciente_model extends paciente {
 
     }
 
-    public function getLastDosis(){
-
+    public function findPacienteByTis(){
         $this->OpenConnect();
 
         $tis=$this->getTis();
-        $numDosis=0;
 
-        $sql = "SELECT MAX(recibe.dosis) AS dosis FROM recibe INNER JOIN paciente ON paciente.tis = recibe.tis WHERE paciente.tis=$tis;";
+        $sql = "SELECT MAX(recibe.dosis) AS dosis, paciente.fecha_pcr AS UltimaFechaPcrPositiva FROM recibe INNER JOIN paciente ON paciente.tis = recibe.tis WHERE paciente.tis=$tis;";
         $result = $this->link->query($sql);
+
+        $response=array();
         
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $numDosis=$row['dosis'];
+            $response["numDosis"]=$row['dosis'];
+            $response["UltimaFechaPcrPositiva"]=$row['UltimaFechaPcrPositiva'];
+            if($response["numDosis"]==null){
+                $response["numDosis"]=0;
+            }
         }
 
-        mysqli_free_result($result);
-        $this->CloseConnect();
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
 
-        return $numDosis;
+            $this -> setTis($row['tis']);
+            $this -> setNombre($row['nombre']);
+            $this -> setApellido($row['apellido']);
+            $this -> setFecha_nac($row['fecha_nac']);
+            $this -> setFecha_pcr_pstv($row['fecha_pcr']);
+
+            $cita = new cita_model();
+            $cita -> setId($row['idCita']);
+            $cita -> setFecha($row['fechaCita']);
+            $cita -> setDosis($row['dosis']);
+
+            $this -> citas = $cita -> ObjVars();
+
+            $centro = new centro_model();
+            $centro -> setNombre($row['nombreCentro']);
+            $centro -> setPoblacion($row['poblacion']);
+            $centro -> setProvincia($row['provincia']);
+
+            $this -> centro = $centro -> ObjVars();
+        }
+        mysqli_free_result($result);
+        $this -> CloseConnect();
+        return get_object_vars($this);
+    }
+
+    public function ObjVars(){
+        return get_object_vars($this);
     }
 
 }

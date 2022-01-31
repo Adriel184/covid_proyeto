@@ -1,11 +1,12 @@
 <?php
 
 class regVacunacion {
-    private $id;
-    private $dosis;
-    private $fecha;
-    private $id_vacuna;
-    private $tis;
+    protected $id;
+    protected $dosis;
+    protected $marca;
+    protected $fecha;
+    protected $id_vacuna;
+    protected $tis;
 
     /**
      * Get the value of id
@@ -43,6 +44,25 @@ class regVacunacion {
     public function setDosis($dosis)
     {
         $this->dosis = $dosis;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of marca
+     */ 
+    public function getMarca()
+    {
+        return $this->dosis;
+    }
+
+    /**
+     * Set the value of marca
+     * @return  self
+     */ 
+    public function setMarca($marca)
+    {
+        $this->marca = $marca;
 
         return $this;
     }
