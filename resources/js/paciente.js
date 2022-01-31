@@ -44,6 +44,9 @@ async function loadContent(x) {
   if (sesion.usuario) {
     $(".paciente").hide();
     
+    if(sesion.usuario!="admin_general") {
+      $(".adming").hide();
+    }
     $("#navbarDarkDropdownMenuLink").html(sesion.usuario);
   }else{
     $(".admin").hide();
