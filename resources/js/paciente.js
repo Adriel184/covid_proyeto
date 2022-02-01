@@ -92,7 +92,7 @@ async function loadContent(x) {
           + "<form>"
           + "<div class='mb-3'>"
           + "<label fro='idCite' class='form-label mt-2'>ID de la cita:</label>"
-          + "<input type='text' class='form-control mb-3' placeholder='" + result.paciente.citas[i].id + "' disabled>"
+          + "<input type='text' class='form-control mb-3' id='idBorrar' placeholder='" + result.paciente.citas[i].id + "' value='"+result.paciente.citas[i].id+"' disabled>"
           + "<label for='localidad' class='form-label'>Población:</label>"
           + "<input type='text' class='form-control' placeholder='" + result.paciente.centro.poblacion + "' disabled>"
           + "</div>"
@@ -110,13 +110,13 @@ async function loadContent(x) {
         i++;
       });
       collapse();
-
       $(".inputTis").val(result.paciente.tis);
       $(".inputNombre").val(result.paciente.nombre);
       $(".inputApellido").val(result.paciente.apellido);
       $(".inputProvincia").val(result.paciente.centro.provincia);
       $(".inputNac").val(result.paciente.fecha_nac);
       $(".inputCentro").val(result.paciente.centro.nombre + ", " + result.paciente.centro.poblacion);
+      $('#idCentro').val(result.paciente.centro.id);
       $("#fotoPerfil").attr("src", result.paciente.img);
 
     }).catch(error => console.error('Error status:', error));
@@ -178,8 +178,6 @@ function fileUpload() {
 }
 
 function pedirCita() {
-
-
   var tis = $('#tis').val();
   var dosis = $('#dosis').val();
   var fechaYhora = $('#fechaPedirCita').val();
@@ -190,12 +188,11 @@ function pedirCita() {
   var data = { 'tis': tis, 'dosis': dosis, 'fechaYhora': fechaYhora, "idCentro": idCentro };
 
   fetch(url, {
-    method: 'POST', // or 'POST'
-    body: JSON.stringify(data), // data can be `string` or {object}!
-    headers: { 'Content-Type': 'application/json' }  //input data
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: { 'Content-Type': 'application/json' }
 
-  })
-    .then(res => res.json()).then(result => {
+  }).then(res => res.json()).then(result => {
 
 
     }).catch(error => console.error('Error status:', error));
@@ -280,6 +277,8 @@ function getSession() {
 
 $('#anularCitaConfir').click(() => {
 
+  var id_cita = $('#idBorrar').val();
+
   var data = { 'idCita': id_cita };
   var url = '../../controller/controllerCitaAnu.php';
 
@@ -289,6 +288,9 @@ $('#anularCitaConfir').click(() => {
     headers: { 'Content-Type': 'application/json' }
   }).then(res => res.json()).then(result => {
 
+    if (result.error == 'Cita anulada con exito') {
+      window.location.reload()
+    }
 
   }).catch(error => console.error('Error status:', error));
 })
