@@ -138,11 +138,14 @@ function pedirCita () {
   var dosis = $('#dosis').val();
   var fechaYhora = $('#fechaPedirCita').val();
   var idCentro = $('#idCentro').val();
+  var accion = "add";
+  var dobledosis = false;
 
-  /*
+
   if (dosis=="1 y 2") {
-    dosis="2";
-  }*/
+    dosis="1";
+    dobledosis=true;
+  }
 
   console.log(tis);
   console.log(dosis);
@@ -151,7 +154,7 @@ function pedirCita () {
 
   var url = "../../controller/controllerCita.php";
   
-  var data = { 'tis':tis, 'dosis':dosis, 'fechaYhora':fechaYhora, "idCentro":idCentro};
+  var data = { 'tis':tis, 'dosis':dosis, 'fechaYhora':fechaYhora, "idCentro":idCentro, "accion":accion, "dobledosis":dobledosis};
 
   fetch(url, {
   method: 'POST', // or 'POST'
@@ -173,8 +176,30 @@ function pedirCita () {
 
 }
 
-function anularCita(id) {
-  console.log(id);
+
+
+
+function anularCita (id) {
+
+  var accion = "delete";
+
+  var url = "../../controller/controllerCita.php";
+  
+  var data = { 'id':id, "accion":accion};
+
+  fetch(url, {
+  method: 'POST', // or 'POST'
+  body: JSON.stringify(data), // data can be `string` or {object}!
+  headers:{'Content-Type': 'application/json'}  //input data
+  
+  })
+  .then(res => res.json()).then(result => {
+  
+    console.log(result);
+
+
+  }).catch(error => console.error('Error status:', error));
+
 }
 
 //activar y desactivar la funcion "Disabled"

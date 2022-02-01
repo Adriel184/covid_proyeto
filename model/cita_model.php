@@ -164,9 +164,9 @@ class cita_model extends cita {
     public function deleteCita(){
 
         $this->OpenConnect();
-        $id = $this -> id;
+        $id=$this->getId();
 
-        $sql = "DELETE FROM `citas` WHERE `id`=$id";
+        $sql = "DELETE FROM `cita` WHERE `id`=$id";
 
         $result = $this->link->query($sql);
 
