@@ -5,7 +5,7 @@ $response = array();
 
 $centro = new centro_model();
 
-$response['centros']=$centro->getCentros();
+$response['centros'] = $centro->getCentros();
 
 echo json_encode($response);
 
