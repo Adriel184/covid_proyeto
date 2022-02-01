@@ -97,7 +97,6 @@ function logout() {
         headers: { 'Content-Type': 'application/json' }
     })
         .then(res => res.json()).then(result => {
-            console.log(result);
 
             if (!window.location.href.includes("index.html")) {
                 window.location.href = href;

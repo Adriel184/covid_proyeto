@@ -40,19 +40,36 @@ async function loadContent(x) {
   var data = { "accion": accion };
   var url = "../../controller/controllerPaciente.php";
   var sesion = await getSession();
+  
+  var pacienteButtons = "<p class='textoPaciente'>Puedes pedir una cita o consultar y editar tus citas pendientes. Tambien puedes anular una cita.</p>" +
+                        "<button type='button' class='btn btn-outline-success paciente' data-bs-toggle='modal' data-bs-target='#pedirCita'>Pedir cita</button>" +
+                        "<button type='button' class='btn btn-outline-danger paciente' data-bs-toggle='modal' data-bs-target='#consultarCita'>Consultar citas</button>" +
+                        "<button type='button' class='btn btn-outline-success paciente' data-bs-toggle='modal' data-bs-target='#historial'>Historial de Vacunación</button>";
 
-  console.log(sesion);
+  var generalButtons = "<button type='button' class='btn btn-outline-danger admin adming' data-bs-toggle='modal'"+
+                      "data-bs-target='#modificarCentros'>Modificar Centros</button>"+
+                      "<button type='button' class='btn btn-outline-success admin adming' data-bs-toggle='modal'"+
+                      "data-bs-target='#añadirCentros'>Añadir Centro</button>";
+
+  var adminPacienteButtons = "<button type='button' class='btn btn-outline-danger admin' data-bs-toggle='modal' data-bs-target='#verPacientes'>Consultar Pacientes</button>";
 
   if (sesion.usuario) {
+    if (sesion.tipo == "paciente") {
+      $("#mainButtons").html(adminPacienteButtons);
+    }
+    else if(sesion.tipo == "general"){
+      $("#mainButtons").html(generalButtons);
+      $("#mainButtons").append(adminPacienteButtons);
+    }
+
     $(".paciente").hide();
 
-    if (sesion.usuario != "admin_general") {
-      $(".adming").hide();
-    }
-    $(".textoPaciente").hide();
     $("#navbarDarkDropdownMenuLink").html(sesion.usuario);
-  } else {
-    $(".admin").hide();
+
+  }
+  else {
+    //$(".admin").hide();
+    $("#mainButtons").html(pacienteButtons);
 
     fetch(url, {
       method: 'POST',
@@ -60,8 +77,6 @@ async function loadContent(x) {
       headers: { 'Content-Type': 'application/json' }
 
     }).then(res => res.json()).then(result => {
-      console.log("loginIñigo");
-      console.log(result);
 
       $("#navbarDarkDropdownMenuLink").html(result.paciente.nombre + ', ' + result.paciente.apellido);
       $(".inputNombre").html(result.paciente.nombre);
@@ -109,7 +124,6 @@ async function loadContent(x) {
 }
 
 $('#ConfirmarPedirCita').click(() => {
-  console.log("Se ha clicado en ConfirmarPedirCita");
   pedirCita();
 });
 
@@ -124,7 +138,6 @@ $('#inputFile').change(() => {
 
   if (!new RegExp("(.*?).(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$").test(filename)) {
 
-    alert("Solo se aceptan imágenes JPG, PNG y GIF");
     $("#inputFile").val("");
 
   } else {
@@ -143,12 +156,11 @@ $('#fileButton').click(() => {
 });
 
 function fileUpload() {
-  console.log("fiel upload")
+
   var tis = $(".inputTis").val();
-  console.log(tis)
 
   var url = "../../controller/controllerImg.php";
-  console.log(savedFileBase64)
+
   var data = { 'tis': tis, 'savedFileBase64': savedFileBase64 };
 
   fetch(url, {
@@ -159,7 +171,6 @@ function fileUpload() {
   })
     .then(res => res.json()).then(result => {
 
-      alert(result.error);
       $("#fotoPerfil").attr("src", savedFileBase64);
 
     }).catch(error => console.error('Error status:', error));
@@ -168,17 +179,11 @@ function fileUpload() {
 
 function pedirCita() {
 
-  console.log("Se ha entrado en la funcion pedirCita")
 
   var tis = $('#tis').val();
   var dosis = $('#dosis').val();
   var fechaYhora = $('#fechaPedirCita').val();
   var idCentro = $('#idCentro').val();
-
-  console.log(tis);
-  console.log(dosis);
-  console.log(fechaYhora);
-  console.log(idCentro);
 
   var url = "../../controller/controllerCita.php";
 
@@ -192,11 +197,6 @@ function pedirCita() {
   })
     .then(res => res.json()).then(result => {
 
-      console.log("Se ha creado la cita correctamente?: " + result.added);
-
-      if (result.added) {
-        console.log("Cita creada correctamente");
-      }
 
     }).catch(error => console.error('Error status:', error));
 
@@ -218,8 +218,6 @@ function disableModify() {
 $('#btnCita').click(function () {
   var fechaCitaNueva = $('#fechaPedirCita').val().split('T')[0];
   var horaCitaNueva = $('#fechaPedirCita').val().split('T')[1];
-  console.log("fecha: " + fechaCitaNueva);
-  console.log("hora: " + horaCitaNueva);
 
 });
 
@@ -237,7 +235,6 @@ async function historialVacu() {
     body: JSON.stringify(data),
     headers: { 'Content-Type': 'application/json' }
   }).then(res => res.json()).then(result => {
-    console.log(result.historial);
 
     i = 0;
     e = 1;
@@ -292,7 +289,6 @@ $('#anularCitaConfir').click(() => {
     headers: { 'Content-Type': 'application/json' }
   }).then(res => res.json()).then(result => {
 
-    console.log(result.error);
 
   }).catch(error => console.error('Error status:', error));
 })

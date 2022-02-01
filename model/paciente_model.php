@@ -75,6 +75,7 @@ class paciente_model extends paciente {
             $paciente->tis = $row['tis'];
             $paciente->nombre = $row['nombre'];
             $paciente->apellido = $row['apellido'];
+            $paciente->img = $row['img'];
             $paciente->fecha_nac = $row['fecha_nac'];
             $paciente->fecha_pcr_pstv = $row['fecha_pcr'];
             $response["paciente"] = get_object_vars($paciente);
@@ -148,7 +149,7 @@ class paciente_model extends paciente {
 
         $tis = $this->getTis();
 
-        $sql = "SELECT paciente.tis, paciente.nombre, paciente.apellido, paciente.fecha_nac, paciente.fecha_pcr, cita.id AS idCita, cita.fecha AS fechaCita, cita.dosis, centro_vacunacion.nombre AS nombreCentro, centro_vacunacion.poblacion, centro_vacunacion.provincia FROM paciente INNER JOIN centro_vacunacion ON centro_vacunacion.id = paciente.id_centro INNER JOIN cita ON paciente.tis = cita.tis WHERE paciente.tis = $tis;";
+        $sql = "SELECT paciente.tis, paciente.nombre, paciente.apellido, paciente.fecha_nac, paciente.fecha_pcr, paciente.img, cita.id AS idCita, cita.fecha AS fechaCita, cita.dosis, centro_vacunacion.nombre AS nombreCentro, centro_vacunacion.poblacion, centro_vacunacion.provincia FROM paciente INNER JOIN centro_vacunacion ON centro_vacunacion.id = paciente.id_centro INNER JOIN cita ON paciente.tis = cita.tis WHERE paciente.tis = $tis;";
 
         $result = $this->link->query($sql);
 
@@ -158,6 +159,7 @@ class paciente_model extends paciente {
             $this->setApellido($row['apellido']);
             $this->setFecha_nac($row['fecha_nac']);
             $this->setFecha_pcr_pstv($row['fecha_pcr']);
+            $this->setImg($row['img']);
 
             $cita = new cita_model();
             $cita->setId($row['idCita']);

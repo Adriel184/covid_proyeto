@@ -80,7 +80,7 @@ function traerCentros() {
 
         $('.centroM').click(function log() {
             var data = $(this).data();
-            console.log(data);
+            
             $("#centroId").val(data.id);
             $("#centroNombre").val(data.nombre);
             $("#centroProvincia").val(data.provincia);
@@ -117,9 +117,6 @@ $('#crearCentro').click(function log() {
     var sabado = $("#crearSabado").val();
     var domingo = $("#crearDomingo").val();
 
-    console.log("hora_apertura");
-    console.log(hora_apertura);
-
     var data = { 'nombre': nombre, 'provincia': provincia, 'poblacion': poblacion, 'direccion': direccion, 'cp': cp, 'hora_apertura': hora_apertura, 'hora_cierre': hora_cierre, 'lunes': lunes, 'martes': martes, 'miercoles': miercoles, 'jueves': jueves, 'viernes': viernes, 'sabado': sabado, 'domingo': domingo };
     var url = '../../controller/controllerAnadirCentro.php';
 
@@ -128,15 +125,6 @@ $('#crearCentro').click(function log() {
         body: JSON.stringify(data),
         headers: { 'Content-Type': 'application/json' }
     }).then(res => res.json()).then(result => {
-
-        console.log(result);
-
-        if (result.error == 'Centro añadido') {
-            alert('Centro añadido con exito.');
-        }
-        else {
-            alert('Todos los campos son obligatorios.');
-        }
 
         $(".anadirInput").val("");
         $(".anadirSelect").val(1);
@@ -161,13 +149,10 @@ $('#modificarCentro').click(function log() {
     var sabado = $("#centroSabado").val();
     var domingo = $("#centroDomingo").val();
 
-    console.log(hora_cierre_format);
-
     if (hora_cierre_format.split(':').length >= 3) {
         var hora_cierre_post = hora_cierre_format.split(':');
         hora_cierre_post.pop();
         hora_cierre = hora_cierre_post.join(':');
-        console.log(hora_cierre);
     } else {
         var hora_cierre = hora_cierre_format;
     }
@@ -175,22 +160,14 @@ $('#modificarCentro').click(function log() {
     var data = { 'id': id, 'nombre': nombre, 'provincia': provincia, 'poblacion': poblacion, 'direccion': direccion, 'cp': cp, 'hora_apertura': hora_apertura, 'hora_cierre': hora_cierre, 'lunes': lunes, 'martes': martes, 'miercoles': miercoles, 'jueves': jueves, 'viernes': viernes, 'sabado': sabado, 'domingo': domingo };
     var url = '../../controller/controllerModCentro.php';
 
-    console.log(hora_cierre);
-
     fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: { 'Content-Type': 'application/json' }
     }).then(res => res.json()).then(result => {
 
-        console.log(result);
-
         if (result.error == 'Centro modificado') {
-            alert('Centro modificado con exito.');
             traerCentros();
-        }
-        else {
-            alert('Todos los campos son obligatorios.');
         }
 
     }).catch(error => console.error('Error status:', error));
@@ -209,7 +186,7 @@ $('#buscaTis').click(function () {
 
         var fechaPcr = result.paciente.fecha_pcr_pstv;
 
-        if (fechaPcr == null) {
+        if(fechaPcr == null) {
             fechaPcr = 'NO TIENE FECHA';
         }
 
@@ -298,7 +275,7 @@ function vacunar() {
         headers: { 'Content-Type': 'application/json' }
     }).then(res => res.json()).then(result => {
 
-        console.log(result);
+        
 
     }).catch(error => console.error('Error status:', error));
 }
