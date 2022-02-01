@@ -179,6 +179,20 @@ class paciente_model extends paciente {
         return get_object_vars($this);
     }
 
+    public function updateFile() {
+        $this->OpenConnect();
+
+        $tis = $this->getTis();
+        $img = $this->getImg();
+
+        $sql = "UPDATE paciente SET img='$img' WHERE tis = $tis;";
+
+        $result = $this->link->query($sql);
+        
+        $this->CloseConnect();
+        return $result;
+    }
+
     public function ObjVars() {
         return get_object_vars($this);
     }

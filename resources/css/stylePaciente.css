@@ -82,3 +82,7 @@ div.container.centrar {
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
+
+#fotoPerfil{
+  width: 120px;
+}

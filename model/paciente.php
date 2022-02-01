@@ -6,6 +6,7 @@ class paciente {
     protected $fecha_nac;
     protected $fecha_pcr_pstv;
     protected $id_centro;
+    protected $img;
     
     public function getTis() {
         return $this->tis;
@@ -60,6 +61,14 @@ class paciente {
     }
     public function setId_centro($id_centro) {
         $this->id_centro = $id_centro;
+        return $this;
+    }
+
+    public function getImg() {
+        return $this->img;
+    }
+    public function setImg($img) {
+        $this->img = $img;
         return $this;
     }
 }
