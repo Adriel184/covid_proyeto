@@ -189,6 +189,7 @@ $('#buscaTis').click(function () {
         if(fechaPcr == null) {
             fechaPcr = 'NO TIENE FECHA';
         }
+        console.log(result);
 
         $('#infoPaciente').html(
             "<div class='col-7'>" +
