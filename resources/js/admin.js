@@ -244,7 +244,7 @@ $('#buscaTis').click(function () {
 function vacunacion(infoPaciente) {
 
     var today = new Date();
-    var date = today.getFullYear() + '-0' + (today.getMonth() + 1) + '-' + today.getDate();
+    var date = today.getFullYear() + '-0' + (today.getMonth() + 1) + '-0' + today.getDate();
 
     $('#vacunacion').html(
         "<label for='tis' class='form-label mt-3'>Tis:</label>" +
