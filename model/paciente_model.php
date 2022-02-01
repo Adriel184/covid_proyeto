@@ -132,6 +132,25 @@ class paciente_model extends paciente {
 
     }
 
+
+    public function getLastDosis(){
+        $this->OpenConnect();
+
+        $tis=$this->getTis();
+        $numDosis=0;
+
+        $sql = "SELECT MAX(recibe.dosis) AS dosis FROM recibe INNER JOIN paciente ON paciente.tis = recibe.tis WHERE paciente.tis=$tis;";
+        $result = $this->link->query($sql);
+        
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $numDosis=$row['dosis'];
+        }
+
+        mysqli_free_result($result);
+        $this->CloseConnect();
+        return $numDosis;
+    }
+
     public function findPacienteByTis(){
         $this->OpenConnect();
 

@@ -72,6 +72,8 @@ async function loadContent(x) {
         var a = new Date(result.dateTime6monthsAgo);
         var b = new Date(result.paciente.fecha_pcr_pstv);
 
+        console.log(result.paciente.ultimaDosis);
+
         if (result.paciente.fecha_pcr_pstv==null || a>b) {
           document.getElementById("dosis").value="1 y 2";
         }else{
@@ -96,7 +98,7 @@ async function loadContent(x) {
           +        "<label class='form-label' for='fechaHora'>Fecha y Hora:</label><br>"
           +        "<input type='' class='fechaHora form-control' id='fechaConsultarCita' value='"+element.fecha+" 'disabled>"
           +    "</div> <br>"
-          +    "<button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#anularCita'>Anular Cita</button>"
+          +    "<button type='button' onclick=anularCita("+element.id+") class='btn btn-danger'>Anular Cita</button>"
           +    "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modificarCita' onclick='enableModify()'>Cambiar fecha / hora</button>"
           +    "<button type='button' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#confirmarCitaCita' onclick='disableModify()'>Aceptar</button>"
           +  "</form>"
@@ -137,6 +139,11 @@ function pedirCita () {
   var fechaYhora = $('#fechaPedirCita').val();
   var idCentro = $('#idCentro').val();
 
+  /*
+  if (dosis=="1 y 2") {
+    dosis="2";
+  }*/
+
   console.log(tis);
   console.log(dosis);
   console.log(fechaYhora);
@@ -157,11 +164,17 @@ function pedirCita () {
     console.log( "Se ha creado la cita correctamente?: "+result.added);
     console.log(result.message);
     if (result.added) {
-      console.log("Cita creada correctamente");
+      alert("Cita creada correctamente");
+    }else{
+      alert(result.message)
     }
 
   }).catch(error => console.error('Error status:', error));
 
+}
+
+function anularCita(id) {
+  console.log(id);
 }
 
 //activar y desactivar la funcion "Disabled"

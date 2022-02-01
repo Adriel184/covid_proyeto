@@ -18,20 +18,19 @@
 
     $citas=$cita->getCitasByTis();
 
-    /**Codigo para crear el datetime now y compararlo con la fecha de ultima pcr del capo*/
-        
-    $dateTime6monthsAgo=date('Y-m-d H:i:s',strtotime($response["dateTimeNow"]."- 6 months"));
+    /**Codigo para crear el datetime now y compararlo con la fecha de ultima pcr del paciente*/
 
     if (count($citas)==0) {
         $response["message"]="El paciente no tiene citas pendientes";
         
-        if ($paciente->getLastDosis()["dosis"]<3) {
+        if ($paciente->getLastDosis()<3) {
             $response["message"]="El paciente no tiene citas pendientes y ha recibido menos de 3 dosis";
             $response["added"]=$cita->addCita();
         }else {
-            $response["message"]="El paciente no tiene citas pendientes pero ha recibido EL MAXIMO de 3 dosis";
+            $response["message"]="Ha recibido EL MAXIMO de 3 dosis";
             $response["added"]=false;
         }
+        
     }else {
         $response["message"]="El paciente tiene otras citas pendientes";
         $response["added"]=false;
