@@ -15,304 +15,125 @@ class centro {
     protected $domingo;
     protected $hora_apertura;
     protected $hora_cierre;
-    
-    /**
-     * Get the value of id
-     */
-    public function getId()
-    {
+
+    public function getId() {
         return $this->id;
     }
-
-    /**
-     * Set the value of id
-     *
-     * @return  self
-     */ 
-    public function setId($id)
-    {
+    public function setId($id) {
         $this->id = $id;
-
         return $this;
     }
 
-    /**
-     * Get the value of nombre
-     */ 
-    public function getNombre()
-    {
+    public function getNombre() {
         return $this->nombre;
     }
-
-    /**
-     * Set the value of nombre
-     *
-     * @return  self
-     */ 
-    public function setNombre($nombre)
-    {
+    public function setNombre($nombre) {
         $this->nombre = $nombre;
-
         return $this;
     }
 
-    /**
-     * Get the value of poblacion
-     */ 
-    public function getPoblacion()
-    {
+    public function getPoblacion() {
         return $this->poblacion;
     }
-
-    /**
-     * Set the value of poblacion
-     *
-     * @return  self
-     */ 
-    public function setPoblacion($poblacion)
-    {
+    public function setPoblacion($poblacion) {
         $this->poblacion = $poblacion;
-
         return $this;
     }
 
-    /**
-     * Get the value of cp
-     */ 
-    public function getCp()
-    {
+    public function getCp() {
         return $this->cp;
     }
-
-    /**
-     * Set the value of cp
-     *
-     * @return  self
-     */ 
-    public function setCp($cp)
-    {
+    public function setCp($cp) {
         $this->cp = $cp;
-
         return $this;
     }
 
-    /**
-     * Get the value of provincia
-     */ 
-    public function getProvincia()
-    {
+    public function getProvincia() {
         return $this->provincia;
     }
-
-    /**
-     * Set the value of provincia
-     *
-     * @return  self
-     */ 
-    public function setProvincia($provincia)
-    {
+    public function setProvincia($provincia) {
         $this->provincia = $provincia;
-
         return $this;
     }
 
-    /**
-     * Get the value of direccion
-     */ 
-    public function getDireccion()
-    {
+    public function getDireccion() {
         return $this->direccion;
     }
-
-    /**
-     * Set the value of direccion
-     *
-     * @return  self
-     */ 
-    public function setDireccion($direccion)
-    {
+    public function setDireccion($direccion) {
         $this->direccion = $direccion;
-
         return $this;
     }
 
-    /**
-     * Get the value of lunes
-     */ 
-    public function getLunes()
-    {
+    public function getLunes() {
         return $this->lunes;
     }
-
-    /**
-     * Set the value of lunes
-     *
-     * @return  self
-     */ 
-    public function setLunes($lunes)
-    {
+    public function setLunes($lunes) {
         $this->lunes = $lunes;
-
         return $this;
     }
 
-    /**
-     * Get the value of martes
-     */ 
-    public function getMartes()
-    {
+    public function getMartes() {
         return $this->martes;
     }
-
-    /**
-     * Set the value of martes
-     *
-     * @return  self
-     */ 
-    public function setMartes($martes)
-    {
+    public function setMartes($martes) {
         $this->martes = $martes;
-
         return $this;
     }
 
-    /**
-     * Get the value of miercoles
-     */ 
-    public function getMiercoles()
-    {
+    public function getMiercoles() {
         return $this->miercoles;
     }
-
-    /**
-     * Set the value of miercoles
-     *
-     * @return  self
-     */ 
-    public function setMiercoles($miercoles)
-    {
+    public function setMiercoles($miercoles) {
         $this->miercoles = $miercoles;
-
         return $this;
     }
 
-    /**
-     * Get the value of jueves
-     */ 
-    public function getJueves()
-    {
+    public function getJueves() {
         return $this->jueves;
     }
-
-    /**
-     * Set the value of jueves
-     *
-     * @return  self
-     */ 
-    public function setJueves($jueves)
-    {
+    public function setJueves($jueves) {
         $this->jueves = $jueves;
-
         return $this;
     }
 
-    /**
-     * Get the value of viernes
-     */ 
-    public function getViernes()
-    {
+    public function getViernes() {
         return $this->viernes;
     }
-
-    /**
-     * Set the value of viernes
-     *
-     * @return  self
-     */ 
-    public function setViernes($viernes)
-    {
+    public function setViernes($viernes) {
         $this->viernes = $viernes;
-
         return $this;
     }
 
-    /**
-     * Get the value of sabado
-     */ 
-    public function getSabado()
-    {
+    public function getSabado() {
         return $this->sabado;
     }
-
-    /**
-     * Set the value of sabado
-     *
-     * @return  self
-     */ 
-    public function setSabado($sabado)
-    {
+    public function setSabado($sabado) {
         $this->sabado = $sabado;
-
         return $this;
     }
 
-    /**
-     * Get the value of domingo
-     */ 
-    public function getDomingo()
-    {
+    public function getDomingo() {
         return $this->domingo;
     }
-
-    /**
-     * Set the value of domingo
-     *
-     * @return  self
-     */ 
-    public function setDomingo($domingo)
-    {
+    public function setDomingo($domingo) {
         $this->domingo = $domingo;
-
         return $this;
     }
 
-    /**
-     * Get the value of hora_apertura
-     */ 
-    public function getHora_apertura()
-    {
+    public function getHora_apertura() {
         return $this->hora_apertura;
     }
-
-    /**
-     * Set the value of hora_apertura
-     *
-     * @return  self
-     */ 
-    public function setHora_apertura($hora_apertura)
-    {
+    public function setHora_apertura($hora_apertura) {
         $this->hora_apertura = $hora_apertura;
-
         return $this;
     }
 
-    /**
-     * Get the value of hora_cierre
-     */ 
-    public function getHora_cierre()
-    {
+    public function getHora_cierre() {
         return $this->hora_cierre;
     }
-
-    /**
-     * Set the value of hora_cierre
-     *
-     * @return  self
-     */ 
-    public function setHora_cierre($hora_cierre)
-    {
+    public function setHora_cierre($hora_cierre) {
         $this->hora_cierre = $hora_cierre;
-
         return $this;
     }
 }
+?>

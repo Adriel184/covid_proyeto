@@ -22,6 +22,7 @@
     width: fit-content;
     padding: 10px;
 }
+
 .container-sm {
     text-align: center;
 }
@@ -29,6 +30,7 @@
 .textoAyuda {
     text-align: center;
 }
+
 .textoAyuda h1 {
     color: green;
 }

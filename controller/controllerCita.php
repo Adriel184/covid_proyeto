@@ -1,4 +1,5 @@
 <?php 
+include_once '../model/cita_model.php';
 
     include_once '../model/cita_model.php';
     include_once '../model/paciente_model.php';
@@ -62,7 +63,7 @@
 
     
 
-    echo json_encode($response);
-    
-    unset($response);
-        
+echo json_encode($response);
+
+unset($response);
+?>
