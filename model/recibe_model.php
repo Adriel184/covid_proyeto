@@ -1,88 +1,86 @@
 <?php
-if ($_SERVER['SERVER_NAME']== "bat.zerbitzaria.net") {
-    include_once ("connect_data_serv.php");
+if($_SERVER['SERVER_NAME'] == "bat.zerbitzaria.net") {
+    include_once("connect_data_serv.php");
 }
 else {
-    include_once ("connect_data.php");
+    include_once("connect_data.php");
 }
-include_once ("recibe.php");
-include_once ("vacuna_model.php");
+
+include_once("recibe.php");
+include_once("vacuna_model.php");
 
 class recibe_model extends recibe{
-    private $link;  // datu basera lotura - enlace a la bbdd
+    private $link;
     private $objVacuna;
 
     public function OpenConnect() {
-        $konDat=new connect_data();
-        try
-        {
-            $this->link=new mysqli($konDat->host,$konDat->userbbdd,$konDat->passbbdd,$konDat->ddbbname);
-            // mysqli klaseko link objetua sortzen da dagokion konexio datuekin
-            // se crea un nuevo objeto llamado link de la clase mysqli con los datos de conexión. 
+        $konDat = new connect_data();
+
+        try {
+            $this->link = new mysqli($konDat->host, $konDat->userbbdd, $konDat->passbbdd, $konDat->ddbbname);
         }
-        catch(Exception $e)
-        {
+        catch(Exception $e) {
             echo $e->getMessage();
         }
-        $this->link->set_charset("utf8"); // honek behartu egiten du aplikazio eta 
-                        //databasearen artean UTF -8 erabiltzera datuak trukatzeko
+
+        $this->link->set_charset("utf8");
     }                   
           
     public function CloseConnect() {
-        mysqli_close ($this->link);
+        mysqli_close($this->link);
     }
 
-    public function historialPaciente(){
-        $this-> OpenConnect();
+    public function historialPaciente() {
+        $this->OpenConnect();
 
-        $tis = $this -> getTis();
+        $tis = $this->getTis();
 
-        $sql = "SELECT recibe.*, vacuna.marca from recibe, vacuna WHERE tis=$tis GROUP BY dosis;";
+        $sql = "SELECT r.*, v.marca from recibe r, vacuna v WHERE tis = $tis GROUP BY r.dosis;";
 
-        $result = $this -> link -> query($sql);
+        $result = $this->link->query($sql);
 
         $list = array();
 
-        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-
+        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $histo = new recibe_model();
-            $histo -> setTis($row['tis']);
-            $histo -> setId_vacuna($row['id_vacuna']);
-            $histo -> setFecha($row['fecha']);
-            $histo -> setDosis($row['dosis']);
+            $histo->setTis($row['tis']);
+            $histo->setId_vacuna($row['id_vacuna']);
+            $histo->setFecha($row['fecha']);
+            $histo->setDosis($row['dosis']);
 
             $vacuna = new vacuna_model();
-            $vacuna -> setMarca($row['marca']);
+            $vacuna->setMarca($row['marca']);
 
-            $histo -> objVacuna = $vacuna-> ObjVars();
+            $histo->objVacuna = $vacuna->ObjVars();
 
             array_push($list, get_object_vars($histo));
         }
+
         mysqli_free_result($result);
-        $this-> CloseConnect();
+        $this->CloseConnect();
         return $list;
     }
 
-    public function nuevaVacuna(){
-        $this -> OpenConnect();
+    public function nuevaVacuna() {
+        $this->OpenConnect();
 
-        $tis = $this -> getTis();
-        $fecha = $this -> getFecha();
-        $dosis = $this -> getId_vacuna();
-        $nDosis = $this -> getDosis();
+        $tis = $this->getTis();
+        $fecha = $this->getFecha();
+        $dosis = $this->getId_vacuna();
+        $nDosis = $this->getDosis();
 
-        $sql = "INSERT INTO `recibe` (`tis`, `id_vacuna`, `fecha`, `dosis`) VALUES ('$tis', '$dosis', '$fecha', '$nDosis');";
+        $sql = "INSERT INTO recibe (tis, id_vacuna, fecha, dosis) VALUES ('$tis', '$dosis', '$fecha', '$nDosis');";
 
-        $result = $this -> link -> query($sql);
+        $result = $this->link->query($sql);
 
         mysqli_free_result($result);
 
-        $this -> CloseConnect();
+        $this->CloseConnect();
         return $result;
     }
 
-    public function ObjVars(){
+    public function ObjVars() {
         return get_object_vars($this);
     }
-
 }
+?>

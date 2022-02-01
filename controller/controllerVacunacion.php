@@ -8,15 +8,12 @@ $id = $data['id'];
 $response = array();
 
 $cita = new cita_model();
-$cita -> setId($id);
+$cita->setId($id);
 
-
-if ($cita -> deleteCita() == 1) {
-    
+if($cita->deleteCita() == 1) {
     $response['error'] = "Primera funcion se ha hecho.";
-}else{
+}
+else {
     $response['error'] = "No se ha podido hacer la primera llamada.";
 }
-
-
 ?>

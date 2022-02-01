@@ -1,36 +1,35 @@
-<?php 
+<?php
+include_once '../model/paciente_model.php';
 
-    include_once '../model/paciente_model.php';
-    $data=json_decode(file_get_contents("php://input"),true);
-    session_start();
+$data=json_decode(file_get_contents("php://input"), true);
+session_start();
 
-    $accion=$data["accion"];
+$accion = $data["accion"];
 
-    if ($accion=="paciente") {
+if($accion == "paciente") {
+    $response = array();
     
-        $response=array();
-        
-        $view=$_SESSION["view"];
-        $tis= $_SESSION["tis"];
-    
-        $paciente=new paciente_model();
-        $paciente->setTis($tis);
+    $view = $_SESSION["view"];
+    $tis = $_SESSION["tis"];
 
-        $respGetPaciente=array();
+    $paciente = new paciente_model();
+    $paciente->setTis($tis);
 
-        $respGetPaciente=$paciente->getPacienteByTis();
+    $respGetPaciente = array();
 
-        if ($respGetPaciente["status"]=="200") {
-            $response["paciente"]= $respGetPaciente["paciente"];
-            // $response["paciente"]["ultimaDosis"]= $paciente->getLastDosis();
-        }else{
-            $response["paciente"]=null;
-        }
-        
-        $response["view"]=$view;
-        
-        echo json_encode($response);
-        
-        unset($response);
+    $respGetPaciente = $paciente->getPacienteByTis();
+
+    if($respGetPaciente["status"] == "200") {
+        $response["paciente"] = $respGetPaciente["paciente"];
     }
+    else{
+        $response["paciente"] = null;
+    }
+    
+    $response["view"] = $view;
+    
+    echo json_encode($response);
+    
+    unset($response);
+}
 ?>

@@ -8,11 +8,12 @@ $id = $data['idCita'];
 $response = array();
 
 $cita = new cita_model();
-$cita -> setId($id);
+$cita->setId($id);
 
-if ($cita-> deleteCita() == 1) {
+if($cita-> deleteCita() == 1) {
     $response['error'] = "Cita anulada con exito";
-}else{
+}
+else {
     $response['error'] = "La cita no ha sido anulada";
 }
 

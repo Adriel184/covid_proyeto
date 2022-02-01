@@ -2,6 +2,9 @@
 include_once '../model/centro_model.php';
 
 $data = json_decode(file_get_contents("php://input"), true);
+
+$response = array();
+
 $id = $data['id'];
 $nombre = $data['nombre'];
 $provincia = $data['provincia'];
@@ -18,26 +21,24 @@ $viernes = $data['viernes'];
 $sabado = $data['sabado'];
 $domingo = $data['domingo'];
 
-$response = array();
-
 $centro = new centro_model();
-$centro -> setId($id);
-$centro -> setNombre($nombre);
-$centro -> setProvincia($provincia);
-$centro -> setPoblacion($poblacion);
-$centro -> setDireccion($direccion);
-$centro -> setCp($cp);
-$centro -> setHora_apertura($hora_apertura);
-$centro -> setHora_cierre($hora_cierre); 
-$centro -> setLunes($lunes);
-$centro -> setMartes($martes);
-$centro -> setMiercoles($miercoles);
-$centro -> setJueves($jueves);
-$centro -> setViernes($viernes);
-$centro -> setSabado($sabado);
-$centro -> setDomingo($domingo);
+$centro->setId($id);
+$centro->setNombre($nombre);
+$centro->setProvincia($provincia);
+$centro->setPoblacion($poblacion);
+$centro->setDireccion($direccion);
+$centro->setCp($cp);
+$centro->setHora_apertura($hora_apertura);
+$centro->setHora_cierre($hora_cierre); 
+$centro->setLunes($lunes);
+$centro->setMartes($martes);
+$centro->setMiercoles($miercoles);
+$centro->setJueves($jueves);
+$centro->setViernes($viernes);
+$centro->setSabado($sabado);
+$centro->setDomingo($domingo);
 
-if($centro->updateCentro() == 1){
+if($centro->updateCentro() == 1) {
     $response['error'] = "Centro modificado";
 }
 else{
