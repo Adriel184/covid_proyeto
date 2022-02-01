@@ -173,8 +173,27 @@ function pedirCita () {
 
 }
 
-function anularCita(id) {
-  console.log(id);
+function anularCita (id) {
+
+  var accion = "delete";
+
+  var url = "../../controller/controllerCita.php";
+
+  var data = { 'id':id, "accion":accion};
+
+  fetch(url, {
+  method: 'POST', // or 'POST'
+  body: JSON.stringify(data), // data can be `string` or {object}!
+  headers:{'Content-Type': 'application/json'}  //input data
+
+  })
+  .then(res => res.json()).then(result => {
+
+    console.log(result);
+
+
+  }).catch(error => console.error('Error status:', error));
+
 }
 
 //activar y desactivar la funcion "Disabled"
