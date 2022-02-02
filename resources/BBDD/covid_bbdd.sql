@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-01-2022 a las 08:40:13
+-- Tiempo de generación: 28-01-2022 a las 08:45:10
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 7.3.31
 
@@ -29,7 +29,6 @@ USE `covid_ddbb`;
 -- Estructura de tabla para la tabla `admin`
 --
 
-DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
   `id` int(9) NOT NULL,
   `usuario` varchar(50) NOT NULL,
@@ -55,7 +54,6 @@ INSERT INTO `admin` (`id`, `usuario`, `contrasena`, `nombre`, `apellido`, `tipo`
 -- Estructura de tabla para la tabla `centro_vacunacion`
 --
 
-DROP TABLE IF EXISTS `centro_vacunacion`;
 CREATE TABLE `centro_vacunacion` (
   `id` int(9) NOT NULL,
   `nombre` varchar(50) NOT NULL,
@@ -80,7 +78,8 @@ CREATE TABLE `centro_vacunacion` (
 
 INSERT INTO `centro_vacunacion` (`id`, `nombre`, `poblacion`, `cp`, `provincia`, `direccion`, `hora_apertura`, `hora_cierre`, `lunes`, `martes`, `miercoles`, `jueves`, `viernes`, `sabado`, `domingo`) VALUES
 (1, 'Centro Salud Amorebieta', 'Amorebieta-Etxano', 48340, 'Vizcaya', 'San Miguel Kalea, 17', '00:00:00', '00:00:00', 1, 1, 1, 1, 1, 1, 1),
-(2, 'Hospital Universitario de Galdakao', 'Galdakao', 48960, 'Vizcaya', 'Labeaga Auzoa', '00:00:00', '00:00:00', 1, 1, 1, 1, 1, 1, 1);
+(2, 'Hospital Universitario de Galdakao', 'Galdakao', 48960, 'Vizcaya', 'Labeaga Auzoa', '00:00:00', '00:00:00', 1, 1, 1, 1, 1, 1, 1),
+(4, 'Ambulatorio De Landako', 'Durango', 48200, '1', 'Ambulatorio De Landako', '08:00:00', '23:30:00', 1, 1, 1, 1, 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -88,20 +87,21 @@ INSERT INTO `centro_vacunacion` (`id`, `nombre`, `poblacion`, `cp`, `provincia`,
 -- Estructura de tabla para la tabla `cita`
 --
 
-DROP TABLE IF EXISTS `cita`;
 CREATE TABLE `cita` (
   `id` int(9) NOT NULL,
   `tis` int(8) NOT NULL,
   `id_centro` int(9) NOT NULL,
-  `fecha` datetime NOT NULL
+  `fecha` datetime NOT NULL,
+  `dosis` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `cita`
 --
 
-INSERT INTO `cita` (`id`, `tis`, `id_centro`, `fecha`) VALUES
-(0, 23456789, 1, '2021-06-28 10:00:00');
+INSERT INTO `cita` (`id`, `tis`, `id_centro`, `fecha`, `dosis`) VALUES
+(1, 23456789, 1, '2021-06-28 10:00:00', 0),
+(2, 12345678, 2, '2022-01-21 19:50:00', 1);
 
 -- --------------------------------------------------------
 
@@ -109,7 +109,6 @@ INSERT INTO `cita` (`id`, `tis`, `id_centro`, `fecha`) VALUES
 -- Estructura de tabla para la tabla `paciente`
 --
 
-DROP TABLE IF EXISTS `paciente`;
 CREATE TABLE `paciente` (
   `tis` int(8) NOT NULL,
   `nombre` varchar(50) NOT NULL,
@@ -133,7 +132,6 @@ INSERT INTO `paciente` (`tis`, `nombre`, `apellido`, `fecha_nac`, `fecha_pcr`, `
 -- Estructura de tabla para la tabla `recibe`
 --
 
-DROP TABLE IF EXISTS `recibe`;
 CREATE TABLE `recibe` (
   `tis` int(8) NOT NULL,
   `id_vacuna` int(9) NOT NULL,
@@ -146,7 +144,8 @@ CREATE TABLE `recibe` (
 --
 
 INSERT INTO `recibe` (`tis`, `id_vacuna`, `fecha`, `dosis`) VALUES
-(23456789, 1, '2021-07-28', 1);
+(23456789, 1, '2021-07-28', 1),
+(23456789, 1, '2022-01-23', 2);
 
 -- --------------------------------------------------------
 
@@ -154,7 +153,6 @@ INSERT INTO `recibe` (`tis`, `id_vacuna`, `fecha`, `dosis`) VALUES
 -- Estructura de tabla para la tabla `vacuna`
 --
 
-DROP TABLE IF EXISTS `vacuna`;
 CREATE TABLE `vacuna` (
   `id` int(9) NOT NULL,
   `marca` varchar(25) NOT NULL
@@ -230,7 +228,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT de la tabla `centro_vacunacion`
 --
 ALTER TABLE `centro_vacunacion`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `cita`
+--
+ALTER TABLE `cita`
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `vacuna`

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html ng-app='miapp'>
 <html lang="es" class="h-100">
 
 <head>
@@ -17,20 +17,14 @@
   <link rel="stylesheet" href="../css/styleHyF.css">
 
   <!-- Link de la libreria de Angular -->
-  <link rel="stylesheet" href="../js/angular.min.js">
+  <!-- <script src="../js/angular.min.js"></script> -->
 </head>
 
 <body class="d-flex flex-column h-100">
   <!--navbar dinamico-->
   <div id="dynamicHeader"></div>
 
-  <!-- <div class="informacion container fluid">
-      <h2>Texto de ejemplo</h2>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa nostrum tenetur, veniam nobis esse beatae enim tempora, modi assumenda suscipit a aliquid accusantium? Cupiditate quibusdam repellendus harum quos necessitatibus neque.</p>
-    </div> -->
-
   <!-- Datos paciente -->
-
   <div class="container margen paciente">
     <form class="row g-3">
       <div class="col-md-2">
@@ -53,7 +47,7 @@
         <input type="date" class="form-control inputNac" disabled>
       </div>
 
-      <div class="col-md-7">
+      <div class="col-md-5">
         <label for="inputCentro" class="form-label">Centro de salud al que debe asistir para su vacunación:</label>
         <input type="text" class="form-control inputCentro" disabled>
       </div>
@@ -62,79 +56,74 @@
         <label for="inputFile" class="form-label">Suba una foto de perfil:</label>
         <input type="file" class="form-control" id="inputFile" aria-describedby="inputFile" aria-label="Upload">
       </div>
-
+      
       <div class=" col-md-2">
         <label for="inputButton" class="form-label transparente">Confirme su imagen:</label>
-        <input type="button" class="form-control btn btn-success" id="inputButton" aria-describedby="inputFile"
-          aria-label="Upload" value="Confirmar">
+        <input type="button" class="form-control btn btn-success" id="fileButton" aria-describedby="inputFile" aria-label="Upload" value="Confirmar">
+      </div>
+
+      <div class="col-md-2">
+        <img src="" id="fotoPerfil"/>
       </div>
     </form>
   </div>
 
   <!-- Botones Paciente -->
-  <div class="container centrar">
-    <p>Puedes pedir una cita o consultar y editar tus citas pendientes. Tambien puedes anular una cita.</p>
-    <button type="button" class="btn btn-outline-success paciente" data-bs-toggle="modal"
-      data-bs-target="#pedirCita">Pedir cita</button>
-    <button type="button" class="btn btn-outline-danger paciente" data-bs-toggle="modal"
-      data-bs-target="#consultarCita">Consultar citas</button>
-    <button type="button" class="btn btn-outline-success paciente" data-bs-toggle="modal"
-      data-bs-target="#historial">Historial de Vacunación</button>
-    <button type="button" class="btn btn-outline-danger admin" data-bs-toggle="modal"
-      data-bs-target="#modificarCentros">Modificar Centros</button>
-    <button type="button" class="btn btn-outline-success admin" data-bs-toggle="modal"
-      data-bs-target="#añadirCentros">Añadir Centro</button>
-    <button type="button" class="btn btn-outline-danger admin" data-bs-toggle="modal"
-      data-bs-target="#verPacientes">Consultar Pacientes</button>
-  </div>
+  <div id="mainButtons" class="container centrar"></div>
 
   <!-- Modals -->
   <!-- Pedir cita -->
-  <div class="modal fade" id="pedirCita" tabindex="-1" data-bs-backdrop="static" aria-labelledby="pedirCitaLabel" aria-hidden="true">
+  <div class="modal fade" id="pedirCita" tabindex="-1" data-bs-backdrop="static" aria-labelledby="pedirCitaLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
-    <div class="modal-content">
+      <div class="modal-content">
         <div class="modal-header">
-        <h5 class="modal-title" id="pedirCitaLabel">Pedir cita</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          <h5 class="modal-title" id="pedirCitaLabel">Pedir cita</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
         <div class="modal-body">
-            <form>
-              <div class="mb-3">
-                <label for="nombreYApePaciente" class="form-label">Nombre y Apellidos:</label>
-                <input id="nombreYApePaciente" class="form-control" type="text" placeholder="Nombre y apellidos" disabled>
+          <form>
+            <div class="mb-3">
+              <label for="Nombre" class="form-label">Nombre:</label>
+              <input id="nombre" class="form-control inputNombre" type="text" placeholder="Nombre y apellidos" disabled>
             </div>
-                <div class="mb-3">
-                  <label for="tis" class="form-label">TIS:</label>
-                  <input id="tis" class="form-control" type="text" placeholder="TIS" disabled>
-                </div>
+            <div class="mb-3">
+              <label for="Apellido" class="form-label">Apellido:</label>
+              <input id="apellido" class="form-control inputApellido" type="text" placeholder="Nombre y apellidos"
+                disabled>
+            </div>
+            <div class="mb-3">
+              <label for="tis" class="form-label">TIS:</label>
+              <input id="tis" class="form-control inputTis" type="text" placeholder="TIS" disabled>
+            </div>
 
-                <div class="mb-3">
-                  <label for="localidad" class="form-label">Provincia:</label>
-                  <input id="localidad" class="form-control" type="text" placeholder="Provincia" disabled>
-                </div>
+            <div class="mb-3">
+              <label for="localidad" class="form-label">Provincia:</label>
+              <input id="localidad" class="form-control inputProvincia" type="text" placeholder="Provincia" disabled>
+            </div>
 
-                <div class="mb-3"> 
-                  <label for="centro" class="form-label">Centro:</label>
-                  <input id="centro" class="form-control" type="text" placeholder="Centro" disabled>
-                  <input id="idCentro" class="form-control" type="text" placeholder="" hidden disabled>
-                </div>
-                
-                <div class="mb-3"> 
-                  <label for="dosis" class="form-label">Nº Dosis:</label>
-                  <input id="dosis" class="form-control" type="text" placeholder="Nº de dosis" disabled>
-                </div>
+            <div class="mb-3">
+              <label for="centro" class="form-label">Centro:</label>
+              <input id="centro" class="form-control inputCentro" type="text" placeholder="Centro" disabled>
+              <input id="idCentro" class="form-control" type="text" placeholder="" hidden disabled>
+            </div>
 
-                <div class="mb-3"> 
-                  <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
-                  <input type="datetime-local" class="fechaHora form-control" id="fechaPedirCita">
-                </div>
-              </form>
+            <div class="mb-3">
+              <label for="dosis" class="form-label">Nº Dosis:</label>
+              <input id="dosis" class="form-control" type="text" placeholder="Nº de dosis" disabled>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
+              <input type="datetime-local" class="fechaHora form-control" id="fechaPedirCita">
+            </div>
+          </form>
         </div>
         <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button id="ConfirmarPedirCita" type="button" class="btn btn-success">Confirmar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button id="ConfirmarPedirCita" type="button" class="btn btn-success">Confirmar</button>
         </div>
-    </div>
+      </div>
     </div>
   </div>
 
@@ -148,18 +137,18 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
         <div class="modal-body">
-          <input type="text" placeholder="Introduce el codigo de cita" class="form-control">
-          <button class="btn btn-outline-success my-3">Buscar</button>
-          <div id="divConsultarCitas" class="modal-body">
+          <div id="divConsultarCitas" class="pt-0">
 
             <!-- carga las citas desde paciente.js -->
 
           </div>
-          <div class="modal-footer">
+        </div>
+        <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
+  </div>
   </div>
 
   <!-- Historial Vacunación -->
@@ -173,33 +162,8 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
 
-        <div class="modal-body">
-          <form>
-            <div class="mb-3">
-              <label for="localidad" class="form-label">Provincia:</label>
-              <input type="text" class="form-control" placeholder="Provincia" disabled>
-            </div>
+        <div class="modal-body" id="historialVacunacion">
 
-            <div class="mb-3">
-              <label for="localidad" class="form-label">Centro:</label>
-              <input type="text" class="form-control" placeholder="Centro" disabled>
-            </div>
-          </form>
-          <button type="button" class="collapsible">1ª Dosis</button>
-
-          <div class="cita">
-            <form>
-              <div class="mb-3">
-                <label for="vacuna" class="form-label">Vacuna:</label>
-                <input type="text" class="form-control" placeholder="Vacuna" disabled>
-              </div>
-              <div class="mb-3">
-                <label class="form-label" for="fechaHora">Fecha y Hora:</label><br>
-                <input type="date" class="form-control" placeholder="Fecha y hora" disabled>
-                <!-- para introducir el valor de date hay que hacerlo de la siguiente manera *value='10-01-2022'*-->
-              </div><br>
-            </form>
-          </div>
         </div>
 
         <div class="modal-footer">
@@ -255,52 +219,46 @@
             <div class="row">
               <div class="col-6">
                 <div class="mb-3">
+                  <input id="centroId" name="enable" class="form-control" type="text" hidden>
+
                   <label for="nombreCentro" class="form-label">Nombre:</label>
-                  <input name="enable" class="form-control" type="text" placeholder="Nombre del Centro">
+                  <input id="centroNombre" name="enable" class="form-control" type="text"
+                    placeholder="Nombre del Centro">
                 </div>
 
                 <div class="mb-3">
                   <label for="Provincia" class="form-label">Provincia:</label>
-                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
-                    <option value="1">Bizkaia</option>
-                    <option value="2">Gipuzkoa</option>
-                    <option value="3">Navarra</option>
+                  <select id="centroProvincia" name="enable" class="form-select form-select-md mb-3"
+                    aria-label=".form-select-lg">
+                    <option value="Vizcaya">Vizcaya</option>
+                    <option value="Gipuzkoa">Gipuzkoa</option>
+                    <option value="Navarra">Navarra</option>
                   </select>
                 </div>
 
                 <div class="mb-3">
                   <label for="Provincia" class="form-label">Población:</label>
-                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
-                    <option selected></option>
-                    <option value="1">Amorebieta-Etxano</option>
-                    <option value="2">Galdakao</option>
-                    <option value="3">Bilbao</option>
-                  </select>
+                  <input type="text" id="centroPoblacion" class="form-control" placeholder="Población">
                 </div>
 
                 <div class="mb-3">
                   <label for="direccion" class="form-label">Dirección:</label>
-                  <input name="enable" class="form-control" type="text" placeholder="Dirección">
+                  <input id="centroDireccion" name="enable" class="form-control" type="text" placeholder="Dirección">
                 </div>
 
                 <div class="mb-3">
                   <label for="codigoPostal" class="form-label">Código Postal:</label>
-                  <input name="enable" class="form-control" type="text" placeholder="Código Postal">
+                  <input id="centroCP" name="enable" class="form-control" type="text" placeholder="Código Postal">
                 </div>
 
                 <div class="mb-3">
                   <label for="horaApertura" class="form-label">Hora de Apertura:</label>
-                  <input name="enable" class="form-control" type="time">
+                  <input id="centroApertura" name="enable" class="form-control" type="time">
                 </div>
 
                 <div class="mb-3">
                   <label class="form-label" for="horaCierre">Hora de Cierre:</label><br>
-                  <input name="enable" type="time" class="form-control">
-                </div>
-
-                <div class="mb-3">
-                  <label for="codigoPostal" class="form-label">Código Postal:</label>
-                  <input name="enable" class="form-control" type="text" placeholder="Código Postal">
+                  <input id="centroCierre" name="enable" type="time" class="form-control">
                 </div>
               </div>
               <!--cierre del col-->
@@ -308,61 +266,70 @@
               <div class="col-6">
                 <div class="mb-3">
                   <label for="lunes" class="form-label">Lunes:</label>
-                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                  <select id="centroLunes" name="enable" class="form-select form-select-md mb-3"
+                    aria-label=".form-select-lg">
                     <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
+                    <option value="0">Cerrado</option>
                   </select>
                 </div>
 
                 <div class="mb-3">
                   <label for="martes" class="form-label">Martes:</label>
-                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                  <select id="centroMartes" name="enable" class="form-select form-select-md mb-3"
+                    aria-label=".form-select-lg">
                     <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
+                    <option value="0">Cerrado</option>
                   </select>
                 </div>
 
                 <div class="mb-3">
                   <label for="miercoles" class="form-label">Miércoles:</label>
-                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                  <select id="centroMiercoles" name="enable" class="form-select form-select-md mb-3"
+                    aria-label=".form-select-lg">
                     <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
+                    <option value="0">Cerrado</option>
                   </select>
                 </div>
 
                 <div class="mb-3">
                   <label for="jueves" class="form-label">Jueves:</label>
-                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                  <select id="centroJueves" name="enable" class="form-select form-select-md mb-3"
+                    aria-label=".form-select-lg">
                     <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
+                    <option value="0">Cerrado</option>
                   </select>
                 </div>
 
                 <div class="mb-3">
                   <label for="viernes" class="form-label">Viernes:</label>
-                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                  <select id="centroViernes" name="enable" class="form-select form-select-md mb-3"
+                    aria-label=".form-select-lg">
                     <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
+                    <option value="0">Cerrado</option>
                   </select>
                 </div>
 
                 <div class="mb-3">
                   <label for="sabado" class="form-label">Sabado:</label>
-                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                  <select id="centroSabado" name="enable" class="form-select form-select-md mb-3"
+                    aria-label=".form-select-lg">
                     <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
+                    <option value="0">Cerrado</option>
                   </select>
                 </div>
 
                 <div class="mb-3">
                   <label for="domingo" class="form-label">Domingo:</label>
-                  <select name="enable" class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                  <select id="centroDomingo" name="enable" class="form-select form-select-md mb-3"
+                    aria-label=".form-select-lg">
                     <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
+                    <option value="0">Cerrado</option>
                   </select>
                 </div>
-              </div><!--Cierre del col-->
-            </div><!--Cierre del row-->
+              </div>
+              <!--Cierre del col-->
+            </div>
+            <!--Cierre del row-->
 
           </form>
         </div>
@@ -371,8 +338,7 @@
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
           <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#borrarCentro">Eliminar
             Centro</button>
-          <button type="button" class="btn btn-primary" onclick="enableModify()">Modificar</button>
-          <button type="button" class="btn btn-success" onclick="disableModify()">Confirmar</button>
+          <button id="modificarCentro" type="button" class="btn btn-success">Confirmar</button>
         </div>
 
       </div>
@@ -388,110 +354,113 @@
           <h5 class="modal-title" id="añadirCentrosLabel">Añadir Centro</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
-        
+
         <div class="modal-body">
-          <form>
+          <form id="formAnadir">
             <div class="row">
               <div class="col-6">
                 <div class="mb-3">
                   <label for="nombreCentro" class="form-label">Nombre:</label>
-                  <input class="form-control" type="text" placeholder="Nombre del Centro">
+                  <input id="crearNombre" class="form-control anadirInput" type="text" placeholder="Nombre del Centro">
                 </div>
 
                 <div class="mb-3">
                   <label for="Provincia" class="form-label">Provincia:</label>
-                  <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                  <select id="crearProvincia" class="form-select form-select-md mb-3 anadirInput"
+                    aria-label=".form-select-lg">
                     <option selected></option>
-                    <option value="1">Bizkaia</option>
-                    <option value="2">Gipuzkoa</option>
-                    <option value="3">Navarra</option>
+                    <option value="Vizcaya">Vizcaya</option>
+                    <option value="Gipuzkoa">Gipuzkoa</option>
+                    <option value="Navarra">Navarra</option>
                   </select>
                 </div>
 
                 <div class="mb-3">
                   <label for="Provincia" class="form-label">Población:</label>
-                  <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
-                    <option selected></option>
-                    <option value="1">Amorebieta-Etxano</option>
-                    <option value="2">Galdakao</option>
-                    <option value="3">Bilbao</option>
-                  </select>
+                  <input type="text" id="crearPoblacion" class="form-control anadirInput" placeholder="Población">
                 </div>
 
                 <div class="mb-3">
                   <label for="direccion" class="form-label">Dirección:</label>
-                  <input class="form-control" type="text" placeholder="Dirección">
+                  <input id="crearDireccion" class="form-control anadirInput" type="text" placeholder="Dirección">
                 </div>
 
                 <div class="mb-3">
                   <label for="codigoPostal" class="form-label">Código Postal:</label>
-                  <input class="form-control" type="text" placeholder="Código Postal">
+                  <input id="crearCP" class="form-control anadirInput" type="text" placeholder="Código Postal">
                 </div>
                 <div class="mb-3">
                   <label for="horaApertura" class="form-label">Hora de Apertura:</label>
-                  <input class="form-control" type="time">
+                  <input id="crearHora_aper" class="form-control anadirInput" type="time">
                 </div>
 
                 <div class="mb-3">
                   <label class="form-label" for="fechaHora">Hora de Cierre:</label><br>
-                  <input type="time" class="form-control">
+                  <input id="crearHora_cerrar" type="time" class="form-control anadirInput">
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="mb-3">
                   <label for="lunes" class="form-label">Lunes:</label>
-                  <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                  <select id="crearLunes" class="form-select form-select-md mb-3 anadirSelect"
+                    aria-label=".form-select-lg">
                     <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
+                    <option value="0">Cerrado</option>
                   </select>
                 </div>
 
                 <div class="mb-3">
                   <label for="martes" class="form-label">Martes:</label>
-                  <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                  <select id="crearMartes" class="form-select form-select-md mb-3 anadirSelect"
+                    aria-label=".form-select-lg">
                     <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
+                    <option value="0">Cerrado</option>
                   </select>
                 </div>
 
                 <div class="mb-3">
                   <label for="miercoles" class="form-label">Miércoles:</label>
-                  <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                  <select id="crearMiercoles" class="form-select form-select-md mb-3 anadirSelect"
+                    aria-label=".form-select-lg">
                     <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
+                    <option value="0">Cerrado</option>
                   </select>
                 </div>
 
                 <div class="mb-3">
                   <label for="jueves" class="form-label">Jueves:</label>
-                  <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                  <select id="crearJueves" class="form-select form-select-md mb-3 anadirSelect"
+                    aria-label=".form-select-lg">
                     <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
+                    <option value="0">Cerrado</option>
                   </select>
                 </div>
 
                 <div class="mb-3">
                   <label for="viernes" class="form-label">Viernes:</label>
-                  <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                  <select id="crearViernes" class="form-select form-select-md mb-3 anadirSelect"
+                    aria-label=".form-select-lg">
                     <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
+                    <option value="0">Cerrado</option>
                   </select>
                 </div>
 
                 <div class="mb-3">
                   <label for="sabado" class="form-label">Sabado:</label>
-                  <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                  <select id="crearSabado" class="form-select form-select-md mb-3 anadirSelect"
+                    aria-label=".form-select-lg">
                     <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
+                    <option value="0">Cerrado</option>
                   </select>
                 </div>
 
                 <div class="mb-3">
                   <label for="domingo" class="form-label">Domingo:</label>
-                  <select class="form-select form-select-md mb-3" aria-label=".form-select-lg">
+                  <select id="crearDomingo" class="form-select form-select-md mb-3 anadirSelect"
+                    aria-label=".form-select-lg">
                     <option value="1">Abierto</option>
-                    <option value="2">Cerrado</option>
+                    <option value="0">Cerrado</option>
                   </select>
                 </div>
               </div>
@@ -501,10 +470,11 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-success">Crear Centro</button>
+          <button id="crearCentro" type="button" class="btn btn-success" data-bs-dismiss="modal">Crear Centro</button>
         </div>
       </div>
     </div>
+  </div>
   </div>
 
   <!-- Administrador Pacientes - Ver Pacientes -->
@@ -522,9 +492,27 @@
           <button id="buscaTis" class="btn btn-success mt-3">Buscar</button>
 
           <div id="infoPaciente" class="row mt-3">
-            
+
           </div>
 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vacunar al paciente y quitar la cita pendiente -->
+  <div class="modal fade" id="vacunarPaciente" tabindex="-1" data-bs-backdrop="static" aria-labelledby="vacunarPaciente"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Vacunacion de un paciente:</h5>
+        </div>
+        <div class="modal-body" id="vacunacion">
+          <!-- Contenido rellenable -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -553,7 +541,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
-          <button type="button" class="btn btn-success">Si</button>
+          <button type="button" class="btn btn-success" id="anularCitaConfir">Si</button>
         </div>
 
       </div>
@@ -597,6 +585,7 @@
   <script src="../js/dinamico.js"></script>
   <script src="../js/paciente.js"></script>
   <script src="../js/admin.js"></script>
+  <!-- <script src="../js/angularBuscador.js"></script> -->
 
 </body>
 

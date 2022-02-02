@@ -1,0 +1,11 @@
+Hola, para poder acceder a algun usuario de nuestra pagina (bat.zerbitzaria.net) o desde vuestro local tendreis que usar dos tipos de usuarios para entrar,
+uno de ellos es el paciente, que podeis usar cualquiera de los dos que tenemos:
+
+PACIENTES:
+tis: 23456789                            tis: 12345678
+apellido: rosado                         apellido: crespo
+fecha de nacimiento: 07/02/2002          fecha de nacimiento: 10/12/2001
+
+ADMINISTRADORES:
+usuario: admin_general                   usuario: admin_paciente_1              usuario: admin_paciente_2
+contraseña: 1234                         contraseña: 1234                       contraseña: 1234

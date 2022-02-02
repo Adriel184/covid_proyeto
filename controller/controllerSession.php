@@ -2,9 +2,10 @@
 session_start();
 $response = array();
 
-if (!empty($_SESSION)) {
+if(!empty($_SESSION)) {
     $response["SESSION"] = $_SESSION;
-} else {
+}
+else {
     $response["SESSION"] = null;
 }
 

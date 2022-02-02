@@ -1,49 +1,45 @@
 <?php
+if ($_SERVER['SERVER_NAME'] == "bat.zerbitzaria.net") {
+    include_once("connect_data_serv.php");
+}
+else {
+    include_once("connect_data.php");
+}
 
-include_once ("centro.php");
-include_once ("connect_data.php");
+include_once("centro.php");
 
 class centro_model extends centro {
-
-    private $link;  // datu basera lotura - enlace a la bbdd
+    private $link;
 
     public function OpenConnect() {
-        $konDat=new connect_data();
-        try
-        {
-            $this->link=new mysqli($konDat->host,$konDat->userbbdd,$konDat->passbbdd,$konDat->ddbbname);
-            // mysqli klaseko link objetua sortzen da dagokion konexio datuekin
-            // se crea un nuevo objeto llamado link de la clase mysqli con los datos de conexión. 
+        $konDat = new connect_data();
+
+        try {
+            $this->link = new mysqli($konDat->host, $konDat->userbbdd, $konDat->passbbdd, $konDat->ddbbname);
         }
-        catch(Exception $e)
-        {
+        catch(Exception $e) {
             echo $e->getMessage();
         }
-        $this->link->set_charset("utf8"); // honek behartu egiten du aplikazio eta 
-                        //databasearen artean UTF -8 erabiltzera datuak trukatzeko
+
+        $this->link->set_charset("utf8");
     }                   
           
     public function CloseConnect() {
-        mysqli_close ($this->link);
-    }  
-
-    /********* FUNCIONES **********/
+        mysqli_close($this->link);
+    }
     
-    public function getCentroById(){
-
+    public function getCentroById() {
         $this->OpenConnect();
 
-        $id=$this->getId();
+        $id = $this->getId();
 
-        $sql = "SELECT * FROM centro_vacunacion WHERE id=$id";
+        $sql = "SELECT * FROM centro_vacunacion WHERE id = $id;";
         $result = $this->link->query($sql);
 
-        $centro=null;
+        $centro = null;
         
-        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
-        {         
-
-            $centro=new centro_model();
+        if($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $centro = new centro_model();
             $centro->setId($row['id']);
             $centro->setNombre($row['nombre']);
             $centro->setPoblacion($row['poblacion']);
@@ -61,28 +57,23 @@ class centro_model extends centro {
 
             $centro->setHora_apertura($row['hora_apertura']);
             $centro->setHora_cierre($row['hora_cierre']);
-
         }
 
         mysqli_free_result($result);
         $this->CloseConnect();
         return get_object_vars($centro);
-        
     }
 
-    public function getCentros(){
-
+    public function getCentros() {
         $this->OpenConnect();
 
-        $sql = "SELECT * FROM centro_vacunacion";
+        $sql = "SELECT * FROM centro_vacunacion;";
         $result = $this->link->query($sql);
 
-        $centros=array();
+        $centros = array();
         
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
-        {         
-
-            $centro=new centro_model();
+        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $centro = new centro_model();
             $centro->setId($row['id']);
             $centro->setNombre($row['nombre']);
             $centro->setPoblacion($row['poblacion']);
@@ -108,7 +99,62 @@ class centro_model extends centro {
         $this->CloseConnect();
         return $centros;
     }
-    public function ObjVars(){
+
+    public function insertCentro() {
+        $this->OpenConnect();
+
+        $nombre = $this->getNombre();
+        $provincia = $this->getProvincia();
+        $poblacion = $this->getPoblacion();
+        $direccion = $this->getDireccion();
+        $cp = $this->getCp();
+        $hora_apertura = $this->getHora_apertura();
+        $hora_cierre = $this->getHora_cierre();
+        $lunes = $this->getLunes();
+        $martes = $this->getMartes();
+        $miercoles = $this->getMiercoles();
+        $jueves = $this->getJueves();
+        $viernes = $this->getViernes();
+        $sabado = $this->getSabado();
+        $domingo = $this->getDomingo();
+
+        $sql = "INSERT INTO centro_vacunacion (nombre, poblacion, cp, provincia, direccion, hora_apertura, hora_cierre, lunes, martes, miercoles, jueves, viernes, sabado, domingo) VALUES ('$nombre', '$poblacion', $cp, '$provincia', '$direccion', '$hora_apertura:00', '$hora_cierre:00', $lunes, $martes, $miercoles, $jueves, $viernes, $sabado, $domingo);";
+        
+        $result = $this->link->query($sql);
+        $this->CloseConnect();
+
+        return $result;
+    }
+
+    public function updateCentro() {
+        $this -> OpenConnect();
+
+        $id = $this->getId();
+        $nombre = $this->getNombre();
+        $provincia = $this->getProvincia();
+        $poblacion = $this->getPoblacion();
+        $direccion = $this->getDireccion();
+        $cp = $this->getCp();
+        $hora_apertura = $this->getHora_apertura();
+        $hora_cierre = $this->getHora_cierre();
+        $lunes = $this->getLunes();
+        $martes = $this->getMartes();
+        $miercoles = $this->getMiercoles();
+        $jueves = $this->getJueves();
+        $viernes = $this->getViernes();
+        $sabado = $this->getSabado();
+        $domingo = $this->getDomingo();
+
+        $sql = "UPDATE centro_vacunacion SET nombre = '$nombre', poblacion = '$poblacion', cp = '$cp', provincia = '$provincia', direccion = '$direccion', hora_apertura = '$hora_apertura:00', hora_cierre = '$hora_apertura:00', lunes = '$lunes', martes = '$martes', miercoles = '$miercoles', jueves = '$jueves', viernes = '$viernes', sabado = '$sabado', domingo = '$domingo' WHERE id = $id;";
+
+        $result = $this->link->query($sql);
+        $this-> CloseConnect();
+
+        return $result;
+    }
+
+    public function ObjVars() {
         return get_object_vars($this);
     }
 }
+?>

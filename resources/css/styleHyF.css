@@ -1,50 +1,47 @@
-#loginbtn{
+#loginbtn {
     padding-left: 1%;
     padding-right: 1%;
-    
 }
 
 .container-fluid.textoCabecera {
     text-align: center;
-    
 }
 
-.textoCabecera{
+.textoCabecera {
     color: white;    
 }
 
-#soloRes{
+#soloRes {
     width: 0%;
     height: 0%;
     visibility: hidden;
 }
 
-span{
+span {
     word-wrap: break-word;
 }
 
-#contraMal{
+#contraMal {
     display: none;
 }
 
-#sinContra{
+#sinContra {
     display: none;
 }
 
-/*TODO *RESPONSIVE* */
-
-@media (max-width: 1130px){
+/* @media */
+@media(max-width: 1130px) {
     .textoCabecera{
         display: none;
     }
 }
 
-@media (max-width: 400px){
-    #casa{
+@media(max-width: 400px) {
+    #casa {
         display: none;
     }
 
-    #soloRes{
+    #soloRes {
         width: auto;
         height: auto;
         visibility: visible;
