@@ -1,7 +1,7 @@
 var savedFileBase64;
 
 function collapse() {
-  var coll = document.getElementsByClassName("collapsible");
+  var coll = $(".collapsible");
   var i;
 
   for (i = 0; i < coll.length; i++) {
@@ -54,10 +54,10 @@ async function loadContent(x) {
   var adminPacienteButtons = "<button type='button' class='btn btn-outline-danger admin' data-bs-toggle='modal' data-bs-target='#verPacientes'>Consultar Pacientes</button>";
 
   if (sesion.usuario) {
+
     if (sesion.tipo == "paciente") {
       $("#mainButtons").html(adminPacienteButtons);
-    }
-    else if(sesion.tipo == "general"){
+    }else if(sesion.tipo == "general"){
       $("#mainButtons").html(generalButtons);
       $("#mainButtons").append(adminPacienteButtons);
     }
@@ -66,71 +66,25 @@ async function loadContent(x) {
 
     $("#navbarDarkDropdownMenuLink").html(sesion.usuario);
 
-  }
-  else {
+  }else {
     //$(".admin").hide();
     $("#mainButtons").html(pacienteButtons);
 
-      console.log("Los datos del ---> "+x+" se han recibido:");
-      console.log(result);
-    
-      if (x=="paciente") {
-        document.getElementById("navbarDarkDropdownMenuLink").innerHTML=result.paciente.nombre;
-        document.getElementById("nombreYApePaciente").value=result.paciente.nombre +" "+result.paciente.apellido;
-        document.getElementById("tis").value=result.paciente.tis;
-        document.getElementById("localidad").value=result.paciente.centro.provincia;
-        document.getElementById("centro").value=result.paciente.centro.nombre;
-        document.getElementById("idCentro").value=result.paciente.centro.id;
-
-        var a = new Date(result.dateTime6monthsAgo);
-        var b = new Date(result.paciente.fecha_pcr_pstv);
-
-        console.log(result.paciente.ultimaDosis);
-
-        if (result.paciente.fecha_pcr_pstv==null || a>b) {
-          document.getElementById("dosis").value="1 y 2";
-        }else{
-          document.getElementById("dosis").value=parseInt(result.paciente.ultimaDosis) + 1;
-        }
-        
-    
-        
-        result.paciente.citas.forEach(element => {
-          document.getElementById("divConsultarCitas").innerHTML+="<br><button type='button' class='collapsible'>Cita dosis "+element.dosis+"</button>"
-          +"<div class='cita'>"
-          +  "<form>"
-          +    "<div class='mb-3'>"
-          +      "<label for='localidad' class='form-label'>Localidad:</label>"
-          +      "<input type='text' class='form-control' placeholder='Localidad' value='"+result.paciente.centro.poblacion+"' disabled>"
-          +    "</div>"
-          +    "<div class='mb-3'>" 
-          +        "<label for='centro' class='form-label'>Centro:</label>"
-          +        "<input type='text' class='form-control' placeholder='Centro' value='"+result.paciente.centro.nombre+"' disabled>"
-          +    "</div>"
-          +    "<div class='mb-3'>"
-          +        "<label class='form-label' for='fechaHora'>Fecha y Hora:</label><br>"
-          +        "<input type='' class='fechaHora form-control' id='fechaConsultarCita' value='"+element.fecha+" 'disabled>"
-          +    "</div> <br>"
-          +    "<button type='button' onclick=anularCita("+element.id+") class='btn btn-danger'>Anular Cita</button>"
-          +    "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modificarCita' onclick='enableModify()'>Cambiar fecha / hora</button>"
-          +    "<button type='button' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#confirmarCitaCita' onclick='disableModify()'>Aceptar</button>"
-          +  "</form>"
-          +"</div>"
-        });
-    
-        collapse();
-        
-      }
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json' }
 
     }).then(res => res.json()).then(result => {
 
       $("#navbarDarkDropdownMenuLink").html(result.paciente.nombre + ', ' + result.paciente.apellido);
       $(".inputNombre").html(result.paciente.nombre);
       $(".inputApellido").html(result.paciente.apellido);
+      $('#idCentro').val(result.paciente.centro.id)
 
-      $("#dosis").val(parseInt(result.paciente.ultimaDosis) + 1);
       id_cita = result.paciente.citas[0].id;
       var i = 0;
+      console.log(result);
 
       result.paciente.citas.forEach(element => {
         $("#divConsultarCitas").append("<br><button type='button' class='collapsible'>Cita " + element.dosis + "ª dosis </button>"
@@ -233,7 +187,7 @@ function pedirCita() {
 
   var url = "../../controller/controllerCita.php";
 
-  var data = { 'tis': tis, 'dosis': dosis, 'fechaYhora': fechaYhora, "idCentro": idCentro };
+  var data = { 'tis': tis, 'dosis': dosis, 'fechaYhora': fechaYhora, "idCentro": idCentro, "accion": "add" };
 
   fetch(url, {
     method: 'POST', // or 'POST'
@@ -308,7 +262,7 @@ async function historialVacu() {
     e = 1;
     while (i < result.historial.length) {
       $('#historialVacunacion').append(
-        "<button type='button' class='collapsible active'>Vacunacion " + e + "</button>" +
+        "<button type='button' class='collapsible'>Vacunacion " + e + "</button>" +
         "<div class='cita row mt-3'>" +
         "<div class='col-6 mb-4'>" +
         "<label for='tis' class='form-label'>Tis:</label>" +
@@ -324,11 +278,12 @@ async function historialVacu() {
         "</div>" +
         "</div>"
       );
+      collapse();
 
       i++;
       e++;
     }
-
+    // collapse();
   })
 }
 

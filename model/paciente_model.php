@@ -144,50 +144,22 @@ class paciente_model extends paciente {
         return $numDosis;
     }
 
-
-    public function getLastDosis(){
-        $this->OpenConnect();
-
-        $tis=$this->getTis();
-        $numDosis=0;
-
-        $sql = "SELECT MAX(recibe.dosis) AS dosis FROM recibe INNER JOIN paciente ON paciente.tis = recibe.tis WHERE paciente.tis=$tis;";
-        $result = $this->link->query($sql);
-        
-        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $numDosis=$row['dosis'];
-        }
-
-        mysqli_free_result($result);
-        $this->CloseConnect();
-        return $numDosis;
-    }
-
     public function findPacienteByTis(){
         $this->OpenConnect();
 
-        $tis=$this->getTis();
+        $tis = $this->getTis();
 
-        $sql = "SELECT MAX(recibe.dosis) AS dosis, paciente.fecha_pcr AS UltimaFechaPcrPositiva FROM recibe INNER JOIN paciente ON paciente.tis = recibe.tis WHERE paciente.tis=$tis;";
+        $sql = "SELECT paciente.tis, paciente.nombre, paciente.apellido, paciente.fecha_nac, paciente.fecha_pcr, paciente.img, cita.id AS idCita, cita.fecha AS fechaCita, cita.dosis, centro_vacunacion.nombre AS nombreCentro, centro_vacunacion.poblacion, centro_vacunacion.provincia FROM paciente INNER JOIN centro_vacunacion ON centro_vacunacion.id = paciente.id_centro INNER JOIN cita ON paciente.tis = cita.tis WHERE paciente.tis = $tis;";
+
         $result = $this->link->query($sql);
 
-        $response=array();
-        
-        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $response["numDosis"]=$row['dosis'];
-            $response["UltimaFechaPcrPositiva"]=$row['UltimaFechaPcrPositiva'];
-            if($response["numDosis"]==null){
-                $response["numDosis"]=0;
-            }
-        }
-
-        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-
-            $this -> setTis($row['tis']);
-            $this -> setNombre($row['nombre']);
-            $this -> setApellido($row['apellido']);
-            $this -> setFecha_nac($row['fecha_nac']);
-            $this -> setFecha_pcr_pstv($row['fecha_pcr']);
+        if($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $this->setTis($row['tis']);
+            $this->setNombre($row['nombre']);
+            $this->setApellido($row['apellido']);
+            $this->setFecha_nac($row['fecha_nac']);
+            $this->setFecha_pcr_pstv($row['fecha_pcr']);
+            $this->setImg($row['img']);
 
             $cita = new cita_model();
             $cita->setId($row['idCita']);
